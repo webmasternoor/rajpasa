@@ -1,0 +1,406 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: LawyeriaX Lite 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-17 15:52+0200\n"
+"PO-Revision-Date: 2016-02-17 15:52+0200\n"
+"Last-Translator: Baicus Andrei <andrei@themeisle.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: esc_html__;esc_html_e;__;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: template-parts\n"
+"X-Poedit-SearchPath-2: inc\n"
+"X-Poedit-SearchPath-3: js\n"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:21
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr ""
+
+#: comments.php:40
+#: comments.php:61
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:43
+#: comments.php:64
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:44
+#: comments.php:65
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:78
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:43
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: footer.php:43
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: footer.php:45
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: functions.php:57
+msgid "Primary"
+msgstr ""
+
+#: functions.php:108
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:118
+msgid "Footer left widget"
+msgstr ""
+
+#: functions.php:125
+msgid "Footer center widget"
+msgstr ""
+
+#: functions.php:132
+msgid "Footer right widget"
+msgstr ""
+
+#: functions.php:139
+msgid "Team Widgets"
+msgstr ""
+
+#: header.php:48
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:100
+msgid "Primary Menu"
+msgstr ""
+
+#: search.php:21
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: inc/customizer.php:41
+msgid "Website Logo"
+msgstr ""
+
+#: inc/customizer.php:52
+msgid "Top Bar"
+msgstr ""
+
+#: inc/customizer.php:53
+msgid "Top Bar Content"
+msgstr ""
+
+#: inc/customizer.php:84
+msgid "Social Links"
+msgstr ""
+
+#: inc/customizer.php:85
+msgid "Edit, add or remove social links from the top bar"
+msgstr ""
+
+#: inc/customizer.php:97
+msgid "+1-888-846173"
+msgstr ""
+
+#: inc/customizer.php:102
+msgid "Phone Number"
+msgstr ""
+
+#: inc/customizer.php:112
+msgid "example@themeisle.com"
+msgstr ""
+
+#: inc/customizer.php:116
+msgid "Email Address"
+msgstr ""
+
+#: inc/customizer.php:127
+msgid "Edit, add or remove slides from the front page hero area"
+msgstr ""
+
+#: inc/customizer.php:128
+#: inc/customizer.php:159
+msgid "Slider Area"
+msgstr ""
+
+#: inc/customizer.php:136
+msgid "Meet Lawyeria"
+msgstr ""
+
+#: inc/customizer.php:137
+msgid "A WordPress theme for lawyer websites. Show everyone who you are, introduce your team, your activities, and what customers say about you. Your strengths need to be known by everybody."
+msgstr ""
+
+#: inc/customizer.php:138
+msgid "Request Legal Advice"
+msgstr ""
+
+#: inc/customizer.php:143
+msgid "Fully Responsive"
+msgstr ""
+
+#: inc/customizer.php:144
+msgid "Lawyeria will look incredibly well on all devices, as it was made to fit any mobile screen. Its beautiful design and the way your content looks will not be affected by the device you use. They will remain just the same as on desktop."
+msgstr ""
+
+#: inc/customizer.php:145
+msgid "Buy Now"
+msgstr ""
+
+#: inc/customizer.php:150
+msgid "Business Ready"
+msgstr ""
+
+#: inc/customizer.php:151
+msgid "A business-oriented theme that provides a professional and clean design, made to build trust between you and your clients. It will put your professional purposes in the spotlight, promote your best skills in a modern way, and help you increase the number of your clients."
+msgstr ""
+
+#: inc/customizer.php:152
+msgid "More Themes"
+msgstr ""
+
+#: inc/customizer.php:175
+msgid "Ribbon Section"
+msgstr ""
+
+#: inc/customizer.php:180
+msgid "The safety of the people shall be the highest law."
+msgstr ""
+
+#: inc/customizer.php:185
+msgid "Ribbon Text"
+msgstr ""
+
+#: inc/customizer.php:196
+msgid "Select pages that should be added to the section. "
+msgstr ""
+
+#: inc/customizer.php:197
+msgid "Features Area"
+msgstr ""
+
+#: inc/customizer.php:209
+msgid "First Panel"
+msgstr ""
+
+#: inc/customizer.php:221
+msgid "Second Panel"
+msgstr ""
+
+#: inc/customizer.php:233
+msgid "Third Panel"
+msgstr ""
+
+#: inc/customizer.php:245
+msgid "Fourth Panel"
+msgstr ""
+
+#: inc/customizer.php:255
+msgid "About us Section"
+msgstr ""
+
+#: inc/customizer.php:256
+msgid "About us section settings"
+msgstr ""
+
+#: inc/customizer.php:270
+msgid "Image"
+msgstr ""
+
+#: inc/customizer.php:280
+msgid "Choose the color that suits you for the following: Menu, Header, Footer and Frontpage boxes."
+msgstr ""
+
+#: inc/customizer.php:286
+msgid "Heading"
+msgstr ""
+
+#: inc/customizer.php:296
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Expressa vero in iis aetatibus, quae iam confirmatae sunt. Nihil opus est exemplis hoc facere longius. Restincta enim sitis stabilitatem voluptatis habet, inquit, illa autem voluptas ipsius restinctionis in motu est. Sed tu, ut dignum est tua erga me et philosophiam voluntate ab adolescentulo suscepta, fac ut Metrodori tueare liberos. Vitae autem degendae ratio maxime quidem illis placuit quieta. Quae si potest singula consolando levare, universa quo modo sustinebit? Ita fit beatae vitae domina fortuna, quam Epicurus ait exiguam intervenire sapienti. Duo Reges: constructio interrete. Epicurus ait exiguam intervenire sapienti. Duo Reges: constructio interrete."
+msgstr ""
+
+#: inc/customizer.php:302
+msgid "Text"
+msgstr ""
+
+#: inc/customizer.php:313
+#: inc/customizer.php:323
+msgid "Latest News"
+msgstr ""
+
+#: inc/customizer.php:314
+msgid "Latest News Content"
+msgstr ""
+
+#: inc/customizer.php:329
+msgid "Section Heading"
+msgstr ""
+
+#: inc/customizer.php:342
+msgid "Front page"
+msgstr ""
+
+#: inc/customizer.php:361
+#: inc/customizer.php:367
+msgid "Frontpage template"
+msgstr ""
+
+#: inc/frontpage-sections.php:176
+#: inc/frontpage-sections.php:183
+msgid "Read more..."
+msgstr ""
+
+#: inc/frontpage-sections.php:209
+msgid "Choose the color that suits you for the following: Menu, Header, Footer and Frontpage boxes"
+msgstr ""
+
+#: inc/template-tags.php:52
+#: inc/template-tags.php:58
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:54
+#: inc/template-tags.php:60
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: inc/template-tags.php:66
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/template-tags.php:66
+msgid "1 Comment"
+msgstr ""
+
+#: inc/template-tags.php:66
+msgid "% Comments"
+msgstr ""
+
+#: inc/template-tags.php:73
+#: template-parts/content-page.php:33
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: inc/class/repeater-general-control.php:56
+#: inc/class/repeater-general-control.php:139
+#: inc/class/repeater-general-control.php:226
+msgid "LawyeriaX Lite"
+msgstr ""
+
+#: inc/class/repeater-general-control.php:60
+#: inc/class/repeater-general-control.php:143
+#: inc/class/repeater-general-control.php:230
+msgid "Image type"
+msgstr ""
+
+#: inc/class/repeater-general-control.php:62
+#: inc/class/repeater-general-control.php:74
+#: inc/class/repeater-general-control.php:97
+#: inc/class/repeater-general-control.php:145
+#: inc/class/repeater-general-control.php:157
+#: inc/class/repeater-general-control.php:180
+#: inc/class/repeater-general-control.php:232
+#: inc/class/repeater-general-control.php:245
+#: inc/class/repeater-general-control.php:268
+msgid "Icon"
+msgstr ""
+
+#: inc/class/repeater-general-control.php:64
+#: inc/class/repeater-general-control.php:147
+#: inc/class/repeater-general-control.php:234
+msgid "None"
+msgstr ""
+
+#: inc/class/repeater-general-control.php:70
+#: inc/class/repeater-general-control.php:91
+#: inc/class/repeater-general-control.php:153
+#: inc/class/repeater-general-control.php:176
+#: inc/class/repeater-general-control.php:241
+#: inc/class/repeater-general-control.php:264
+msgid "Upload Image"
+msgstr ""
+
+#: inc/class/repeater-general-control.php:111
+#: inc/class/repeater-general-control.php:112
+#: inc/class/repeater-general-control.php:195
+#: inc/class/repeater-general-control.php:196
+#: inc/class/repeater-general-control.php:283
+#: inc/class/repeater-general-control.php:284
+msgid "Title"
+msgstr ""
+
+#: inc/class/repeater-general-control.php:117
+#: inc/class/repeater-general-control.php:118
+#: inc/class/repeater-general-control.php:201
+#: inc/class/repeater-general-control.php:202
+#: inc/class/repeater-general-control.php:289
+#: inc/class/repeater-general-control.php:290
+msgid "Subtitle"
+msgstr ""
+
+#: inc/class/repeater-general-control.php:126
+#: inc/class/repeater-general-control.php:127
+#: inc/class/repeater-general-control.php:210
+#: inc/class/repeater-general-control.php:211
+#: inc/class/repeater-general-control.php:298
+#: inc/class/repeater-general-control.php:299
+msgid "Link"
+msgstr ""
+
+#: inc/class/repeater-general-control.php:130
+#: inc/class/repeater-general-control.php:214
+#: inc/class/repeater-general-control.php:302
+msgid "Delete field"
+msgstr ""
+
+#: inc/class/repeater-general-control.php:319
+msgid "Add new field"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php:21
+#, php-format
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:25
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:31
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: template-parts/content-page.php:22
+#: template-parts/content-single.php:48
+#: template-parts/content.php:57
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content-single.php:44
+#: template-parts/content.php:51
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
