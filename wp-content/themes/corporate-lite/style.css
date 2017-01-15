@@ -280,7 +280,10 @@ div.wonderplugintabs-panel-wrap div.wonderplugintabs-panel.wonderplugintabs-pane
 	padding: 2px 0;
 }
 .header .nav{
-	margin-top: -73px;
+	margin-top: 54px;
+}
+.header .nav ul{
+	margin: 22px 0 0;
 }
 .header .nav ul li a{
 	color: #6a6a6a;
@@ -455,7 +458,7 @@ ul.tab li a:focus, .active {
     border-top: none;
 }
 #slider{
-	height: 310px !important;
+	height: 390px !important;
 }
 div.main-container.advertisement aside {
 	width: 18%;
@@ -463,6 +466,7 @@ div.main-container.advertisement aside {
     float: left;
     background: #ffffff;
     text-transform: uppercase;
+    border: 11px solid rebeccapurple;
 }
 div.main-container.advertisement aside h3.widget-title{
 	display: none;
@@ -477,4 +481,62 @@ aside#widget_sp_image-2{
 }
 div.main-container.advertisement aside img {
     height: 101px;
+}
+
+.popupInputMobile, .mpopupInputMobile {
+    border: 0.5px solid #1CA71A;
+    text-align: center;
+    background-image: url(../images/fa-mobile.png);
+    background-position: left 5% center;
+    background-repeat: no-repeat;
+    line-height: 20px;
+    color: #191919;
+    width: 95%;
+    margin: 0 auto;
+    background-color: #fff;
+}
+span.userNameContainerspan{
+	background-color: #fff;
+    color: grey;
+    height: 100%;
+    width: 15%;
+}
+input.userNameContainerin{
+
+}
+.services, .copyright-wrapper, .header, body{
+	background-color: #172639;
+	background: #172639;
+}
+div.aligner.ttsd{
+	border-bottom: 2px solid #ffffff;
+    width: 100%;
+    float: left;
+    padding-bottom: 10px;
+}
+div.headslowgan{
+	position: absolute;
+    color: #ffffff;
+    font-size: 15px;
+    margin: 71px 128px;
+    width: 80%;
+}
+#wonderplugintabs-1 > .wonderplugintabs-header-wrap .wonderplugintabs-header-title{
+	font-size: 15px !important;
+}
+ul#menu-districtsmenu li{
+	    float: left;
+    list-style: none;
+    border-right: 1px solid #cccccc;
+    padding: 6px;
+    background-color: #cccccc;
+    margin: 2px;
+    border-radius: 3px;
+}
+ul#menu-districtsmenu li a{
+	color: black;
+    font-size: 16px;
+}
+div.alignerwe{
+	width: 93%;	
 }

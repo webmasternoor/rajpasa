@@ -27,7 +27,34 @@
         </div><!-- aligner -->
 </div><!-- top-bar -->
 <div class="header">
-            		<div class="aligner">
+                <div class="aligner ttsd">
+                  <div class="" style="background-color: red;">
+                    <div class="col-md-6">&nbsp;</div>
+                    <div class="col-md-6" style="float: right;text-align: right;">
+                      <div class="" style="float:;" id="">
+                        <form name="loginForm" method="POST" action="/Login.do;jsessionid=22D86F5116EFEE11CBBF25ECCC6304A4" onsubmit="return validateLoginForm(this);" target="_blank">
+                              <div class="col-lg-11 col-md-6 col-sm-6 col-xs-7 ml10">
+                            <input type="password" name="password" class="popupInputPassword" placeholder="" onfocus="this.placeholder = ''" autocomplete="off">
+                            <button type="submit" class="popupLogin"> Login &nbsp;<i class="fa fa-arrow-right invisibleC"></i></button>
+                            <a class="passwordtext" style="float:;" href="http://www.teletalk.com.bd:80/iCare/login/passwordRetrieve.jsp" target="_blank"><i>Forgot Password?</i></a>
+                            <a href="http://www.teletalk.com.bd:80/iCare/signup/signup.jsp" style="color:#fff; outline:none; float:;" target="_newtab"><b> | Sign Up</b></a>
+                          </div>
+                        </form>                        
+                      </div>      
+                    </div>
+                  </div>
+                </div>
+                <div class="aligner headslowgan12">
+                    <div class="headslowgan">
+                       <h3 style="font-size: 20px;width: 33%;float: left;">Beautiful Bangladesh; Visit Bangladesh</h3>
+                       <div class="toprightmenu" style="float:right;">
+                         <?php if ( dynamic_sidebar( 'toprightmenu' ) ) : ?>
+                           <?php the_widget( 'toprightmenu' ); ?> 
+                        <?php endif;?>
+                       </div>
+                    </div>
+                </div>
+            		<div class="aligner alignerwe">
                     		<div class="logo">
                         <div style="position: relative; top: -4px;">
                           <img style="width: 69%;" src="http://rajpasa.com/images/monogram_final.jpg" alt="">
@@ -130,11 +157,8 @@
       <div class="main-container">
       <?php if(is_front_page()) { ?>
       	<section class="services">
-        	<div class="container">
-          <h3 style="     font-size: 44px;
-    margin: -41px 19px 28px 20px;
-    line-height: 81px;;">Beautiful Bangladesh; Visit Bangladesh</h3>
-          <h3 style=" font-size: 44px;margin: -45px 19px 28px 20px;">কোথায় বেড়াবেন; কিভাবে যাবেন; কোথায় থাকবেন।</h3>
+        	<div class="container">          
+          <h3 style="color: #ffffff; font-size: 44px;margin: -45px 19px 28px 20px;">কোথায় বেড়াবেন; কিভাবে যাবেন; কোথায় থাকবেন।</h3>
             <?php echo do_shortcode('[wonderplugin_tabs id="1"]'); ?>
           </div>
           <!-- <div class="container">
