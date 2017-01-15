@@ -45,6 +45,10 @@ class ManagementController extends Controller
         $management->name = Input::get('name');
         $management->ManagementCode = Input::get('ManagementCode');
         $management->unitprice = Input::get('unitprice');
+        $management->manager_id = Input::get('manager_id');
+        $management->user_id = Input::get('user_id');
+        $management->company_id = Input::get('company_id');
+        $management->password = Input::get('password');
         $management->save();
         return ['url' => 'management/list'];
     }
@@ -71,6 +75,10 @@ class ManagementController extends Controller
         $management->name = Input::get('name');
         $management->ManagementCode = Input::get('ManagementCode');
         $management->unitprice = Input::get('unitprice');
+        $management->manager_id = Input::get('manager_id');
+        $management->user_id = Input::get('user_id');
+        $management->company_id = Input::get('company_id');
+        $management->password = Input::get('password');
         $management->save();
         return ['url' => 'management/list'];
     }

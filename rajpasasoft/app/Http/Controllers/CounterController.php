@@ -45,6 +45,11 @@ class CounterController extends Controller
         $counter->name = Input::get('name');
         $counter->CounterCode = Input::get('CounterCode');
         $counter->unitprice = Input::get('unitprice');
+        $counter->counter_id = Input::get('counter_id');
+        $counter->manager_id = Input::get('manager_id');
+        $counter->company_id = Input::get('company_id');
+        $counter->user_name = Input::get('user_name');
+        $counter->password = Input::get('password');
         $counter->save();
         return ['url' => 'counter/list'];
     }
@@ -71,6 +76,11 @@ class CounterController extends Controller
         $counter->name = Input::get('name');
         $counter->CounterCode = Input::get('CounterCode');
         $counter->unitprice = Input::get('unitprice');
+        $counter->counter_id = Input::get('counter_id');
+        $counter->manager_id = Input::get('manager_id');
+        $counter->company_id = Input::get('company_id');
+        $counter->user_name = Input::get('user_name');
+        $counter->password = Input::get('password');
         $counter->save();
         return ['url' => 'counter/list'];
     }

@@ -45,6 +45,13 @@ class CompanyrajController extends Controller
         $companyraj->name = Input::get('name');
         $companyraj->CompanyrajCode = Input::get('CompanyrajCode');
         $companyraj->unitprice = Input::get('unitprice');
+        $companyraj->company_id = Input::get('company_id');
+        $companyraj->company_name = Input::get('company_name');
+        $companyraj->company_email = Input::get('company_email');
+        $companyraj->company_address = Input::get('company_address');
+        $companyraj->company_license = Input::get('company_license');
+        $companyraj->company_logo = Input::get('company_logo');
+        
         $companyraj->save();
         return ['url' => 'companyraj/list'];
     }
@@ -71,6 +78,12 @@ class CompanyrajController extends Controller
         $companyraj->name = Input::get('name');
         $companyraj->CompanyrajCode = Input::get('CompanyrajCode');
         $companyraj->unitprice = Input::get('unitprice');
+        $companyraj->company_id = Input::get('company_id');
+        $companyraj->company_name = Input::get('company_name');
+        $companyraj->company_email = Input::get('company_email');
+        $companyraj->company_address = Input::get('company_address');
+        $companyraj->company_license = Input::get('company_license');
+        $companyraj->company_logo = Input::get('company_logo');
         $companyraj->save();
         return ['url' => 'companyraj/list'];
     }

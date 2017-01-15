@@ -47,6 +47,14 @@
                class="glyphicon  {{ Session::get('counter_field')=='unitprice'?(Session::get('counter_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
+         <th>
+            <a href="javascript:ajaxLoad('counter/list?field=unitprice&sort={{Session::get("counter_sort")=="asc"?"desc":"asc"}}')">
+                Unitprice
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('counter_field')=='unitprice'?(Session::get('counter_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
         <th width="140px">Actions</th>
     </tr>
     </thead>
