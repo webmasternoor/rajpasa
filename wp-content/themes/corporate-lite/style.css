@@ -280,7 +280,7 @@ div.wonderplugintabs-panel-wrap div.wonderplugintabs-panel.wonderplugintabs-pane
 	padding: 2px 0;
 }
 .header .nav{
-	margin-top: 54px;
+	/* margin-top: 54px; */
 }
 .header .nav ul{
 	margin: 22px 0 0;
@@ -336,7 +336,7 @@ div.ticketbuttondiv{
 body.page-id-16 a.ticketbutton{
 	    border: 2px solid #ccc;
     padding: 10px 23px;
-    color: #000000;
+    color: #ffffff;
     font-size: 30px;
     border-radius: 15px;
     line-height: 62px;
@@ -466,7 +466,8 @@ div.main-container.advertisement aside {
     float: left;
     background: #ffffff;
     text-transform: uppercase;
-    border: 11px solid rebeccapurple;
+    border: 6px solid #cccccc;
+    height: 180px;
 }
 div.main-container.advertisement aside h3.widget-title{
 	display: none;
@@ -477,12 +478,15 @@ ul#menu-headermenu li#menu-item-113{
     right: 89px;
 }
 aside#widget_sp_image-2{
-	    width: 49%;
+	/* width: 49%; */
 }
-div.main-container.advertisement aside img {
+div.main-container.advertisement aside img{
+	display: none;
+}
+div.main-container.advertisement aside#widget_sp_image-2 img {
     height: 101px;
+    display: block;
 }
-
 .popupInputMobile, .mpopupInputMobile {
     border: 0.5px solid #1CA71A;
     text-align: center;
@@ -518,13 +522,14 @@ div.headslowgan{
 	position: absolute;
     color: #ffffff;
     font-size: 15px;
-    margin: 71px 128px;
-    width: 80%;
+    margin: 92px 112px;
+    width: 27%;
+    float: left;
 }
 #wonderplugintabs-1 > .wonderplugintabs-header-wrap .wonderplugintabs-header-title{
 	font-size: 15px !important;
 }
-ul#menu-districtsmenu li{
+ul#menu-headermenu li{
 	    float: left;
     list-style: none;
     border-right: 1px solid #cccccc;
@@ -533,10 +538,89 @@ ul#menu-districtsmenu li{
     margin: 2px;
     border-radius: 3px;
 }
-ul#menu-districtsmenu li a{
+ul#menu-headermenu li a{
 	color: black;
     font-size: 16px;
 }
 div.alignerwe{
 	width: 93%;	
+}
+.header .nav{
+	margin-top: 27px;
+    margin-left: 30%;
+    float: left;
+}
+.header .nav div{
+    /* float: left;
+    width: 100%;
+    margin-left: -158%; */
+}
+.header .nav ul{
+	 margin: -13px 0 0 !important; 
+}
+.header .nav ul li ul{
+	margin: 83px 0 0 !important; 
+}
+.header .nav ul li ul li ul{
+	margin: 24px 0 0 !important; 
+}
+.header .nav ul li ul{
+	/* margin: -70px 0 0;	 */
+}
+.site-main{
+	width: 100%;
+}
+#sidebar{
+	display: none;
+}
+div.entry-content,
+article p,
+h1.entry-title, h1.page-title{
+	color: #ffffff;
+}
+/************************/
+.header .nav ul li{
+	background-color: transparent;
+	border: 0px; 
+}
+.header .nav ul li a{
+	color: #ffffff !important;
+}
+
+.header .nav ul li {
+    position: relative;
+}
+.header .nav ul li:hover {
+
+}
+.header .nav ul li a {
+    line-height: 85px;
+    color: #303841;
+    font-size: 18px;
+    font-weight: normal;
+}
+.header .nav ul li ul li a{
+	line-height: 27px !important;
+}
+.header .nav ul li ul li a:hover{
+	background-color: #172639;
+}
+.header .nav ul li:hover a {
+    background-color: #303841;
+    color: #eee;
+}
+
+/************************/
+@media screen and (min-width:720px){
+	.header .nav ul li:hover > ul li a{ padding:5px 0px 5px 10px; color:#000000;}	
+	.header .nav ul li:hover > ul{
+		background: transparent;
+	    top: 12px;
+	}
+	.header .nav ul li:hover ul li:hover > ul{
+		display: block;
+	    position: absolute;
+	    left: 197px;
+	    top: -34px;
+	}
 }

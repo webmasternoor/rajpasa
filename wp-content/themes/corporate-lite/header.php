@@ -24,7 +24,7 @@
                 </div><!-- top-left -->
                 <div class="top-right"><?php get_template_part( 'menu', 'social' ); ?>
                 </div><!-- top-right --><div class="clear"></div>
-        </div><!-- aligner -->
+        </div><!-- aligner home about us our service contact us -->
 </div><!-- top-bar -->
 <div class="header">
                 <div class="aligner ttsd">
@@ -46,12 +46,12 @@
                 </div>
                 <div class="aligner headslowgan12">
                     <div class="headslowgan">
-                       <h3 style="font-size: 20px;width: 33%;float: left;">Beautiful Bangladesh; Visit Bangladesh</h3>
-                       <div class="toprightmenu" style="float:right;">
+                       <h3 style="font-size: 20px;width: 100%;float: left;">Beautiful Bangladesh; Visit Bangladesh</h3>
+                       <!-- <div class="toprightmenu" style="float:right;">
                          <?php if ( dynamic_sidebar( 'toprightmenu' ) ) : ?>
                            <?php the_widget( 'toprightmenu' ); ?> 
                         <?php endif;?>
-                       </div>
+                       </div> -->
                     </div>
                 </div>
             		<div class="aligner alignerwe">
@@ -76,37 +76,40 @@
                     </div><!-- aligner -->
             </div><!-- header -->
 <?php if ( is_front_page() ) { ?>
-    <div class="slider-main">
+    <div class="col-md-12">
+      <?php if ( function_exists( 'meteor_slideshow' ) ) { meteor_slideshow( "homepage", "" ); } ?>
+    </div>
+    <!-- <div class="slider-main">
        <?php
-	   		
-			$slideimage = '';
-			$slideimage = array(
-					'1'	=>	get_template_directory_uri().'/images/slides/slider1.jpg',
-					'2'	=>  get_template_directory_uri().'/images/slides/slider2.jpg',
-					'3'	=>  get_template_directory_uri().'/images/slides/slider3.jpg',
-			);
-	   
-			$slAr = array();
-			$m = 0;
-			for ($i=1; $i<4; $i++) {
-				if ( get_theme_mod('slide_image'.$i, true) != "" ) {
-					$imgSrc 	= esc_url(get_theme_mod('slide_image'.$i, $slideimage[$i]));
-					$imgTitle	= esc_attr(get_theme_mod('slide_title'.$i, true));
-					$imgDesc	= esc_attr(get_theme_mod('slide_desc'.$i, true));
-					$imglink	= esc_url(get_theme_mod('slide_link'.$i, true));
-					if ( strlen($imgSrc) > 4 ) {
-						$slAr[$m]['image_src'] = esc_url(get_theme_mod('slide_image'.$i, $slideimage[$i]));
-						$slAr[$m]['image_title'] = esc_attr(get_theme_mod('slide_title'.$i, true));
-						$slAr[$m]['image_desc'] = esc_attr(get_theme_mod('slide_desc'.$i, true));
-						$slAr[$m]['image_url'] = esc_url(get_theme_mod('slide_link'.$i, true));
-						$m++;
-					}
-				}
-				
-			}
-			$slideno = array();
-			if( $slAr > 0 ){
-				$n = 0;?>
+             
+          $slideimage = '';
+          $slideimage = array(
+              '1'  =>  get_template_directory_uri().'/images/slides/slider1.jpg',
+              '2'  =>  get_template_directory_uri().'/images/slides/slider2.jpg',
+              '3'  =>  get_template_directory_uri().'/images/slides/slider3.jpg',
+          );
+         
+          $slAr = array();
+          $m = 0;
+          for ($i=1; $i<4; $i++) {
+            if ( get_theme_mod('slide_image'.$i, true) != "" ) {
+              $imgSrc   = esc_url(get_theme_mod('slide_image'.$i, $slideimage[$i]));
+              $imgTitle  = esc_attr(get_theme_mod('slide_title'.$i, true));
+              $imgDesc  = esc_attr(get_theme_mod('slide_desc'.$i, true));
+              $imglink  = esc_url(get_theme_mod('slide_link'.$i, true));
+              if ( strlen($imgSrc) > 4 ) {
+                $slAr[$m]['image_src'] = esc_url(get_theme_mod('slide_image'.$i, $slideimage[$i]));
+                $slAr[$m]['image_title'] = esc_attr(get_theme_mod('slide_title'.$i, true));
+                $slAr[$m]['image_desc'] = esc_attr(get_theme_mod('slide_desc'.$i, true));
+                $slAr[$m]['image_url'] = esc_url(get_theme_mod('slide_link'.$i, true));
+                $m++;
+              }
+            }
+            
+          }
+          $slideno = array();
+          if( $slAr > 0 ){
+            $n = 0;?>
                 <div id="slider" class="nivoSlider">
                 <?php 
                 foreach( $slAr as $sv ){
@@ -124,16 +127,17 @@
                         <?php if( get_theme_mod('slide_desc'.$sln, true) != '' ){ ?>
                             <p><?php echo esc_attr(get_theme_mod('slide_desc'.$sln, __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae est at dolor auctor faucibus. Aenean hendrerit lorem eget nisi vulputate, vitae fringilla ligula dignissim. Phasellus feugiat quam efficitur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae est at dolor auctor faucibus. Aenean hendrerit lorem eget nisi vulputate, vitae fringilla ligula dignissim. Phasellus feugiat quam efficitur','corporate-lite'))); ?></p>
                         <?php } ?>
-						<?php if( get_theme_mod('slide_link'.$sln, true) != ''){ ?>
-                        	<a class="read-more" href="<?php echo esc_url(get_theme_mod('slide_link'.$sln,'#')); ?>"><?php _e('Learn More','corporate-lite'); ?></a>
+                <?php if( get_theme_mod('slide_link'.$sln, true) != ''){ ?>
+                          <a class="read-more" href="<?php echo esc_url(get_theme_mod('slide_link'.$sln,'#')); ?>"><?php _e('Learn More','corporate-lite'); ?></a>
                         <?php } ?>
                     </div>
                     </div><?php 
                 } ?>
                 
-                </div>
+                </div> -->
                 <div class="main-container advertisement">
                     <div class="container">
+                    <!-- <h3 style="color: #ffffff; font-size: 44px;margin: -45px 19px 28px 20px;">কোথায় বেড়াবেন; কিভাবে যাবেন; কোথায় থাকবেন।</h3> -->
                       <?php if ( dynamic_sidebar( 'advertiseus' ) ) : ?>
                          <?php the_widget( 'advertiseus' ); ?> 
                       <?php endif;?>
@@ -158,8 +162,8 @@
       <?php if(is_front_page()) { ?>
       	<section class="services">
         	<div class="container">          
-          <h3 style="color: #ffffff; font-size: 44px;margin: -45px 19px 28px 20px;">কোথায় বেড়াবেন; কিভাবে যাবেন; কোথায় থাকবেন।</h3>
-            <?php echo do_shortcode('[wonderplugin_tabs id="1"]'); ?>
+          <!-- <h3 style="color: #ffffff; font-size: 44px;margin: -45px 19px 28px 20px;">কোথায় বেড়াবেন; কিভাবে যাবেন; কোথায় থাকবেন।</h3> -->
+            <?php //echo do_shortcode('[wonderplugin_tabs id="1"]'); ?>
           </div>
           <!-- <div class="container">
                   <div class="hey-title"><?php echo esc_attr(get_theme_mod('section1_title','Hey!')); ?></div>
