@@ -28,7 +28,7 @@
 </div><!-- top-bar -->
 <div class="header">
                 <div class="aligner ttsd">
-                  <div class="" style="background-color: red;">
+                  <div class="" style="background-color: ;">
                     <div class="col-md-6">&nbsp;</div>
                     <div class="col-md-6" style="float: right;text-align: right;">
                       <div class="" style="float:;" id="">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="aligner headslowgan12">
                     <div class="headslowgan">
-                       <h3 style="font-size: 20px;width: 100%;float: left;">Beautiful Bangladesh; Visit Bangladesh</h3>
+                       <h3>Beautiful Bangladesh; Visit Bangladesh</h3>
                        <!-- <div class="toprightmenu" style="float:right;">
                          <?php if ( dynamic_sidebar( 'toprightmenu' ) ) : ?>
                            <?php the_widget( 'toprightmenu' ); ?> 
@@ -56,7 +56,7 @@
                 </div>
             		<div class="aligner alignerwe">
                     		<div class="logo">
-                        <div style="position: relative; top: -4px;">
+                        <div class="logoins" style="">
                           <img style="width: 69%;" src="http://rajpasa.com/images/monogram_final.jpg" alt="">
                         </div>
                             		<?php corporate_lite_the_custom_logo(); ?>

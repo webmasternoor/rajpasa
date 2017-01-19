@@ -13,7 +13,7 @@
                         <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
                 </div><!-- footer-menu -->
                 <div class="copyright">
-                    	<p>&copy; <?php echo esc_attr(get_theme_mod('footer_copy',__('Rajpasa 2017 | All Rights Reserved.','corporate-lite'))); ?> <?php //echo corporate_lite_credit_link(); ?>Designed by <a href="http://viewsoft.biz">View Soft</a></p>               
+                    	<p>&copy; <?php echo esc_attr(get_theme_mod('footer_copy',__('Rajpasa 2017 | All Rights Reserved.','corporate-lite'))); ?> <?php //echo corporate_lite_credit_link(); ?>Design & Developed by <a href="http://viewsoft.biz">View Soft</a></p>               
                 </div><!-- copyright --><div class="clear"></div>           
             </div><!-- inner -->
         </div>

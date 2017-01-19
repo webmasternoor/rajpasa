@@ -577,6 +577,9 @@ div.entry-content,
 article p,
 h1.entry-title, h1.page-title{
 	color: #ffffff;
+    font-size: 18px;
+    line-height: 27px;
+    font-family: initial;
 }
 /************************/
 .header .nav ul li{
@@ -609,7 +612,15 @@ h1.entry-title, h1.page-title{
     background-color: #303841;
     color: #eee;
 }
-
+.header .logo div{
+	position: relative; top: -4px;		
+}
+div.headslowgan12 div.headslowgan h3{
+	font-size: 20px;
+	width: 100%;
+	float: left;
+	color: chocolate;
+}
 /************************/
 @media screen and (min-width:720px){
 	.header .nav ul li:hover > ul li a{ padding:5px 0px 5px 10px; color:#000000;}	
@@ -622,5 +633,88 @@ h1.entry-title, h1.page-title{
 	    position: absolute;
 	    left: 197px;
 	    top: -34px;
+	}
+}
+@media screen and (max-width: 719px) and (min-width: 480px){
+	div.main-container.advertisement aside{
+		width: 48%;
+	}
+	.header .logo div{
+		position: relative; top: 0px;
+	}
+	div.alignerwe{
+		float: left;
+	}
+	div.aligner.ttsd div.col-lg-11.col-md-6.col-sm-6.col-xs-7.ml10{
+		width: 100%;
+	    margin: 0;
+	    padding: 0;
+	}
+	div.aligner.ttsd div.col-lg-11.col-md-6.col-sm-6.col-xs-7.ml10 input{
+		width: 100%;
+	}
+	div.headslowgan{
+		position: relative;
+	    color: #ffffff;
+	    font-size: 15px;
+	    margin: 16px auto 0 16px;
+	    width: 100%;
+	    float: left;
+	}
+	div.headslowgan12 div.headslowgan h3{
+		font-size: 26px;
+		width: 96%;
+		float: left;
+		color: chocolate;
+	}
+	.main-container{
+		clear: both;
+	}
+	div.main-container.advertisement aside{
+		width: 31%;
+	}
+	.header .logo div{
+		position: relative; top: 0px;
+	}	
+	.header .logo{
+		text-align: center;
+	    width: 50%;
+	    margin: auto;
+	}
+}
+@media screen and (max-width: 479px){
+	div.main-container.advertisement aside{
+		width: 48%;
+	}
+	.header .logo div{
+		position: relative; top: 0px;
+	}
+	div.alignerwe{
+		float: left;
+	}
+	div.aligner.ttsd div.col-lg-11.col-md-6.col-sm-6.col-xs-7.ml10{
+		width: 100%;
+	    margin: 0;
+	    padding: 0;
+	}
+	div.aligner.ttsd div.col-lg-11.col-md-6.col-sm-6.col-xs-7.ml10 input{
+		width: 100%;
+	}
+	div.headslowgan{
+		    position: relative;
+	    color: #ffffff;
+	    font-size: 15px;
+	    margin: 16px auto 0 16px;
+	    width: 100%;
+	    float: left;
+	}
+	div.headslowgan12 div.headslowgan h3{
+		font-size: 16px;
+		width: 100%;
+		float: left;
+		color: chocolate;
+	}
+	.main-container{
+		clear: both;
 	}
 }
