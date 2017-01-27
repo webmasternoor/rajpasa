@@ -24,27 +24,51 @@
     <tr>
         <th width="50px" style="text-align: center">No</th>
         <th>
-            <a href="javascript:ajaxLoad('companyraj/list?field=name&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
-                Name
+            <a href="javascript:ajaxLoad('companyraj/list?field=company_id&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
+                Company ID
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('companyraj_field')=='name'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('companyraj_field')=='company_id'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('companyraj/list?field=CompanyrajCode&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
-                Companyraj Code
+            <a href="javascript:ajaxLoad('companyraj/list?field=company_name&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
+                Company Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('companyraj_field')=='CompanyrajCode'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('companyraj_field')=='company_name'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('companyraj/list?field=unitprice&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+            <a href="javascript:ajaxLoad('companyraj/list?field=company_email&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
+                Company Email
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('companyraj_field')=='unitprice'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('companyraj_field')=='company_email'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('companyraj/list?field=company_address&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
+                Company Address
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('companyraj_field')=='company_address'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('companyraj/list?field=company_license&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
+                Company License
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('companyraj_field')=='company_license'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('companyraj/list?field=company_logo&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
+                Company Logo
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('companyraj_field')=='company_logo'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th width="140px">Actions</th>
@@ -55,10 +79,12 @@
     @foreach($companyrajs as $key=>$companyraj)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$companyraj->name}}</td>
-            <td>{{$companyraj->CompanyrajCode}}</td>
-            <td>{{$companyraj->testfield}}</td>
-            <td align="right">$ {{$companyraj->unitprice}}</td>
+            <td>{{$companyraj->company_id}}</td>
+            <td>{{$companyraj->company_name}}</td>
+            <td>{{$companyraj->company_email}}</td>            
+            <td>{{$companyraj->company_address}}</td>
+            <td>{{$companyraj->company_license}}</td>
+            <td>{{$companyraj->company_logo}}</td>            
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('companyraj/update/{{$companyraj->id}}')">

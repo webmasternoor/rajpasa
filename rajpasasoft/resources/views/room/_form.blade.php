@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-hotel_id-error">
-        {!! Form::label("hotel_id","Hotel Id",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("hotel_id","Hotel Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("hotel_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="hotel_id-error" class="help-block"></span>
@@ -49,20 +49,6 @@
             <span id="room_type2-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-check_in-error">
-        {!! Form::label("check_in","Check in",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("check_in",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="check_in-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-check_out-error">
-        {!! Form::label("check_out","Check out",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("check_out",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="check_out-error" class="help-block"></span>
-        </div>
-    </div>
     <div class="form-group required col-md-6" id="form-facility-error">
         {!! Form::label("facility","Facility",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -70,31 +56,10 @@
             <span id="facility-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-name-error">
-        {!! Form::label("name","hotel name",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="name-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-BusrajCode-error">
-        {!! Form::label("BusrajCode","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("BusrajCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="BusrajCode-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-unitprice-error">
-        {!! Form::label("unitprice","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("unitprice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="unitprice-error" class="help-block"></span>
-        </div>
-    </div>
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
-        <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
+        <a href="javascript:ajaxLoad('room/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn

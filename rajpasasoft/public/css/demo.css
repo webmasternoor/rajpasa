@@ -141,3 +141,7 @@ div.dataTables_wrapper {
 .form-horizontal .control-label{
 
 }
+.form-group input[type="password"]{
+    height: 30px;
+    width: 100%;
+}

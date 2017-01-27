@@ -1,14 +1,14 @@
 <div class="col-md-12">
     
     <div class="form-group required col-md-6" id="form-bus_id-error">
-        {!! Form::label("bus_id","Bus Id",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("bus_id","Bus ID",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("bus_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="bus_id-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-company_id-error">
-        {!! Form::label("company_id","Company Id",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("company_id","Company ID",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("company_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="company_id-error" class="help-block"></span>
@@ -17,28 +17,45 @@
     <div class="form-group required col-md-6" id="form-departure_time-error">
         {!! Form::label("departure_time","Departure Time",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("departure_time",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::time("departure_time",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="departure_time-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-arrival_time-error">
         {!! Form::label("arrival_time","Arrival Time",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("arrival_time",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::time("arrival_time",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="arrival_time-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-departure_place-error">
+    <div class="form-group required col-md-6" id="form-departure_date-error">
+        {!! Form::label("departure_date","Departure Date",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::date("departure_date",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="departure_date-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-arrival_date-error">
+        {!! Form::label("arrival_date","Arrival Date",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::date("arrival_date",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="arrival_date-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-departure_place-error">        
         {!! Form::label("departure_place","Departure Place",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("departure_place",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <!-- {!! Form::select("departure_place",$district_info,null,["class"=>"form-control required","id"=>"focus"]) !!} -->
+            {!! Form::select("departure_place", $district_info, null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="departure_place-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-arrival_place-error">
         {!! Form::label("arrival_place","Arrival Place",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("arrival_place",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::select("arrival_place", $district_info, null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <!-- {!! 
+            Form::text("arrival_place",null,["class"=>"form-control required","id"=>"focus"]) !!} -->
             <span id="arrival_place-error" class="help-block"></span>
         </div>
     </div>
@@ -70,27 +87,6 @@
             <span id="facility-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-name-error">
-        {!! Form::label("name","bus name",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="name-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-BusrajCode-error">
-        {!! Form::label("BusrajCode","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("BusrajCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="BusrajCode-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-unitprice-error">
-        {!! Form::label("unitprice","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("unitprice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="unitprice-error" class="help-block"></span>
-        </div>
-    </div>
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
@@ -119,7 +115,7 @@
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('name');
+                        index = $(this).attr('bus_id');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);

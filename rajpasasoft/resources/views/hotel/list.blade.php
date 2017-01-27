@@ -24,27 +24,67 @@
     <tr>
         <th width="50px" style="text-align: center">No</th>
         <th>
-            <a href="javascript:ajaxLoad('hotel/list?field=name&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
-                Name
+            <a href="javascript:ajaxLoad('hotel/list?field=hotel_id&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
+                Hotel ID
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('hotel_field')=='name'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('hotel_field')=='hotel_id'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('hotel/list?field=HotelCode&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
-                Hotel Code
+            <a href="javascript:ajaxLoad('hotel/list?field=hotel_name&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
+                Hotel Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('hotel_field')=='HotelCode'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('hotel_field')=='hotel_name'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('hotel/list?field=unitprice&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+            <a href="javascript:ajaxLoad('hotel/list?field=company_id&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
+                Company Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('hotel_field')=='unitprice'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('hotel_field')=='company_id'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('hotel/list?field=address&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
+                Address
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('hotel_field')=='address'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('hotel/list?field=email&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
+                Email
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('hotel_field')=='email'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('hotel/list?field=phone&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
+                Phone
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('hotel_field')=='phone'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('hotel/list?field=total_room&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
+                Total Room
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('hotel_field')=='total_room'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('hotel/list?field=facility&sort={{Session::get("hotel_sort")=="asc"?"desc":"asc"}}')">
+                Facility
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('hotel_field')=='facility'?(Session::get('hotel_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th width="140px">Actions</th>
@@ -55,10 +95,14 @@
     @foreach($hotels as $key=>$hotel)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$hotel->name}}</td>
-            <td>{{$hotel->HotelCode}}</td>
-            <td>{{$hotel->testfield}}</td>
-            <td align="right">$ {{$hotel->unitprice}}</td>
+            <td>{{$hotel->hotel_id}}</td>
+            <td>{{$hotel->hotel_name}}</td>
+            <td>{{$hotel->company_id}}</td>
+            <td>{{$hotel->address}}</td>
+            <td>{{$hotel->email}}</td>
+            <td>{{$hotel->phone}}</td>
+            <td>{{$hotel->total_room}}</td>
+            <td>{{$hotel->facility}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('hotel/update/{{$hotel->id}}')">

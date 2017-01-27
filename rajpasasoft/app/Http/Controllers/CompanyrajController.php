@@ -17,9 +17,9 @@ class CompanyrajController extends Controller
     public function getList()
     {
         Session::put('companyraj_search', Input::has('ok') ? Input::get('search') : (Session::has('companyraj_search') ? Session::get('companyraj_search') : ''));
-        Session::put('companyraj_field', Input::has('field') ? Input::get('field') : (Session::has('companyraj_field') ? Session::get('companyraj_field') : 'name'));
+        Session::put('companyraj_field', Input::has('field') ? Input::get('field') : (Session::has('companyraj_field') ? Session::get('companyraj_field') : 'company_name'));
         Session::put('companyraj_sort', Input::has('sort') ? Input::get('sort') : (Session::has('companyraj_sort') ? Session::get('companyraj_sort') : 'asc'));
-        $companyrajs = Companyraj::where('name', 'like', '%' . Session::get('companyraj_search') . '%')
+        $companyrajs = Companyraj::where('company_name', 'like', '%' . Session::get('companyraj_search') . '%')
             ->orderBy(Session::get('companyraj_field'), Session::get('companyraj_sort'))->paginate(8);
         return view('companyraj.list', ['companyrajs' => $companyrajs]);
     }
@@ -32,7 +32,7 @@ class CompanyrajController extends Controller
     public function postUpdate($id)
     {
         $companyraj = Companyraj::find($id);
-        $rules = ["unitprice" => "required|numeric"];
+        /*$rules = ["unitprice" => "required|numeric"];
         if ($companyraj->name != Input::get('name'))
             $rules += ['name' => 'required|unique:companyrajs'];
         $validator = Validator::make(Input::all(), $rules);
@@ -41,10 +41,7 @@ class CompanyrajController extends Controller
                 'fail' => true,
                 'errors' => $validator->getMessageBag()->toArray()
             );
-        }
-        $companyraj->name = Input::get('name');
-        $companyraj->CompanyrajCode = Input::get('CompanyrajCode');
-        $companyraj->unitprice = Input::get('unitprice');
+        }*/
         $companyraj->company_id = Input::get('company_id');
         $companyraj->company_name = Input::get('company_name');
         $companyraj->company_email = Input::get('company_email');
@@ -63,7 +60,7 @@ class CompanyrajController extends Controller
 
     public function postCreate()
     {
-        $validator = Validator::make(Input::all(), [
+        /*$validator = Validator::make(Input::all(), [
             "name" => "required|unique:companyrajs",
             "CompanyrajCode" => "required|unique:companyrajs",
             "unitprice" => "required|numeric"
@@ -73,11 +70,8 @@ class CompanyrajController extends Controller
                 'fail' => true,
                 'errors' => $validator->getMessageBag()->toArray()
             );
-        }
+        }*/
         $companyraj = new Companyraj();
-        $companyraj->name = Input::get('name');
-        $companyraj->CompanyrajCode = Input::get('CompanyrajCode');
-        $companyraj->unitprice = Input::get('unitprice');
         $companyraj->company_id = Input::get('company_id');
         $companyraj->company_name = Input::get('company_name');
         $companyraj->company_email = Input::get('company_email');

@@ -38,6 +38,13 @@ Route::controllers([
     'seatavailable'   => 'SeatavailableController',
     'hotel'   => 'HotelController',
     'room'   => 'RoomController',
+    'division'   => 'DivisionController',
+    'district'   => 'DistrictController',
+    'upazilla'   => 'UpazillaController',
+    'bookingb'   => 'BookingbController',
+    'bookinghotel'   => 'BookinghotelController',
+    'laun'   => 'LaunController',
+    'touristplace'   => 'TouristplaceController',
 ]);
 
 Route::resource('users', 'UsersController');

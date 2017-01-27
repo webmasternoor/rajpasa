@@ -1,58 +1,44 @@
 <div class="col-md-12">
-    <div class="form-group required col-md-6" id="form-name-error">
-        {!! Form::label("name","প্রোডাক্ট কোডঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="name-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-CounterCode-error">
-        {!! Form::label("CounterCode","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("CounterCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="CounterCode-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-unitprice-error">
-        {!! Form::label("unitprice","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("unitprice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="unitprice-error" class="help-block"></span>
-        </div>
-    </div>
     <div class="form-group required col-md-6" id="form-counter_id-error">
-        {!! Form::label("counter_id","Counter Id",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("counter_id","Counter ID",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("counter_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="counter_id-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-manager_id-error">
-        {!! Form::label("manager_id","Manager Id",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("manager_id","Manager ID",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("manager_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::select("manager_id",$manager_info,null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="manager_id-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-company_id-error">
-        {!! Form::label("company_id","Company Id",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("company_id","Company ID",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("company_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::select("company_id",$company_info,null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="company_id-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-user_name-error">
-        {!! Form::label("user_name","User Name",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("user_name","Counter Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("user_name",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::text("counter_name",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="user_name-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-password-error">
-        {!! Form::label("user_name","Password",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-password12-error">
+        {!! Form::label("password","Password",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("user_name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="user_name-error" class="help-block"></span>
+            {!! Form::password("password12",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="password12-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-password123-error">
+        {!! Form::label("password","Confirm Password",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::password("password122",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="password123-error" class="help-block"></span>
         </div>
     </div>
 </div>
@@ -83,7 +69,7 @@
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('name');
+                        index = $(this).attr('counter_id');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);

@@ -24,35 +24,35 @@
     <tr>
         <th width="50px" style="text-align: center">No</th>
         <th>
-            <a href="javascript:ajaxLoad('counter/list?field=name&sort={{Session::get("counter_sort")=="asc"?"desc":"asc"}}')">
-                Name
+            <a href="javascript:ajaxLoad('counter/list?field=counter_id&sort={{Session::get("counter_sort")=="asc"?"desc":"asc"}}')">
+                Counter ID
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('counter_field')=='name'?(Session::get('counter_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('counter_field')=='counter_id'?(Session::get('counter_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('counter/list?field=CounterCode&sort={{Session::get("counter_sort")=="asc"?"desc":"asc"}}')">
-                Counter Code
+            <a href="javascript:ajaxLoad('counter/list?field=manager_id&sort={{Session::get("counter_sort")=="asc"?"desc":"asc"}}')">
+                Manager ID
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('counter_field')=='CounterCode'?(Session::get('counter_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('counter_field')=='manager_id'?(Session::get('counter_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('counter/list?field=unitprice&sort={{Session::get("counter_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+            <a href="javascript:ajaxLoad('counter/list?field=company_id&sort={{Session::get("counter_sort")=="asc"?"desc":"asc"}}')">
+                Company ID
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('counter_field')=='unitprice'?(Session::get('counter_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('counter_field')=='company_id'?(Session::get('counter_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
          <th>
-            <a href="javascript:ajaxLoad('counter/list?field=unitprice&sort={{Session::get("counter_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+            <a href="javascript:ajaxLoad('counter/list?field=counter_name&sort={{Session::get("counter_sort")=="asc"?"desc":"asc"}}')">
+                Counter Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('counter_field')=='unitprice'?(Session::get('counter_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('counter_field')=='counter_name'?(Session::get('counter_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th width="140px">Actions</th>
@@ -63,10 +63,10 @@
     @foreach($counters as $key=>$counter)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$counter->name}}</td>
-            <td>{{$counter->CounterCode}}</td>
-            <td>{{$counter->testfield}}</td>
-            <td align="right">$ {{$counter->unitprice}}</td>
+            <td>{{$counter->counter_id}}</td>
+            <td>{{$counter->manager_id}}</td>
+            <td>{{$counter->company_id}}</td>
+            <td>{{$counter->counter_name}}</td>            
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('counter/update/{{$counter->id}}')">

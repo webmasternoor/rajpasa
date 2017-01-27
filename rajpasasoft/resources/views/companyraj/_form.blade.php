@@ -1,25 +1,4 @@
-<div class="col-md-12">
-    <div class="form-group required col-md-6" id="form-name-error">
-        {!! Form::label("name","name",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="name-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-CompanyrajCode-error">
-        {!! Form::label("CompanyrajCode","faname",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("CompanyrajCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="CompanyrajCode-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-unitprice-error">
-        {!! Form::label("unitprice","moname",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("unitprice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="unitprice-error" class="help-block"></span>
-        </div>
-    </div>
+<div class="col-md-12">    
     <div class="form-group required col-md-6" id="form-company_id-error">
         {!! Form::label("company_id","Company Id",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -90,7 +69,7 @@
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('name');
+                        index = $(this).attr('company_name');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);

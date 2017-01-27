@@ -11,11 +11,13 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping database structure for rajpasasoft
+DROP DATABASE IF EXISTS `rajpasasoft`;
 CREATE DATABASE IF NOT EXISTS `rajpasasoft` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `rajpasasoft`;
 
 
 -- Dumping structure for table rajpasasoft.account_status
+DROP TABLE IF EXISTS `account_status`;
 CREATE TABLE IF NOT EXISTS `account_status` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `description` varchar(200) NOT NULL,
@@ -35,6 +37,7 @@ INSERT INTO `account_status` (`id`, `description`) VALUES
 
 
 -- Dumping structure for table rajpasasoft.assets_debt_info
+DROP TABLE IF EXISTS `assets_debt_info`;
 CREATE TABLE IF NOT EXISTS `assets_debt_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `member_id` int(11) unsigned DEFAULT NULL,
@@ -52,6 +55,7 @@ DELETE FROM `assets_debt_info`;
 
 
 -- Dumping structure for table rajpasasoft.blog_post
+DROP TABLE IF EXISTS `blog_post`;
 CREATE TABLE IF NOT EXISTS `blog_post` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -70,6 +74,7 @@ INSERT INTO `blog_post` (`id`, `title`, `description`, `created_at`, `updated_at
 
 
 -- Dumping structure for table rajpasasoft.busrajs
+DROP TABLE IF EXISTS `busrajs`;
 CREATE TABLE IF NOT EXISTS `busrajs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
@@ -81,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `busrajs` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rajpasasoft.busrajs: ~1 rows (approximately)
+-- Dumping data for table rajpasasoft.busrajs: ~0 rows (approximately)
 DELETE FROM `busrajs`;
 /*!40000 ALTER TABLE `busrajs` DISABLE KEYS */;
 INSERT INTO `busrajs` (`id`, `name`, `BusrajCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -90,6 +95,7 @@ INSERT INTO `busrajs` (`id`, `name`, `BusrajCode`, `unitprice`, `created_at`, `u
 
 
 -- Dumping structure for table rajpasasoft.companyrajs
+DROP TABLE IF EXISTS `companyrajs`;
 CREATE TABLE IF NOT EXISTS `companyrajs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
@@ -101,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `companyrajs` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rajpasasoft.companyrajs: ~1 rows (approximately)
+-- Dumping data for table rajpasasoft.companyrajs: ~0 rows (approximately)
 DELETE FROM `companyrajs`;
 /*!40000 ALTER TABLE `companyrajs` DISABLE KEYS */;
 INSERT INTO `companyrajs` (`id`, `name`, `CompanyrajCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -110,6 +116,7 @@ INSERT INTO `companyrajs` (`id`, `name`, `CompanyrajCode`, `unitprice`, `created
 
 
 -- Dumping structure for table rajpasasoft.counters
+DROP TABLE IF EXISTS `counters`;
 CREATE TABLE IF NOT EXISTS `counters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
@@ -121,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `counters` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rajpasasoft.counters: ~1 rows (approximately)
+-- Dumping data for table rajpasasoft.counters: ~0 rows (approximately)
 DELETE FROM `counters`;
 /*!40000 ALTER TABLE `counters` DISABLE KEYS */;
 INSERT INTO `counters` (`id`, `name`, `CounterCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -130,6 +137,7 @@ INSERT INTO `counters` (`id`, `name`, `CounterCode`, `unitprice`, `created_at`, 
 
 
 -- Dumping structure for table rajpasasoft.departments
+DROP TABLE IF EXISTS `departments`;
 CREATE TABLE IF NOT EXISTS `departments` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
@@ -146,6 +154,7 @@ INSERT INTO `departments` (`id`, `name`) VALUES
 
 
 -- Dumping structure for table rajpasasoft.hotels
+DROP TABLE IF EXISTS `hotels`;
 CREATE TABLE IF NOT EXISTS `hotels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
@@ -157,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `hotels` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rajpasasoft.hotels: ~1 rows (approximately)
+-- Dumping data for table rajpasasoft.hotels: ~0 rows (approximately)
 DELETE FROM `hotels`;
 /*!40000 ALTER TABLE `hotels` DISABLE KEYS */;
 INSERT INTO `hotels` (`id`, `name`, `HotelCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -166,6 +175,7 @@ INSERT INTO `hotels` (`id`, `name`, `HotelCode`, `unitprice`, `created_at`, `upd
 
 
 -- Dumping structure for table rajpasasoft.managements
+DROP TABLE IF EXISTS `managements`;
 CREATE TABLE IF NOT EXISTS `managements` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
@@ -177,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `managements` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rajpasasoft.managements: ~1 rows (approximately)
+-- Dumping data for table rajpasasoft.managements: ~0 rows (approximately)
 DELETE FROM `managements`;
 /*!40000 ALTER TABLE `managements` DISABLE KEYS */;
 INSERT INTO `managements` (`id`, `name`, `ManagementCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -186,6 +196,7 @@ INSERT INTO `managements` (`id`, `name`, `ManagementCode`, `unitprice`, `created
 
 
 -- Dumping structure for table rajpasasoft.migrations
+DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
@@ -205,6 +216,7 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 
 
 -- Dumping structure for table rajpasasoft.password_resets
+DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -220,6 +232,7 @@ DELETE FROM `password_resets`;
 
 
 -- Dumping structure for table rajpasasoft.posts
+DROP TABLE IF EXISTS `posts`;
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
@@ -738,6 +751,7 @@ INSERT INTO `posts` (`id`, `user_id`, `title`, `created_at`, `updated_at`) VALUE
 
 
 -- Dumping structure for table rajpasasoft.products
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
@@ -759,6 +773,7 @@ INSERT INTO `products` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, 
 
 
 -- Dumping structure for table rajpasasoft.rooms
+DROP TABLE IF EXISTS `rooms`;
 CREATE TABLE IF NOT EXISTS `rooms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
@@ -770,7 +785,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rajpasasoft.rooms: ~1 rows (approximately)
+-- Dumping data for table rajpasasoft.rooms: ~0 rows (approximately)
 DELETE FROM `rooms`;
 /*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
 INSERT INTO `rooms` (`id`, `name`, `RoomCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -779,6 +794,7 @@ INSERT INTO `rooms` (`id`, `name`, `RoomCode`, `unitprice`, `created_at`, `updat
 
 
 -- Dumping structure for table rajpasasoft.seatavailables
+DROP TABLE IF EXISTS `seatavailables`;
 CREATE TABLE IF NOT EXISTS `seatavailables` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
@@ -790,7 +806,7 @@ CREATE TABLE IF NOT EXISTS `seatavailables` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rajpasasoft.seatavailables: ~1 rows (approximately)
+-- Dumping data for table rajpasasoft.seatavailables: ~0 rows (approximately)
 DELETE FROM `seatavailables`;
 /*!40000 ALTER TABLE `seatavailables` DISABLE KEYS */;
 INSERT INTO `seatavailables` (`id`, `name`, `SeatavailableCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -799,6 +815,7 @@ INSERT INTO `seatavailables` (`id`, `name`, `SeatavailableCode`, `unitprice`, `c
 
 
 -- Dumping structure for table rajpasasoft.taggables
+DROP TABLE IF EXISTS `taggables`;
 CREATE TABLE IF NOT EXISTS `taggables` (
   `tag_id` int(10) unsigned NOT NULL,
   `taggable_id` int(10) unsigned NOT NULL,
@@ -3316,6 +3333,7 @@ INSERT INTO `taggables` (`tag_id`, `taggable_id`, `taggable_type`) VALUES
 
 
 -- Dumping structure for table rajpasasoft.tags
+DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -3334,6 +3352,7 @@ INSERT INTO `tags` (`id`, `name`) VALUES
 
 
 -- Dumping structure for table rajpasasoft.users
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -3356,6 +3375,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 
 
 -- Dumping structure for table rajpasasoft.user_post
+DROP TABLE IF EXISTS `user_post`;
 CREATE TABLE IF NOT EXISTS `user_post` (
   `user_id` int(10) unsigned NOT NULL,
   `post_id` int(10) unsigned NOT NULL,

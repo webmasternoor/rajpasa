@@ -24,29 +24,29 @@
     <tr>
         <th width="50px" style="text-align: center">No</th>
         <th>
-            <a href="javascript:ajaxLoad('management/list?field=name&sort={{Session::get("management_sort")=="asc"?"desc":"asc"}}')">
-                Name
+            <a href="javascript:ajaxLoad('management/list?field=manager_id&sort={{Session::get("management_sort")=="asc"?"desc":"asc"}}')">
+                Manager ID
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('management_field')=='name'?(Session::get('management_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('management_field')=='manager_id'?(Session::get('management_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('management/list?field=ManagementCode&sort={{Session::get("management_sort")=="asc"?"desc":"asc"}}')">
-                Management Code
+            <a href="javascript:ajaxLoad('management/list?field=user_id&sort={{Session::get("management_sort")=="asc"?"desc":"asc"}}')">
+                Manager Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('management_field')=='ManagementCode'?(Session::get('management_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('management_field')=='user_id'?(Session::get('management_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('management/list?field=unitprice&sort={{Session::get("management_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+            <a href="javascript:ajaxLoad('management/list?field=company_id&sort={{Session::get("management_sort")=="asc"?"desc":"asc"}}')">
+                Company ID
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('management_field')=='unitprice'?(Session::get('management_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('management_field')=='company_id'?(Session::get('management_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
-        </th>
+        </th>        
         <th width="140px">Actions</th>
     </tr>
     </thead>
@@ -55,10 +55,9 @@
     @foreach($managements as $key=>$management)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$management->name}}</td>
-            <td>{{$management->ManagementCode}}</td>
-            <td>{{$management->testfield}}</td>
-            <td align="right">$ {{$management->unitprice}}</td>
+            <td>{{$management->manager_id}}</td>
+            <td>{{$management->user_id}}</td>
+            <td>{{$management->company_id}}</td>            
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('management/update/{{$management->id}}')">

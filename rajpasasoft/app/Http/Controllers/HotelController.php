@@ -17,9 +17,9 @@ class HotelController extends Controller
     public function getList()
     {
         Session::put('hotel_search', Input::has('ok') ? Input::get('search') : (Session::has('hotel_search') ? Session::get('hotel_search') : ''));
-        Session::put('hotel_field', Input::has('field') ? Input::get('field') : (Session::has('hotel_field') ? Session::get('hotel_field') : 'name'));
+        Session::put('hotel_field', Input::has('field') ? Input::get('field') : (Session::has('hotel_field') ? Session::get('hotel_field') : 'hotel_name'));
         Session::put('hotel_sort', Input::has('sort') ? Input::get('sort') : (Session::has('hotel_sort') ? Session::get('hotel_sort') : 'asc'));
-        $hotels = Hotel::where('name', 'like', '%' . Session::get('hotel_search') . '%')
+        $hotels = Hotel::where('hotel_name', 'like', '%' . Session::get('hotel_search') . '%')
             ->orderBy(Session::get('hotel_field'), Session::get('hotel_sort'))->paginate(8);
         return view('hotel.list', ['hotels' => $hotels]);
     }
@@ -32,19 +32,24 @@ class HotelController extends Controller
     public function postUpdate($id)
     {
         $hotel = Hotel::find($id);
-        $rules = ["unitprice" => "required|numeric"];
-        if ($hotel->name != Input::get('name'))
-            $rules += ['name' => 'required|unique:hotels'];
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
+        //$rules = ["unitprice" => "required|numeric"];
+        /*if ($hotel->name != Input::get('name'))
+            $rules += ['name' => 'required|unique:hotels'];*/
+        //$validator = Validator::make(Input::all(), $rules);
+        /*if ($validator->fails()) {
             return array(
                 'fail' => true,
                 'errors' => $validator->getMessageBag()->toArray()
             );
-        }
-        $hotel->name = Input::get('name');
-        $hotel->HotelCode = Input::get('HotelCode');
-        $hotel->unitprice = Input::get('unitprice');
+        }*/
+        $hotel->hotel_id = Input::get('hotel_id');
+        $hotel->hotel_name = Input::get('hotel_name');
+        $hotel->company_id = Input::get('company_id');
+        $hotel->address = Input::get('address');
+        $hotel->email = Input::get('email');
+        $hotel->phone = Input::get('phone');
+        $hotel->total_room = Input::get('total_room');
+        $hotel->facility = Input::get('facility');
         $hotel->save();
         return ['url' => 'hotel/list'];
     }
@@ -57,9 +62,9 @@ class HotelController extends Controller
     public function postCreate()
     {
         $validator = Validator::make(Input::all(), [
-            "name" => "required|unique:hotels",
-            "HotelCode" => "required|unique:hotels",
-            "unitprice" => "required|numeric"
+            //"name" => "required|unique:hotels",
+            //"HotelCode" => "required|unique:hotels",
+            //"unitprice" => "required|numeric"
         ]);
         if ($validator->fails()) {
             return array(
@@ -68,9 +73,14 @@ class HotelController extends Controller
             );
         }
         $hotel = new Hotel();
-        $hotel->name = Input::get('name');
-        $hotel->HotelCode = Input::get('HotelCode');
-        $hotel->unitprice = Input::get('unitprice');
+        $hotel->hotel_id = Input::get('hotel_id');
+        $hotel->hotel_name = Input::get('hotel_name');
+        $hotel->company_id = Input::get('company_id');
+        $hotel->address = Input::get('address');
+        $hotel->email = Input::get('email');
+        $hotel->phone = Input::get('phone');
+        $hotel->total_room = Input::get('total_room');
+        $hotel->facility = Input::get('facility');
         $hotel->save();
         return ['url' => 'hotel/list'];
     }
