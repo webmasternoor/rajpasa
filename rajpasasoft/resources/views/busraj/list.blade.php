@@ -14,8 +14,6 @@
 <div class="col-sm-7 form-group">
     <div class="input-group">
         <input class="form-control" id="search2" value="{{ Session::get('busraj_search2') }}"
-                onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/listb')}}?ok=1&search2='+this.value)"
-                placeholder="Search..."
                 type="text">
          <input class="form-control" id="search3" value="{{ Session::get('busraj_search3') }}"
                 onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/listb')}}?ok=1&search3='+this.value)"

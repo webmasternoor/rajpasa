@@ -621,6 +621,50 @@ div.headslowgan12 div.headslowgan h3{
 	float: left;
 	color: chocolate;
 }
+div.entry-content p strong{
+    font-size: 20px;
+    width: 100%;
+    float: left;
+    color: chocolate;
+    line-height: 55px;
+}
+.content-area{
+	color: #ffffff;
+    font-size: 17px;
+    font-weight: normal;
+}
+/************************************************/
+/* Seat Arrangement */
+div.seatarra p {
+    margin: 4px;
+    font-size: 16px;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+div.seatarra .blue {
+     color: blue; 
+     background:url(images/seatblank.png); 
+     background-repeat: no-repeat;
+     width: 20px;
+     height: 20px;
+  }
+  div.seatarra .highlight {
+     background: yellow; 
+    background:url(images/seatbooked.png);
+    background-repeat: no-repeat;
+    width: 20px;
+     height: 20px;
+  }
+  div.seatarra table tr td div{
+	width: 36px;
+  }
+  div.seatarra table{
+  	width: 111px;
+    border: 1px solid #cccccc;
+  }
+  p.driverimg{
+  	pointer-events: none;
+  }
 /************************/
 @media screen and (min-width:720px){
 	.header .nav ul li:hover > ul li a{ padding:5px 0px 5px 10px; color:#000000;}	

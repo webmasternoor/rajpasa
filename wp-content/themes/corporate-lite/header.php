@@ -15,6 +15,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 <?php wp_head(); ?>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
 <body <?php body_class(); ?>>

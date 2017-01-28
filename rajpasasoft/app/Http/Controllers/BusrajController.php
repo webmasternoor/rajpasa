@@ -40,7 +40,6 @@ class BusrajController extends Controller
         $b=Session::get('busraj_search3');
         $busrajs = Busraj::where('bus_id', 'like', '%' . $a . '%')
             ->orderBy(Session::get('busraj_field'), Session::get('busraj_sort'))->paginate(8);
-
         //$busrajs = 'select * from busrajs'; 
         /*Busraj::where('bus_id', 'like', '%' . Session::get('busraj_search') . '%')
             ->orderBy(Session::get('busraj_field'), Session::get('busraj_sort'))->paginate(8);*/
