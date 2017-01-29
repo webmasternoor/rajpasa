@@ -45,6 +45,7 @@ Route::controllers([
     'bookinghotel'   => 'BookinghotelController',
     'laun'   => 'LaunController',
     'touristplace'   => 'TouristplaceController',
+    'busticket'      => 'BusticketController',
 ]);
 
 Route::resource('users', 'UsersController');
