@@ -46,6 +46,7 @@ Route::controllers([
     'laun'   => 'LaunController',
     'touristplace'   => 'TouristplaceController',
     'busticket'      => 'BusticketController',
+    'share'            => 'ShareController',
 ]);
 
 Route::resource('users', 'UsersController');

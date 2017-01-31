@@ -1,11 +1,21 @@
 <div class="col-md-12">
     <div class="form-group required col-md-6" id="form-bus_id-error">
-        {!! Form::label("bus_id","Bus Id",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("bus_id", "Bus Id",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("bus_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::text("bus_id", null, ["class"=>"form-control required", "id"=>"focus"]) !!}
             <span id="bus_id-error" class="help-block"></span>
         </div>
+        
     </div>
+
+
+    <!-- <div class="form-group required col-md-6" id="form-bus_id-error">
+        {!! Form::label("bus_id","Bus Id",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::number("bus_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="bus_id-error" class="help-block"></span>
+        </div>
+    </div> -->
     <div class="form-group required col-md-6" id="form-company_id-error">
         {!! Form::label("company_id","Company Id",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -106,7 +116,7 @@
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('company_id');
+                        index = $(this).attr('departure_place');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);
