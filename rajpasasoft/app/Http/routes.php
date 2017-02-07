@@ -46,7 +46,7 @@ Route::controllers([
     'laun'   => 'LaunController',
     'touristplace'   => 'TouristplaceController',
     'busticket'      => 'BusticketController',
-    'share'            => 'ShareController',
+    'share'          => 'ShareController',
 ]);
 
 Route::resource('users', 'UsersController');
@@ -57,4 +57,11 @@ Route::get('{view}', function ($view) {
     }
 
     return app()->abort(404, 'Page not found!');
+});
+Route::get('/rajpasa/rajpasasoft/busticket/list/{data}', function($data){
+    $dataArray = array('departure' => data['0'],
+                        'arrival' => data['1']
+     );
+
+    return view($view);
 });
