@@ -1,4 +1,4 @@
-<h1 class="page-header">Laun List
+<h1 class="page-header">Launch List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('laun/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
@@ -25,7 +25,7 @@
         <th width="50px" style="text-align: center">No</th>
         <th>
             <a href="javascript:ajaxLoad('laun/list?field=name&sort={{Session::get("laun_sort")=="asc"?"desc":"asc"}}')">
-                Name
+                Launch Name
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('laun_field')=='name'?(Session::get('laun_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -33,7 +33,7 @@
         </th>
         <th>
             <a href="javascript:ajaxLoad('laun/list?field=LaunCode&sort={{Session::get("laun_sort")=="asc"?"desc":"asc"}}')">
-                Laun Code
+                Company Name
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('laun_field')=='LaunCode'?(Session::get('laun_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -41,7 +41,31 @@
         </th>
         <th>
             <a href="javascript:ajaxLoad('laun/list?field=unitprice&sort={{Session::get("laun_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+                Company Email
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('laun_field')=='unitprice'?(Session::get('laun_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('laun/list?field=unitprice&sort={{Session::get("laun_sort")=="asc"?"desc":"asc"}}')">
+                Company Address
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('laun_field')=='unitprice'?(Session::get('laun_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('laun/list?field=unitprice&sort={{Session::get("laun_sort")=="asc"?"desc":"asc"}}')">
+                Company License
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('laun_field')=='unitprice'?(Session::get('laun_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('laun/list?field=unitprice&sort={{Session::get("laun_sort")=="asc"?"desc":"asc"}}')">
+                Company Logo
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('laun_field')=='unitprice'?(Session::get('laun_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -56,9 +80,14 @@
         <tr>
             <td align="center">{{$i++}}</td>
             <td>{{$laun->name}}</td>
-            <td>{{$laun->LaunCode}}</td>
-            <td>{{$laun->testfield}}</td>
-            <td align="right">$ {{$laun->unitprice}}</td>
+            <td>{{$laun->company_name}}</td>
+            <td>{{$laun->company_email}}</td>
+            <td>{{$laun->company_address}}</td>
+            <td>{{$laun->company_license}}</td>
+            <td>
+            <img src="{{asset('uploads/').'/'.$laun->company_logo}}">
+                <!-- {{$laun->company_logo}} -->
+            </td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('laun/update/{{$laun->id}}')">

@@ -1,3 +1,7 @@
+@if (Auth::guest())
+
+@else
+
 <h1 class="page-header">Busraj List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('busraj/create')" class="btn btn-primary pull-right"><i
@@ -187,3 +191,4 @@
         ajaxLoad($(this).attr('href'));
     });
 </script>
+@endif

@@ -37,7 +37,7 @@
     <div class="form-group required col-md-6" id="form-company_logo-error">
         {!! Form::label("company_logo","Company Logo",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("company_logo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::file("company_logo",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="company_logo-error" class="help-block"></span>
         </div>
     </div>

@@ -3,7 +3,10 @@ namespace App\Http\Controllers;
 
 use App\Busraj;
 use DB;
+use App\Seatbus;
 use App\District;
+use App\Companyraj;
+use App\Management;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -52,8 +55,10 @@ class BusrajController extends Controller
 
     public function getUpdate($id)
     {
+        $company_info = Companyraj::lists('company_name', 'id');
+        $manager_info = Management::lists('user_id', 'id');
         $district_info = District::lists('name', 'id');
-        return view('busraj.update', ['busraj' => Busraj::find($id)])->with('district_info',$district_info);
+        return view('busraj.update', ['busraj' => Busraj::find($id)])->with('manager_info', $manager_info)->with('district_info', $district_info)->with('company_info', $company_info);
     }
 
     public function postUpdate($id)
@@ -69,9 +74,13 @@ class BusrajController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }*/
+        $busraj = new Busraj();
         $busraj->bus_id = Input::get('bus_id');
         $busraj->company_id = Input::get('company_id');
+        $busraj->manager_id = Input::get('manager_id');
         $busraj->departure_time = Input::get('departure_time');
+        $busraj->departure_date = Input::get('departure_date');
+        $busraj->arrival_date = Input::get('arrival_date');
         $busraj->arrival_time = Input::get('arrival_time');
         $busraj->departure_place = Input::get('departure_place');
         $busraj->arrival_place = Input::get('arrival_place');
@@ -80,13 +89,28 @@ class BusrajController extends Controller
         $busraj->seat_fare = Input::get('seat_fare');
         $busraj->facility = Input::get('facility');
         $busraj->save();
+        
+        $SeatCount = Input::get('total_seat');
+        $busraj12 = new Seatbus();
+        $busraj12->bus_id = Input::get('bus_id');
+        $busraj12->company_id = Input::get('company_id');
+        $busraj12->manager_id = Input::get('manager_id');
+
+        for($i=1; $i<=$SeatCount; $i++){
+            $busraj12->$i = '0';
+            $busraj12->save();    
+        }
+        
         return ['url' => 'busraj/list'];
     }
 
     public function getCreate()
     {
+        
+        $company_info = Companyraj::lists('company_name', 'id');
+        $manager_info = Management::lists('user_id', 'id');
         $district_info = District::lists('name', 'id');
-        return view('busraj.create')->with('district_info', $district_info);
+        return view('busraj.create')->with('manager_info', $manager_info)->with('district_info', $district_info)->with('company_info', $company_info);
     }
 
     public function postCreate()
@@ -105,7 +129,10 @@ class BusrajController extends Controller
         $busraj = new Busraj();
         $busraj->bus_id = Input::get('bus_id');
         $busraj->company_id = Input::get('company_id');
+        $busraj->manager_id = Input::get('manager_id');
         $busraj->departure_time = Input::get('departure_time');
+        $busraj->departure_date = Input::get('departure_date');
+        $busraj->arrival_date = Input::get('arrival_date');
         $busraj->arrival_time = Input::get('arrival_time');
         $busraj->departure_place = Input::get('departure_place');
         $busraj->arrival_place = Input::get('arrival_place');
@@ -114,6 +141,18 @@ class BusrajController extends Controller
         $busraj->seat_fare = Input::get('seat_fare');
         $busraj->facility = Input::get('facility');
         $busraj->save();
+        
+        $SeatCount = Input::get('total_seat');
+        $busraj12 = new Seatbus();
+        $busraj12->bus_id = Input::get('bus_id');
+        $busraj12->company_id = Input::get('company_id');
+        $busraj12->manager_id = Input::get('manager_id');
+
+        for($i=1; $i<=$SeatCount; $i++){
+            $busraj12->$i = '0';
+            $busraj12->save();    
+        }
+        
         return ['url' => 'busraj/list'];
     }
 

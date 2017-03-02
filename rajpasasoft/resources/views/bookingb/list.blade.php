@@ -1,3 +1,7 @@
+@if (Auth::guest())
+
+@else
+
 <h1 class="page-header">Bookingb List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('bookingb/create')" class="btn btn-primary pull-right"><i
@@ -84,3 +88,4 @@
         ajaxLoad($(this).attr('href'));
     });
 </script>
+@endif

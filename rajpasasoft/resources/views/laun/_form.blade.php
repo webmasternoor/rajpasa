@@ -1,12 +1,12 @@
 <div class="col-md-12">
     <div class="form-group required col-md-6" id="form-name-error">
-        {!! Form::label("name","name",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("name","Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="name-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-LaunCode-error">
+    <!-- <div class="form-group required col-md-6" id="form-LaunCode-error">
         {!! Form::label("LaunCode","faname",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("LaunCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
@@ -19,7 +19,7 @@
             {!! Form::text("unitprice",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="unitprice-error" class="help-block"></span>
         </div>
-    </div>
+    </div> -->
     <div class="form-group required col-md-6" id="form-company_id-error">
         {!! Form::label("company_id","Company Id",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -58,7 +58,7 @@
     <div class="form-group required col-md-6" id="form-company_logo-error">
         {!! Form::label("company_logo","Company Logo",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("company_logo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::file("company_logo",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="company_logo-error" class="help-block"></span>
         </div>
     </div>

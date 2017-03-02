@@ -16,6 +16,29 @@ CREATE DATABASE IF NOT EXISTS `rajpasasoft` /*!40100 DEFAULT CHARACTER SET latin
 USE `rajpasasoft`;
 
 
+-- Dumping structure for table rajpasasoft.admins
+DROP TABLE IF EXISTS `admins`;
+CREATE TABLE IF NOT EXISTS `admins` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `admins_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table rajpasasoft.admins: ~2 rows (approximately)
+DELETE FROM `admins`;
+/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, 'Noor', 'webmaster.noor1@gmail.com', '$2y$10$oUwAJW9gDhnfZi.CffnD/uDnMflxIp6nCBaqqgpVEIo1pFGfpS9zW', 'xS37bLFpwMLD5Vju5xW4zCVnaLVHx8l8u9854xSROG7m6ZgGADltRBONbM6E', '2017-01-31 06:59:00', '2017-01-31 07:08:24'),
+	(2, 'Noor1', 'webmaster1.noor@gmail.com', '$2y$10$oUwAJW9gDhnfZi.CffnD/uDnMflxIp6nCBaqqgpVEIo1pFGfpS9zW', 'xS37bLFpwMLD5Vju5xW4zCVnaLVHx8l8u9854xSROG7m6ZgGADltRBONbM6E', '2017-01-31 06:59:00', '2017-01-31 07:08:24');
+/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
+
+
 -- Dumping structure for table rajpasasoft.assets_debt_info
 DROP TABLE IF EXISTS `assets_debt_info`;
 CREATE TABLE IF NOT EXISTS `assets_debt_info` (
@@ -111,7 +134,8 @@ DROP TABLE IF EXISTS `busrajs`;
 CREATE TABLE IF NOT EXISTS `busrajs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bus_id` int(11) NOT NULL DEFAULT '0',
-  `company_id` int(11) NOT NULL,
+  `company_id` int(11) DEFAULT NULL,
+  `manager_id` int(11) DEFAULT NULL,
   `departure_date` datetime DEFAULT NULL,
   `departure_time` varchar(500) DEFAULT NULL,
   `departure_place` varchar(500) DEFAULT NULL,
@@ -126,15 +150,37 @@ CREATE TABLE IF NOT EXISTS `busrajs` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rajpasasoft.busrajs: ~2 rows (approximately)
+-- Dumping data for table rajpasasoft.busrajs: ~3 rows (approximately)
 DELETE FROM `busrajs`;
 /*!40000 ALTER TABLE `busrajs` DISABLE KEYS */;
-INSERT INTO `busrajs` (`id`, `bus_id`, `company_id`, `departure_date`, `departure_time`, `departure_place`, `arrival_date`, `arrival_time`, `arrival_place`, `bus_type`, `total_seat`, `seat_fare`, `facility`, `name`, `created_at`, `updated_at`) VALUES
-	(2, 11, 22, NULL, '33', '55', NULL, '44', '66', '77', '88', '99', '00', NULL, '2017-01-19 10:02:07', '2017-01-19 10:03:01'),
-	(3, 1, 2, NULL, '3', '5', NULL, '4', '6', '7', '8', '9', '0', NULL, '2017-01-19 10:02:16', '2017-01-19 10:02:16');
+INSERT INTO `busrajs` (`id`, `bus_id`, `company_id`, `manager_id`, `departure_date`, `departure_time`, `departure_place`, `arrival_date`, `arrival_time`, `arrival_place`, `bus_type`, `total_seat`, `seat_fare`, `facility`, `name`, `created_at`, `updated_at`) VALUES
+	(13, 12, 1, 29, '0000-00-00 00:00:00', '', '1', '0000-00-00 00:00:00', '', '1', 'ac', '', '', '', NULL, '2017-03-01 08:46:21', '2017-03-01 08:46:21'),
+	(28, 12, 1, 29, '0000-00-00 00:00:00', '', '1', '0000-00-00 00:00:00', '', '1', 'ac', '', '', '', NULL, '2017-03-01 09:04:59', '2017-03-01 09:04:59'),
+	(29, 45, 1, 29, '0000-00-00 00:00:00', '', '1', '0000-00-00 00:00:00', '', '1', 'ac', '22', '', '', NULL, '2017-03-01 10:09:07', '2017-03-01 10:09:07'),
+	(30, 23, 1, 29, '0000-00-00 00:00:00', '', '1', '0000-00-00 00:00:00', '', '1', 'ac', '12', '', '', NULL, '2017-03-01 10:25:26', '2017-03-01 10:25:26');
 /*!40000 ALTER TABLE `busrajs` ENABLE KEYS */;
+
+
+-- Dumping structure for table rajpasasoft.bustypes
+DROP TABLE IF EXISTS `bustypes`;
+CREATE TABLE IF NOT EXISTS `bustypes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table rajpasasoft.bustypes: ~2 rows (approximately)
+DELETE FROM `bustypes`;
+/*!40000 ALTER TABLE `bustypes` DISABLE KEYS */;
+INSERT INTO `bustypes` (`id`, `name`, `created_at`, `updated_at`) VALUES
+	(1, 'AC', NULL, NULL),
+	(2, 'Non AC', NULL, NULL),
+	(3, 'Others', NULL, NULL);
+/*!40000 ALTER TABLE `bustypes` ENABLE KEYS */;
 
 
 -- Dumping structure for table rajpasasoft.companyrajs
@@ -168,21 +214,22 @@ DROP TABLE IF EXISTS `counters`;
 CREATE TABLE IF NOT EXISTS `counters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
-  `counter_id` int(11) NOT NULL,
-  `manager_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `counter_id` int(11) DEFAULT NULL,
+  `manager_id` int(11) DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL,
   `counter_name` varchar(500) DEFAULT NULL,
   `password12` varchar(500) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rajpasasoft.counters: ~1 rows (approximately)
+-- Dumping data for table rajpasasoft.counters: ~2 rows (approximately)
 DELETE FROM `counters`;
 /*!40000 ALTER TABLE `counters` DISABLE KEYS */;
 INSERT INTO `counters` (`id`, `name`, `counter_id`, `manager_id`, `company_id`, `counter_name`, `password12`, `created_at`, `updated_at`) VALUES
-	(2, NULL, 1, 2, 3, '4', 'b53b3a3d6ab90ce0268229151c9bde11', '2017-01-25 01:07:05', '2017-01-25 01:07:05');
+	(10, NULL, 12, 29, 1, 'sdsds', 'e10adc3949ba59abbe56e057f20f883e', '2017-02-28 09:09:47', '2017-02-28 09:09:47'),
+	(11, NULL, 1212, 29, 1, 'asas', 'e10adc3949ba59abbe56e057f20f883e', '2017-02-28 09:10:28', '2017-02-28 09:10:28');
 /*!40000 ALTER TABLE `counters` ENABLE KEYS */;
 
 
@@ -289,24 +336,29 @@ CREATE TABLE IF NOT EXISTS `launs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
   `LaunCode` varchar(500) DEFAULT NULL,
-  `unitprice` decimal(10,2) DEFAULT '0.00',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
   `company_id` int(11) DEFAULT NULL,
   `company_name` varchar(500) DEFAULT NULL,
   `company_email` varchar(500) DEFAULT NULL,
   `company_address` varchar(500) DEFAULT NULL,
   `company_license` varchar(500) DEFAULT NULL,
   `company_logo` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rajpasasoft.launs: ~0 rows (approximately)
+-- Dumping data for table rajpasasoft.launs: ~6 rows (approximately)
 DELETE FROM `launs`;
 /*!40000 ALTER TABLE `launs` DISABLE KEYS */;
-INSERT INTO `launs` (`id`, `name`, `LaunCode`, `unitprice`, `created_at`, `updated_at`, `company_id`, `company_name`, `company_email`, `company_address`, `company_license`, `company_logo`) VALUES
-	(1, '1', '2', 3.00, '2017-01-20 06:15:37', '2017-01-20 06:15:37', 4, '5', '6', '7', '8', '9'),
-	(2, '11', '22', 3.00, '2017-01-24 22:03:17', '2017-01-24 22:03:17', 4, '5', '6', '7', '8', '9');
+INSERT INTO `launs` (`id`, `name`, `LaunCode`, `company_id`, `company_name`, `company_email`, `company_address`, `company_license`, `company_logo`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, '1', '2', 4, '5', '6', '7', '8', '9', 3.00, '2017-01-20 06:15:37', '2017-01-20 06:15:37'),
+	(2, '11', '22', 4, '5', '6', '7', '8', '9', 3.00, '2017-01-24 22:03:17', '2017-01-24 22:03:17'),
+	(3, '1123', '2234', 4, '5', '6@gmail.com', 'as', 'sd', 'qw', 3.00, '2017-02-09 09:26:32', '2017-02-09 09:26:32'),
+	(4, 'Lanunch Name', NULL, 0, 'a', 'a', 's', 'a', 's', NULL, '2017-02-09 09:29:49', '2017-02-09 09:29:49'),
+	(5, '1', NULL, 2, '3', '4', '5', '6', NULL, NULL, '2017-02-09 09:40:50', '2017-02-09 09:40:50'),
+	(6, '', NULL, 0, '', '', '', '', NULL, NULL, '2017-02-09 09:42:32', '2017-02-09 09:42:32'),
+	(7, '', NULL, 0, '', '', '', '', '14.jpg', NULL, '2017-02-09 09:43:56', '2017-02-09 09:43:56');
 /*!40000 ALTER TABLE `launs` ENABLE KEYS */;
 
 
@@ -322,13 +374,14 @@ CREATE TABLE IF NOT EXISTS `managements` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table rajpasasoft.managements: ~2 rows (approximately)
 DELETE FROM `managements`;
 /*!40000 ALTER TABLE `managements` DISABLE KEYS */;
 INSERT INTO `managements` (`id`, `name`, `manager_id`, `company_id`, `user_id`, `password12`, `created_at`, `updated_at`) VALUES
-	(8, NULL, 23, 1, 'greenline manager23', 'a01610228fe998f515a72dd730294d87', '2017-01-25 00:20:09', '2017-01-25 00:56:13');
+	(29, NULL, 0, 1, 'G-Manager1', 'e10adc3949ba59abbe56e057f20f883e', '2017-02-28 06:42:23', '2017-02-28 06:42:23'),
+	(30, NULL, 1, 1, 'G-Manager2', 'e10adc3949ba59abbe56e057f20f883e', '2017-02-28 08:46:44', '2017-02-28 08:46:44');
 /*!40000 ALTER TABLE `managements` ENABLE KEYS */;
 
 
@@ -955,6 +1008,79 @@ DELETE FROM `seatavailables`;
 INSERT INTO `seatavailables` (`id`, `name`, `SeatavailableCode`, `unitprice`, `created_at`, `updated_at`) VALUES
 	(1, '6', '5', 4.00, '2017-01-15 04:22:35', '2017-01-15 04:22:35');
 /*!40000 ALTER TABLE `seatavailables` ENABLE KEYS */;
+
+
+-- Dumping structure for table rajpasasoft.seatbuses
+DROP TABLE IF EXISTS `seatbuses`;
+CREATE TABLE IF NOT EXISTS `seatbuses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `bus_id` varchar(10) DEFAULT NULL,
+  `company_id` varchar(10) DEFAULT NULL,
+  `manager_id` varchar(10) DEFAULT NULL,
+  `1` varchar(10) DEFAULT NULL,
+  `2` varchar(10) DEFAULT NULL,
+  `3` varchar(10) DEFAULT NULL,
+  `4` varchar(10) DEFAULT NULL,
+  `5` varchar(10) DEFAULT NULL,
+  `6` varchar(10) DEFAULT NULL,
+  `7` varchar(10) DEFAULT NULL,
+  `8` varchar(10) DEFAULT NULL,
+  `9` varchar(10) DEFAULT NULL,
+  `10` varchar(10) DEFAULT NULL,
+  `11` varchar(10) DEFAULT NULL,
+  `12` varchar(10) DEFAULT NULL,
+  `13` varchar(10) DEFAULT NULL,
+  `14` varchar(10) DEFAULT NULL,
+  `15` varchar(10) DEFAULT NULL,
+  `16` varchar(10) DEFAULT NULL,
+  `17` varchar(10) DEFAULT NULL,
+  `18` varchar(10) DEFAULT NULL,
+  `19` varchar(10) DEFAULT NULL,
+  `20` varchar(10) DEFAULT NULL,
+  `21` varchar(10) DEFAULT NULL,
+  `22` varchar(10) DEFAULT NULL,
+  `23` varchar(10) DEFAULT NULL,
+  `24` varchar(10) DEFAULT NULL,
+  `25` varchar(10) DEFAULT NULL,
+  `26` varchar(10) DEFAULT NULL,
+  `27` varchar(10) DEFAULT NULL,
+  `28` varchar(10) DEFAULT NULL,
+  `29` varchar(10) DEFAULT NULL,
+  `30` varchar(10) DEFAULT NULL,
+  `31` varchar(10) DEFAULT NULL,
+  `32` varchar(10) DEFAULT NULL,
+  `33` varchar(10) DEFAULT NULL,
+  `34` varchar(10) DEFAULT NULL,
+  `35` varchar(10) DEFAULT NULL,
+  `36` varchar(10) DEFAULT NULL,
+  `37` varchar(10) DEFAULT NULL,
+  `38` varchar(10) DEFAULT NULL,
+  `39` varchar(10) DEFAULT NULL,
+  `40` varchar(10) DEFAULT NULL,
+  `41` varchar(10) DEFAULT NULL,
+  `42` varchar(10) DEFAULT NULL,
+  `43` varchar(10) DEFAULT NULL,
+  `44` varchar(10) DEFAULT NULL,
+  `45` varchar(10) DEFAULT NULL,
+  `46` varchar(10) DEFAULT NULL,
+  `47` varchar(10) DEFAULT NULL,
+  `48` varchar(10) DEFAULT NULL,
+  `49` varchar(10) DEFAULT NULL,
+  `50` varchar(10) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table rajpasasoft.seatbuses: ~1 rows (approximately)
+DELETE FROM `seatbuses`;
+/*!40000 ALTER TABLE `seatbuses` DISABLE KEYS */;
+INSERT INTO `seatbuses` (`id`, `name`, `bus_id`, `company_id`, `manager_id`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `22`, `23`, `24`, `25`, `26`, `27`, `28`, `29`, `30`, `31`, `32`, `33`, `34`, `35`, `36`, `37`, `38`, `39`, `40`, `41`, `42`, `43`, `44`, `45`, `46`, `47`, `48`, `49`, `50`, `created_at`, `updated_at`) VALUES
+	(2, '1212', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-03-01 08:53:43', '2017-03-01 08:53:43'),
+	(3, NULL, '12', '1', '29', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-03-01 09:04:59', '2017-03-01 09:04:59'),
+	(4, NULL, '23', '1', '29', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-03-01 10:25:26', '2017-03-01 10:25:27');
+/*!40000 ALTER TABLE `seatbuses` ENABLE KEYS */;
 
 
 -- Dumping structure for table rajpasasoft.taggables
@@ -3576,22 +3702,31 @@ INSERT INTO `upazillas` (`id`, `name`, `UpazillaCode`, `unitprice`, `created_at`
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `company_id` int(10) DEFAULT '0',
+  `manager_id` int(10) DEFAULT '0',
+  `counter_id` int(10) DEFAULT '0',
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `type` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=502 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=526 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table rajpasasoft.users: ~1 rows (approximately)
+-- Dumping data for table rajpasasoft.users: ~5 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(501, 'Noor', 'webmaster.noor@gmail.com', '$2y$10$pYhCPLAl0z2OV.rPgQFf2OEhShfkvbmm3KmidHGUhtuGoIz5mBzUS', 'FeagGFSOhXuRfrRD3tJYStEgoe5CCg8zv0lNeaE474XprC0qt9Y8pTkHT2j5', '2016-12-24 09:06:10', '2016-12-26 05:09:01', NULL);
+INSERT INTO `users` (`id`, `company_id`, `manager_id`, `counter_id`, `name`, `email`, `password`, `remember_token`, `type`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(501, 0, 0, 0, 'Noor', 'webmaster.noor@gmail.com', '$2y$10$pYhCPLAl0z2OV.rPgQFf2OEhShfkvbmm3KmidHGUhtuGoIz5mBzUS', 'Gw2DVWBcMu4yZm3Nwoc05ln9hwWztvp5dxpBtcJ2N1vCVzePx7aTUIcT2gi3', 'admin', '2016-12-24 09:06:10', '2017-02-27 08:44:23', NULL),
+	(521, 1, 2, 0, 'G-Manager1', 'g1@gmail.com', '$2y$10$3UoLsuVEyf4rm4pQZ49GQ.OHB7jDcl3fxEW4OlQhjwHs7wKE9IGcy', NULL, 'manager', '2017-02-28 06:42:23', '2017-02-28 06:42:23', NULL),
+	(522, 1, 1, 0, 'G-Manager2', 'g2@gmail.com', '$2y$10$ViMX13rlzu.XIpm5zvLCF.cTwSDMqLJbwzsP/9n8vSw2AHRe0ue5O', NULL, 'manager', '2017-02-28 08:46:45', '2017-02-28 08:46:45', NULL),
+	(523, 0, 0, 0, NULL, 'counter12@gmail.com', '$2y$10$7QFoc5TR/R988K7O6fo2UefTGfJAXwwa9A.RrPz1q5YQpJlMIVpii', NULL, 'counter', '2017-02-28 09:09:47', '2017-02-28 09:09:47', NULL),
+	(524, 1, 1, 1212, 'asas', 'asasd@gmail.com', '$2y$10$0vM0aNcwmozUKaWSj3ADjOexa/wcAHOGyy/UvAFwJ915/e7DEa/Aa', NULL, 'counter', '2017-02-28 09:10:28', '2017-02-28 09:10:28', NULL),
+	(525, 0, 0, 0, 'Admin', 'admin@admin.com', '$2y$10$drp0C/gf7I7/Z0.0XsiinuWS4Z3h7cJNteoP0a3XhH6isgDal19Bi', 'KHAptYEU6BdyzJFmpp7FZHvgvsin9NxYm8hWnBRAVSCEJELkT0P75oRdUAFl', 'admin', '2017-03-02 15:32:52', '2017-03-02 15:32:56', NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 

@@ -1,17 +1,24 @@
 <div class="col-md-12">
     
-    <div class="form-group required col-md-6" id="form-bus_id-error">
-        {!! Form::label("bus_id","Bus ID",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
+    <div class="form-group required col-md-4" id="form-bus_id-error">
+        {!! Form::label("bus_id","Bus ID",["class"=>"control-label col-md-12"]) !!}
+        <div class="col-md-12">
             {!! Form::text("bus_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="bus_id-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-company_id-error">
-        {!! Form::label("company_id","Company ID",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("company_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
+    <div class="form-group required col-md-4" id="form-company_id-error">
+        {!! Form::label("company_id","Company ID",["class"=>"control-label col-md-12"]) !!}
+        <div class="col-md-12">
+            {!! Form::select("company_id",$company_info, null,["class"=>"company_id form-control required","id"=>"company_id"]) !!}
             <span id="company_id-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-4" id="form-manager_id-error">
+        {!! Form::label("manager_id","Manager ID",["class"=>"control-label col-md-12"]) !!}
+        <div class="col-md-12">
+            {!! Form::select("manager_id",$manager_info, null,["class"=>"manager_id form-control required","id"=>"manager_id"]) !!}
+            <span id="manager_id-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-departure_time-error">
@@ -62,7 +69,10 @@
     <div class="form-group required col-md-6" id="form-bus_type-error">
         {!! Form::label("bus_type","Bus Type",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("bus_type",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <select name="bus_type">
+              <option value="ac">AC</option>
+              <option value="nonac">Non AC</option>
+            </select>
             <span id="bus_type-error" class="help-block"></span>
         </div>
     </div>
@@ -76,7 +86,7 @@
     <div class="form-group required col-md-6" id="form-seat_fare-error">
         {!! Form::label("seat_fare","Seat Fare",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("seat_fare",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("seat_fare",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="seat_fare-error" class="help-block"></span>
         </div>
     </div>
@@ -139,4 +149,31 @@
         });
         return false;
     });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on('change', '.company_id', function () {
+            //console.log("yes it is change");
+
+            var op = " ";
+            var company_id = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#manager_id').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getManager',
+                data: {'id': company_id},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+                        $('#manager_id').append('<option value="'+subcatObj.id+'">'+subcatObj.user_id +'</option>')
+                    });
+                },
+                error: function () {
+
+                }
+            });
+            $.ajax(clear);
+        });
+    });    
 </script>

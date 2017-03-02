@@ -1,3 +1,7 @@
+@if (Auth::guest())
+
+@else
+
 <h1 class="page-header">Busraj List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('busraj/create')" class="btn btn-primary pull-right"><i
@@ -13,8 +17,8 @@
 </div> -->
 <div class="col-sm-7 form-group">
     <div class="input-group">
-        <input class="form-control" id="search2" value="{{ Session::get('busraj_search2') }}"
-                type="text">
+        <!-- <input class="form-control" id="search2" value="{{ Session::get('busraj_search2') }}"
+                type="text"> -->
          <input class="form-control" id="search3" value="{{ Session::get('busraj_search3') }}"
                 onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/listb')}}?ok=1&search3='+this.value)"
                 placeholder="Search..."
@@ -170,3 +174,4 @@
         ajaxLoad($(this).attr('href'));
     });
 </script>
+@endif

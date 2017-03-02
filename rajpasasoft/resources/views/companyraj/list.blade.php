@@ -1,4 +1,7 @@
-<h1 class="page-header">Companyraj List
+@if (Auth::guest())
+
+@else
+<h1 class="page-header">@if(Auth::user()->type == 'manager') Company Information @else Company List @endif
     <div class="pull-right">
         <a href="javascript:ajaxLoad('companyraj/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
@@ -71,7 +74,9 @@
                class="glyphicon  {{ Session::get('companyraj_field')=='company_logo'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
+        @if (Auth::user()->type != 'counter')
         <th width="140px">Actions</th>
+        @endif
     </tr>
     </thead>
     <tbody>
@@ -84,7 +89,11 @@
             <td>{{$companyraj->company_email}}</td>            
             <td>{{$companyraj->company_address}}</td>
             <td>{{$companyraj->company_license}}</td>
-            <td>{{$companyraj->company_logo}}</td>            
+            <td>
+            <img src="{{asset('uploads/').'/'.$companyraj->company_logo}}">
+            <!-- {{$companyraj->company_logo}} -->
+            </td>
+            @if (Auth::user()->type != 'counter')
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('companyraj/update/{{$companyraj->id}}')">
@@ -94,6 +103,7 @@
                     <i class="glyphicon glyphicon-trash"></i> Delete
                 </a>
             </td>
+            @endif            
         </tr>
     @endforeach
     </tbody>
@@ -110,3 +120,4 @@
         ajaxLoad($(this).attr('href'));
     });
 </script>
+@endif

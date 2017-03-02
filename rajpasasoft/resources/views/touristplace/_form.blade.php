@@ -14,10 +14,10 @@
             <span id="district_id-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-description-error">
+    <div class="form-group required col-md-12" id="form-description-error">
         {!! Form::label("description","Description",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("description",null,["class"=>"form-control required","id"=>"focus"]) !!}
+        <div class="col-md-9">
+            {!! Form::textarea("description",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="description-error" class="help-block"></span>
         </div>
     </div>

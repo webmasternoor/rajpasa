@@ -145,3 +145,11 @@ div.dataTables_wrapper {
     height: 30px;
     width: 100%;
 }
+table.table.table-bordered.table-striped img{
+  width: 50px;
+  height: 50px;
+}
+table.table.table-bordered.table-striped th,
+table.table.table-bordered.table-striped th a{
+  font-size: 12px;
+}

@@ -1,3 +1,6 @@
+@if (Auth::guest())
+
+@else
 <h1 class="page-header">Counter List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('counter/create')" class="btn btn-primary pull-right"><i
@@ -92,3 +95,4 @@
         ajaxLoad($(this).attr('href'));
     });
 </script>
+@endif

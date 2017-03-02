@@ -32,7 +32,7 @@ class LaunController extends Controller
     public function postUpdate($id)
     {
         $laun = Laun::find($id);
-        $rules = ["unitprice" => "required|numeric"];
+        /*$rules = ["unitprice" => "required|numeric"];
         if ($laun->name != Input::get('name'))
             $rules += ['name' => 'required|unique:launs'];
         $validator = Validator::make(Input::all(), $rules);
@@ -41,7 +41,7 @@ class LaunController extends Controller
                 'fail' => true,
                 'errors' => $validator->getMessageBag()->toArray()
             );
-        }
+        }*/
         $laun->name = Input::get('name');
         $laun->LaunCode = Input::get('LaunCode');
         $laun->unitprice = Input::get('unitprice');
@@ -50,7 +50,14 @@ class LaunController extends Controller
         $laun->company_email = Input::get('company_email');
         $laun->company_address = Input::get('company_address');
         $laun->company_license = Input::get('company_license');
-        $laun->company_logo = Input::get('company_logo');
+        
+        $file = Input::file('company_logo');
+        $destinationPath = 'uploads/';
+        $filename = $file->getClientOriginalName();
+        Input::file('company_logo')->move($destinationPath, $filename);
+        $laun->company_logo =$filename;
+
+        //$laun->company_logo = Input::get('company_logo');
         
         $laun->save();
         return ['url' => 'laun/list'];
@@ -63,7 +70,7 @@ class LaunController extends Controller
 
     public function postCreate()
     {
-        $validator = Validator::make(Input::all(), [
+        /*$validator = Validator::make(Input::all(), [
             "name" => "required|unique:launs",
             "LaunCode" => "required|unique:launs",
             "unitprice" => "required|numeric"
@@ -73,7 +80,7 @@ class LaunController extends Controller
                 'fail' => true,
                 'errors' => $validator->getMessageBag()->toArray()
             );
-        }
+        }*/
         $laun = new Laun();
         $laun->name = Input::get('name');
         $laun->LaunCode = Input::get('LaunCode');
@@ -83,7 +90,14 @@ class LaunController extends Controller
         $laun->company_email = Input::get('company_email');
         $laun->company_address = Input::get('company_address');
         $laun->company_license = Input::get('company_license');
-        $laun->company_logo = Input::get('company_logo');
+        
+        $file = Input::file('company_logo');
+        $destinationPath = 'uploads/';
+        $filename = $file->getClientOriginalName();
+        Input::file('company_logo')->move($destinationPath, $filename);
+        $laun->company_logo =$filename;
+
+        //$laun->company_logo = Input::get('company_logo');
         $laun->save();
         return ['url' => 'laun/list'];
     }

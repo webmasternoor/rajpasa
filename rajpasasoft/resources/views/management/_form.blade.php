@@ -1,12 +1,13 @@
 <div class="col-md-12">
-    <div class="form-group required col-md-4" id="form-manager_id-error">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <div class="form-group required col-md-6" id="form-manager_id-error">
         {!! Form::label("manager_id","Manager Id",["class"=>"control-label col-md-12"]) !!}
         <div class="col-md-12">
             {!! Form::text("manager_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="manager_id-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-4" id="form-company_id-error">
+    <div class="form-group required col-md-6" id="form-company_id-error">
         {!! Form::label("company_id","Company Name",["class"=>"control-label col-md-12"]) !!}
         <div class="col-md-12">
             {!! Form::select("company_id", $company_info, null,["class"=>"form-control required","id"=>"focus"]) !!}
@@ -14,13 +15,21 @@
             <span id="company_id-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-4" id="form-user_id-error">
+    <div class="form-group required col-md-6" id="form-user_id-error">
         {!! Form::label("user_id","Manager Name",["class"=>"control-label col-md-12"]) !!}
         <div class="col-md-12">
             {!! Form::text("user_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="user_id-error" class="help-block"></span>
         </div>
     </div>    
+    <div class="form-group required col-md-6" id="form-emailaddress-error">
+        {!! Form::label("emailaddress","Email Address",["class"=>"control-label col-md-12"]) !!}
+        <div class="col-md-12">
+            <!-- {!! Form::text("password12",null,["class"=>"form-control required","id"=>"focus"]) !!} -->
+            {!! Form::email("emailaddress",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="emailaddress-error" class="help-block"></span>
+        </div>
+    </div>
     <div class="form-group required col-md-6" id="form-password-error">
         {!! Form::label("password","Password",["class"=>"control-label col-md-12"]) !!}
         <div class="col-md-12">
@@ -36,6 +45,16 @@
             <span id="password122-error" class="help-block"></span>
         </div>
     </div>
+    <!-- <div class="form-group required col-md-6" id="form-password122-error">
+        <label class="col-md-6 control-label">Type</label>
+        <div class="col-md-6">
+            <select class="form-control" name="type" id="type">
+                <option value="admin">Admin</option>
+                <option value="manager">Manager</option>
+                <option value="counter">Counter</option>
+            </select>                           
+        </div>
+    </div> -->
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">

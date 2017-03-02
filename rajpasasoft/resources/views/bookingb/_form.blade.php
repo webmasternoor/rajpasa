@@ -1,3 +1,7 @@
+@if (Auth::guest())
+
+@else
+
 <div class="col-md-12">
     <div class="form-group required col-md-6" id="form-name-error">
         {!! Form::label("name","name",["class"=>"control-label col-md-3"]) !!}
@@ -115,3 +119,4 @@
         return false;
     });
 </script>
+@endif

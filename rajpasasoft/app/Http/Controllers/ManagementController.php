@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Management;
 use App\Companyraj;
 use DB;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -21,9 +22,23 @@ class ManagementController extends Controller
         Session::put('management_search', Input::has('ok') ? Input::get('search') : (Session::has('management_search') ? Session::get('management_search') : ''));
         Session::put('management_field', Input::has('field') ? Input::get('field') : (Session::has('management_field') ? Session::get('management_field') : 'manager_id'));
         Session::put('management_sort', Input::has('sort') ? Input::get('sort') : (Session::has('management_sort') ? Session::get('management_sort') : 'asc'));
-        $managements = Management::where('manager_id', 'like', '%' . Session::get('management_search') . '%')
-            ->orderBy(Session::get('management_field'), Session::get('management_sort'))->paginate(8);
-        return view('management.list', ['managements' => $managements]);
+        /*$managements = Management::where('manager_id', 'like', '%' . Session::get('management_search') . '%')
+            ->where('company_id', Auth::user()->company_id)
+            ->orderBy(Session::get('management_field'), Session::get('management_sort'))->paginate(8);*/
+
+        if(Auth::user()->company_id == 'admin'){
+            //$managements = User::paginate(8);
+            $managements = User::where('company_id','!=', '0')->paginate(8);
+        }else{
+            //$val = 
+            /*$managements = Companyraj::select('*')
+            ->where('users.company_id', Auth::user()->company_id)
+            -> join('users', 'companyrajs.company_id', '=','users.company_id')->paginate(8);*/
+            
+            $managements = User::where('manager_id', Auth::user()->manager_id)
+            ->paginate(8);
+        }
+        return view('management.list', ['managements' => $managements]/*, ['CompanyName' => $CompanyName]*/);
     }
 
     public function getUpdate($id)
@@ -91,7 +106,19 @@ class ManagementController extends Controller
         //$management->password12 = Input::get('password12');
         if(Input::get('password12') == Input::get('password122')){
             $management->password12 = md5(Input::get('password12'));
-            $management->save();    
+            $management->save();
+
+            $management12 = new User();
+            $management12->name = Input::get('user_id');
+            $management12->company_id = Input::get('company_id');
+            $management12->manager_id = Input::get('manager_id');
+            $management12->counter_id = '0';
+            $management12->email = Input::get('emailaddress');
+            $management12->password = bcrypt(Input::get('password12'));
+            $management12->type = 'manager';
+            //$management12->remember_token = Input::get('remember_token');
+            //$management12->rememberToken();
+            $management12->save();
         }
         else{
             echo "error";

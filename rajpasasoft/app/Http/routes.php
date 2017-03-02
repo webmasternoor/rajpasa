@@ -22,6 +22,8 @@ Route::get('services/two-datatables/posts', 'ServiceController@getPostsDataTable
 Route::controllers([
     'auth'       => 'Auth\AuthController',
     'password'   => 'Auth\PasswordController',
+    //'authrajpasa'       => 'Authrajpasa\AuthrajpasaController',
+    //'passwordrajpasa'   => 'Authrajpasa\PasswordrajpasaController',
     'fluent'     => 'FluentController',
     'eloquent'   => 'EloquentController',
     'collection' => 'CollectionController',
@@ -50,6 +52,8 @@ Route::controllers([
 ]);
 
 Route::resource('users', 'UsersController');
+Route::get('getManager','SelectBoxController@getManager');
+
 
 Route::get('{view}', function ($view) {
     if (view()->exists($view)) {

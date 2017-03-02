@@ -19,8 +19,19 @@ class CompanyrajController extends Controller
         Session::put('companyraj_search', Input::has('ok') ? Input::get('search') : (Session::has('companyraj_search') ? Session::get('companyraj_search') : ''));
         Session::put('companyraj_field', Input::has('field') ? Input::get('field') : (Session::has('companyraj_field') ? Session::get('companyraj_field') : 'company_name'));
         Session::put('companyraj_sort', Input::has('sort') ? Input::get('sort') : (Session::has('companyraj_sort') ? Session::get('companyraj_sort') : 'asc'));
-        $companyrajs = Companyraj::where('company_name', 'like', '%' . Session::get('companyraj_search') . '%')
+        //$tempval = {{Auth::user()->company_id}};
+        //$value = Auth::user()->company_id;
+        if(Auth::user()->company_id == 'admin'){
+            //$val = 
+            $companyrajs = Companyraj::where('company_name', 'like', '%' . Session::get('companyraj_search') . '%')
+            //->where('company_id', Auth::user()->company_id)
             ->orderBy(Session::get('companyraj_field'), Session::get('companyraj_sort'))->paginate(8);
+        }else{
+            //$val = 
+            $companyrajs = Companyraj::where('company_name', 'like', '%' . Session::get('companyraj_search') . '%')
+            ->where('company_id', Auth::user()->company_id)
+            ->orderBy(Session::get('companyraj_field'), Session::get('companyraj_sort'))->paginate(8);
+        }
         return view('companyraj.list', ['companyrajs' => $companyrajs]);
     }
 
@@ -77,7 +88,15 @@ class CompanyrajController extends Controller
         $companyraj->company_email = Input::get('company_email');
         $companyraj->company_address = Input::get('company_address');
         $companyraj->company_license = Input::get('company_license');
-        $companyraj->company_logo = Input::get('company_logo');
+
+        $file = Input::file('company_logo');
+        $destinationPath = 'uploads/';
+        $filename = $file->getClientOriginalName();
+        Input::file('company_logo')->move($destinationPath, $filename);
+        $companyraj->company_logo =$filename;
+
+
+        //$companyraj->company_logo = Input::get('company_logo');
         $companyraj->save();
         return ['url' => 'companyraj/list'];
     }
