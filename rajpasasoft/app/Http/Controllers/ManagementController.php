@@ -103,6 +103,13 @@ class ManagementController extends Controller
         $management->manager_id = Input::get('manager_id');
         $management->company_id = Input::get('company_id');
         $management->user_id = Input::get('user_id');        
+        
+        $file = Input::file('manager_photo');
+        $destinationPath = 'uploads/';
+        $filename = $file->getClientOriginalName();
+        Input::file('manager_photo')->move($destinationPath, $filename);
+        $management->manager_photo =$filename;
+
         //$management->password12 = Input::get('password12');
         if(Input::get('password12') == Input::get('password122')){
             $management->password12 = md5(Input::get('password12'));
@@ -116,6 +123,7 @@ class ManagementController extends Controller
             $management12->email = Input::get('emailaddress');
             $management12->password = bcrypt(Input::get('password12'));
             $management12->type = 'manager';
+            $management12->manager_photo = $filename;
             //$management12->remember_token = Input::get('remember_token');
             //$management12->rememberToken();
             $management12->save();

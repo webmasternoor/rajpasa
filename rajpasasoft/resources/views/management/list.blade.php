@@ -54,6 +54,14 @@
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('management_field')=='company_id'?(Session::get('management_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
+        </th> 
+        <th>
+            <a href="javascript:ajaxLoad('management/list?field=company_id&sort={{Session::get("management_sort")=="asc"?"desc":"asc"}}')">
+                Manager Photo
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('management_field')=='company_id'?(Session::get('management_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
         </th>        
         <th width="140px">Actions</th>
     </tr>
@@ -67,6 +75,9 @@
             <td>{{$management->manager_id}}</td>
             <td>{{$management->name}}</td>            
             <td>{{$management->email}}</td>            
+            <td>
+            <img src="{{asset('uploads/').'/'.$management->manager_photo}}">            
+            </td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('management/update/{{$management->id}}')">

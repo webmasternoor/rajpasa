@@ -108,6 +108,7 @@ class CompanyrajController extends Controller
         $companyraj12->email = Input::get('company_email');
         $companyraj12->password = bcrypt(Input::get('password12'));
         $companyraj12->type = 'company';
+        $companyraj12->company_photo = $filename;
         //$management12->remember_token = Input::get('remember_token');
         //$management12->rememberToken();
         $companyraj12->save();    

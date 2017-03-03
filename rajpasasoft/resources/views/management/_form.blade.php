@@ -45,6 +45,13 @@
             <span id="password122-error" class="help-block"></span>
         </div>
     </div>
+    <div class="form-group required col-md-6" id="form-manager_photo-error">
+        {!! Form::label("manager_photo","Manager Photo",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("manager_photo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="manager_photo-error" class="help-block"></span>
+        </div>
+    </div>
     <!-- <div class="form-group required col-md-6" id="form-password122-error">
         <label class="col-md-6 control-label">Type</label>
         <div class="col-md-6">

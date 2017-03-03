@@ -61,6 +61,13 @@
             <span id="password123-error" class="help-block"></span>
         </div>
     </div>
+    <div class="form-group required col-md-6" id="form-company_logo-error">
+        {!! Form::label("company_logo","Company Logo",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("company_logo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="company_logo-error" class="help-block"></span>
+        </div>
+    </div>
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">

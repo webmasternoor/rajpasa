@@ -48,7 +48,7 @@
 								<input type="password" class="form-control" name="password_confirmation">
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label class="col-md-4 control-label">Type</label>
 							<div class="col-md-6">
 								<select class="form-control" name="type" id="type">
@@ -57,7 +57,7 @@
 									<option value="counter">Counter</option>
 								</select>							
 							</div>
-						</div>
+						</div> -->
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
