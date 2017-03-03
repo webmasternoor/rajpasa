@@ -20,6 +20,20 @@
             <span id="company_email-error" class="help-block"></span>
         </div>
     </div>
+    <div class="form-group col-md-4" id="form-password12-error">
+        {!! Form::label("password","Password",["class"=>"control-label col-md-12"]) !!}
+        <div class="col-md-12">
+            {!! Form::password("password12",null,["class"=>"form-control","id"=>"focus"]) !!}
+            <span id="password12-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group col-md-4" id="form-password123-error">
+        {!! Form::label("password","Confirm Password",["class"=>"control-label col-md-12"]) !!}
+        <div class="col-md-12">
+            {!! Form::password("password122",null,["class"=>"form-control","id"=>"focus"]) !!}
+            <span id="password123-error" class="help-block"></span>
+        </div>
+    </div>
     <div class="form-group required col-md-6" id="form-company_address-error">
         {!! Form::label("company_address","Company Address",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">

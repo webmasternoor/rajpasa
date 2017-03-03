@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Companyraj;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -98,6 +99,19 @@ class CompanyrajController extends Controller
 
         //$companyraj->company_logo = Input::get('company_logo');
         $companyraj->save();
+
+        $companyraj12 = new User();
+        $companyraj12->name = Input::get('user_id');
+        $companyraj12->company_id = Input::get('company_id');
+        $companyraj12->manager_id = '0';
+        $companyraj12->counter_id = '0';
+        $companyraj12->email = Input::get('company_email');
+        $companyraj12->password = bcrypt(Input::get('password12'));
+        $companyraj12->type = 'company';
+        //$management12->remember_token = Input::get('remember_token');
+        //$management12->rememberToken();
+        $companyraj12->save();    
+
         return ['url' => 'companyraj/list'];
     }
 
