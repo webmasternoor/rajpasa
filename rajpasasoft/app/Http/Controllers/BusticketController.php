@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
+
+
 class BusticketController extends Controller
 {
     public function getIndex()
@@ -38,15 +44,38 @@ class BusticketController extends Controller
 
     }
 
+    // public function post(Request $request)
+    // {
+    //     $app_id = $request->input('departure');
+    //     $app_key = $request->input('arrival');
+
+    //   echo $app_id. " ". $app_key;
+    //   exit();
+    //     // $mines = DB::select('select * from mines where minid = ?', [1]);
+    //     // return response()->json(
+    //     //         $mines->mineid,
+    //     //         $mines->nickname
+    //     //     );
+
+    //     $mines = DB::select('select * from mines where mineid = ?', [1]);
+    //     foreach ($mines as $mine) {
+    //       echo $mine->minename;
+    //       echo $mine->nickname;
+    //     }    
+    // }
+
 
     public function postList(){
-        $busticket = new Busticket();
-        $busticket->departure_place = Input::get('departure_place');
-        $busticket->arrival_place = Input::get('arrival_place');
-        $busticket->save();
+         
 
-        $bustickets = Busticket::where('departure_place', '=', ' $departure', 'and', 'arrival_place', '=', '$arrival')
-            ->orderBy(Session::get('busticket_field'), Session::get('busticket_sort'))->paginate(10);
+        
+        echo $departure = Input::get('departure');
+        echo $arrival = Input::get('arrival');
+
+        $
+        $bustickets = Busticket::where('departure_place','=', 1)
+                                ->where('arrival_place','=', 1)
+                                ->orderBy(Session::get('busticket_field'), Session::get('busticket_sort'))->paginate(1);
 
             return view('busticket.list', ['bustickets' => $bustickets]);
     }

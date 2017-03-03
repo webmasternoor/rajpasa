@@ -1,41 +1,42 @@
-<h1 class="page-header">Bus Search
-   <!--  <div class="pull-right">
-        <a href="javascript:ajaxLoad('busticket/create')" class="btn btn-primary pull-right"><i
-                    class="glyphicon glyphicon-plus-sign"></i> New</a>
-    </div> -->
-</h1>
-   {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!} 
-  <div class="col-md-12">    
+{!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!}
+<div class="col-sm-7 form-group">  	 
     <div class="form-group required col-md-6" id="form-departure-error">
-        {!! Form::label("departure","departure place",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("departure","Departure Place",["class"=>"control-label col-md-6"]) !!}
         <div class="col-md-6">
             {!! Form::text("departure",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="departure-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-arrival-error">
-        {!! Form::label("arrival","arrival place",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("arrival","Arrival Place",["class"=>"control-label col-md-6"]) !!}
         <div class="col-md-6">
             {!! Form::text("arrival",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="arrival-error" class="help-block"></span>
         </div>
     </div>
-    
-</div>
-<div class="form-group">
-    <div class="col-md-6 col-md-push-3">
-         <!-- <a href="javascript:ajaxLoad('busticket/list')" class="btn btn-danger"><i
-                    class="glyphicon glyphicon-backward"></i>
-            Back</a> -->
-        {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit","class"=>"btn
+    <div>
+    	{!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit","class"=>"btn
     btn-primary"])!!}
     </div>
-</div>
-{!! Form::close() !!} 
-<!-- <script>
-  
-</script> -->
+        <!--  <input class="form-control" id="search" value="{{ Session::get('busticket_search') }}"
+               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busticket/list')}}?ok=1&search='+this.value)"
+               placeholder="Search..."
+               type="text">
+               -->
+       <!--  <input class="form-control" id="search1" value="{{ Session::get('busticket_search') }}"
+               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busticket/list')}}?ok=1&search='+this.value)"
+               placeholder="Search..."
+               type="text">     
+               
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default"
+                    onclick="ajaxLoad('{{url('busticket/list')}}?ok=1&search='+$('#search').val())"><i
+                        class="glyphicon glyphicon-search"></i>
+            </button>        
+        </div>  -->
 
+</div>
+{!! Form::close() !!}
 
 <table class="table table-bordered table-striped">
     <thead>
@@ -150,7 +151,8 @@
 </div>
 
 <script type="text/javascript">
-      $("#frm").submit(function (event) {
+   
+	$("#frm").submit(function (event) {
         event.preventDefault();
         $('.loading').show();
         var form = $(this);
@@ -165,9 +167,10 @@
             contentType: false,
             processData: false,
             success: function (data) {
+                console.log(data)
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('company_name');
+                        index = $(this).attr('departure_place');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);
@@ -191,7 +194,7 @@
         });
         return false;
     });
-      
+
 	 $('.pagination a').on('click', function (event) {
         event.preventDefault();
         ajaxLoad($(this).attr('href'));
