@@ -4,17 +4,7 @@
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
     </div> -->
 </h1>
-<div class="col-md-12">
-    <form action="busticket/list" method="POST">
-    <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
-        <div class="col-md-6"><label>Departure Place</label></div>
-        <div class="col-md-6"><input type="text" name="departure"></div>
-        <div class="col-md-6"><label>Arrival Place</label></div>
-        <div class="col-md-6"><input type="text" name="arrival"></div>
-        <div class="col-md-6"><input type="submit" value="submit"></div>
-    </form>
-</div>
-   <!-- {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!} 
+   {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!} 
   <div class="col-md-12">    
     <div class="form-group required col-md-6" id="form-departure-error">
         {!! Form::label("departure","departure place",["class"=>"control-label col-md-3"]) !!}
@@ -36,12 +26,12 @@
     <div class="col-md-6 col-md-push-3">
          <!-- <a href="javascript:ajaxLoad('busticket/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
-            Back</a> 
+            Back</a> -->
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit","class"=>"btn
     btn-primary"])!!}
     </div>
 </div>
-{!! Form::close() !!}  -->
+{!! Form::close() !!} 
 <!-- <script>
   
 </script> -->
@@ -160,47 +150,47 @@
 </div>
 
 <script type="text/javascript">
-    //   $("#frm").submit(function (event) {
-    //     event.preventDefault();
-    //     $('.loading').show();
-    //     var form = $(this);
-    //     var data = new FormData($(this)[0]);
-    //     var url = form.attr("action");
-    //     $.ajax({
-    //         type: "POST",
-    //         url: url,
-    //         data: data,
-    //         async: false,
-    //         cache: false,
-    //         contentType: false,
-    //         processData: false,
-    //         success: function (data) {
-    //             if (data.fail) {
-    //                 $('#frm input.required, #frm textarea.required').each(function () {
-    //                     index = $(this).attr('company_name');
-    //                     if (index in data.errors) {
-    //                         $("#form-" + index + "-error").addClass("has-error");
-    //                         $("#" + index + "-error").html(data.errors[index]);
-    //                     }
-    //                     else {
-    //                         $("#form-" + index + "-error").removeClass("has-error");
-    //                         $("#" + index + "-error").empty();
-    //                     }
-    //                 });
-    //                 $('#focus').focus().select();
-    //             } else {
-    //                 $(".has-error").removeClass("has-error");
-    //                 $(".help-block").empty();
-    //                 $('.loading').hide();
-    //                 ajaxLoad(data.url, data.content);
-    //             }
-    //         },
-    //         error: function (xhr, textStatus, errorThrown) {
-    //             alert(errorThrown);
-    //         }
-    //     });
-    //     return false;
-    // });
+      $("#frm").submit(function (event) {
+        event.preventDefault();
+        $('.loading').show();
+        var form = $(this);
+        var data = new FormData($(this)[0]);
+        var url = form.attr("action");
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data.fail) {
+                    $('#frm input.required, #frm textarea.required').each(function () {
+                        index = $(this).attr('company_name');
+                        if (index in data.errors) {
+                            $("#form-" + index + "-error").addClass("has-error");
+                            $("#" + index + "-error").html(data.errors[index]);
+                        }
+                        else {
+                            $("#form-" + index + "-error").removeClass("has-error");
+                            $("#" + index + "-error").empty();
+                        }
+                    });
+                    $('#focus').focus().select();
+                } else {
+                    $(".has-error").removeClass("has-error");
+                    $(".help-block").empty();
+                    $('.loading').hide();
+                    ajaxLoad(data.url, data.content);
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+        return false;
+    });
       
 	 $('.pagination a').on('click', function (event) {
         event.preventDefault();

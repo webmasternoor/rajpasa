@@ -65,19 +65,27 @@ class BusticketController extends Controller
     // }
 
 
-    public function postList(){
+    public function postList(Request $request){
          
+        $departure = $request->get('departure');
+        $arrival = $request->get('arrival');
 
         
-        echo $departure = Input::get('departure');
-        echo $arrival = Input::get('arrival');
+        
+        // echo $departure = Input::get('departure');
+        // echo $arrival = Input::get('arrival');
 
-        $
-        $bustickets = Busticket::where('departure_place','=', 1)
-                                ->where('arrival_place','=', 1)
+        
+        $bustickets = Busticket::where('departure_place','=', $departure)
+                                ->where('arrival_place','=', $arrival)
                                 ->orderBy(Session::get('busticket_field'), Session::get('busticket_sort'))->paginate(1);
-
-            return view('busticket.list', ['bustickets' => $bustickets]);
+                    // return response($bustickets);
+            // return view('busticket.list', ['bustickets' => $bustickets]);
+            if(Auth::guest()){
+                return response($bustickets);
+            }
+            else
+                return view('busticket.list', ['bustickets' => $bustickets]);
     }
 
     // public function getUpdate($id)
