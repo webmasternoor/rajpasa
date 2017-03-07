@@ -28,14 +28,14 @@ class ManagementController extends Controller
 
         if(Auth::user()->company_id == 'admin'){
             //$managements = User::paginate(8);
-            $managements = User::where('company_id','!=', '0')->paginate(8);
+            $managements = Management::where('company_id','!=', '0')->paginate(8);
         }else{
             //$val = 
             /*$managements = Companyraj::select('*')
             ->where('users.company_id', Auth::user()->company_id)
             -> join('users', 'companyrajs.company_id', '=','users.company_id')->paginate(8);*/
             
-            $managements = User::where('manager_id', Auth::user()->manager_id)
+            $managements = Management::where('manager_id', Auth::user()->manager_id)
             ->paginate(8);
         }
         return view('management.list', ['managements' => $managements]/*, ['CompanyName' => $CompanyName]*/);
@@ -50,30 +50,23 @@ class ManagementController extends Controller
     public function postUpdate($id)
     {
         $management = Management::find($id);
-        /*$rules = ["unitprice" => "required|numeric"];
-        if ($management->name != Input::get('name'))
-            $rules += ['name' => 'required|unique:managements'];
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }*/
-        /*$management->name = Input::get('name');
-        $management->ManagementCode = Input::get('ManagementCode');
-        $management->unitprice = Input::get('unitprice');*/
-        $management->manager_id = Input::get('manager_id');
+        $management->manager_name = Input::get('manager_name');
         $management->company_id = Input::get('company_id');
-        $management->user_id = Input::get('user_id');        
-        //$management->password12 = Input::get('password12');
-        if(Input::get('password12') == Input::get('password122')){
-            $management->password12 = md5(Input::get('password12'));
-            $management->save();    
-        }
+        $management->manager_id = Input::get('manager_id');   
+        $management->emailaddress = Input::get('emailaddress');  
+        $management->password = Input::get('password');  
+        if(Input::get('password') == Input::get('confirm_password')){
+            $management->password = md5(Input::get('password'));
+         }
         else{
             echo "error";
         }
+        $file = Input::file('manager_photo');
+        $destinationPath = 'uploads/';
+        $filename = $file->getClientOriginalName();
+        Input::file('manager_photo')->move($destinationPath, $filename);
+        $management->manager_photo =$filename;
+        $management->save();
         return ['url' => 'management/list'];
     }
 
@@ -97,9 +90,9 @@ class ManagementController extends Controller
             );
         }*/
         $management = new Management();
-        $management->manager_id = Input::get('manager_id');
+        $management->manager_name = Input::get('manager_name');
         $management->company_id = Input::get('company_id');
-        $management->user_id = Input::get('user_id');     
+        $management->manager_id = Input::get('manager_id');   
         $management->emailaddress = Input::get('emailaddress');  
         $management->password = Input::get('password');  
         if(Input::get('password') == Input::get('confirm_password')){
