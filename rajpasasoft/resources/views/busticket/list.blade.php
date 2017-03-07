@@ -1,9 +1,4 @@
-<h1 class="page-header">Bus Search
-   <!--  <div class="pull-right">
-        <a href="javascript:ajaxLoad('busticket/create')" class="btn btn-primary pull-right"><i
-                    class="glyphicon glyphicon-plus-sign"></i> New</a>
-    </div> -->
-</h1>
+<h1 class="page-header">Bus Search</h1>
 <div class="col-md-12">
     <form action="busticket/list" method="POST">
     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
@@ -14,38 +9,6 @@
         <div class="col-md-6"><input type="submit" value="submit"></div>
     </form>
 </div>
-   <!-- {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!} 
-  <div class="col-md-12">    
-    <div class="form-group required col-md-6" id="form-departure-error">
-        {!! Form::label("departure","departure place",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("departure",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="departure-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-arrival-error">
-        {!! Form::label("arrival","arrival place",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("arrival",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="arrival-error" class="help-block"></span>
-        </div>
-    </div>
-    
-</div>
-<div class="form-group">
-    <div class="col-md-6 col-md-push-3">
-         <!-- <a href="javascript:ajaxLoad('busticket/list')" class="btn btn-danger"><i
-                    class="glyphicon glyphicon-backward"></i>
-            Back</a> 
-        {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit","class"=>"btn
-    btn-primary"])!!}
-    </div>
-</div>
-{!! Form::close() !!}  -->
-<!-- <script>
-  
-</script> -->
-
 
 <table class="table table-bordered table-striped">
     <thead>
@@ -115,14 +78,6 @@
                class="glyphicon  {{ Session::get('busticket_field')=='seat_fare'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
-       <!--  <th>
-            <a href="javascript:ajaxLoad('busticket/list?field=saving_amount&sort={{Session::get("busticket_sort")=="asc"?"desc":"asc"}}')">
-                Entry Saving Amount
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('busticket_field')=='saving_amount'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th> -->
         <th width="140px">Actions</th>
     </tr>
     </thead>
@@ -160,47 +115,6 @@
 </div>
 
 <script type="text/javascript">
-    //   $("#frm").submit(function (event) {
-    //     event.preventDefault();
-    //     $('.loading').show();
-    //     var form = $(this);
-    //     var data = new FormData($(this)[0]);
-    //     var url = form.attr("action");
-    //     $.ajax({
-    //         type: "POST",
-    //         url: url,
-    //         data: data,
-    //         async: false,
-    //         cache: false,
-    //         contentType: false,
-    //         processData: false,
-    //         success: function (data) {
-    //             if (data.fail) {
-    //                 $('#frm input.required, #frm textarea.required').each(function () {
-    //                     index = $(this).attr('company_name');
-    //                     if (index in data.errors) {
-    //                         $("#form-" + index + "-error").addClass("has-error");
-    //                         $("#" + index + "-error").html(data.errors[index]);
-    //                     }
-    //                     else {
-    //                         $("#form-" + index + "-error").removeClass("has-error");
-    //                         $("#" + index + "-error").empty();
-    //                     }
-    //                 });
-    //                 $('#focus').focus().select();
-    //             } else {
-    //                 $(".has-error").removeClass("has-error");
-    //                 $(".help-block").empty();
-    //                 $('.loading').hide();
-    //                 ajaxLoad(data.url, data.content);
-    //             }
-    //         },
-    //         error: function (xhr, textStatus, errorThrown) {
-    //             alert(errorThrown);
-    //         }
-    //     });
-    //     return false;
-    // });
       
 	 $('.pagination a').on('click', function (event) {
         event.preventDefault();

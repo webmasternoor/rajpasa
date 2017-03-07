@@ -97,42 +97,39 @@ class ManagementController extends Controller
             );
         }*/
         $management = new Management();
-        /*$management->name = Input::get('name');
-        $management->ManagementCode = Input::get('ManagementCode');
-        $management->unitprice = Input::get('unitprice');*/
         $management->manager_id = Input::get('manager_id');
         $management->company_id = Input::get('company_id');
-        $management->user_id = Input::get('user_id');        
-        
+        $management->user_id = Input::get('user_id');     
+        $management->emailaddress = Input::get('emailaddress');  
+        $management->password = Input::get('password');  
+        if(Input::get('password') == Input::get('confirm_password')){
+            $management->password = md5(Input::get('password'));
+         }
+        else{
+            echo "error";
+        }
         $file = Input::file('manager_photo');
         $destinationPath = 'uploads/';
         $filename = $file->getClientOriginalName();
         Input::file('manager_photo')->move($destinationPath, $filename);
         $management->manager_photo =$filename;
-
-        //$management->password12 = Input::get('password12');
-        if(Input::get('password12') == Input::get('password122')){
-            $management->password12 = md5(Input::get('password12'));
-            $management->save();
-
-            $management12 = new User();
-            $management12->name = Input::get('user_id');
-            $management12->company_id = Input::get('company_id');
-            $management12->manager_id = Input::get('manager_id');
-            $management12->counter_id = '0';
-            $management12->email = Input::get('emailaddress');
-            $management12->password = bcrypt(Input::get('password12'));
-            $management12->type = 'manager';
-            $management12->manager_photo = $filename;
+        $management->save();
+        return ['url' => 'management/list'];
+            // $management12 = new User();
+            // $management12->name = Input::get('user_id');
+            // $management12->company_id = Input::get('company_id');
+            // $management12->manager_id = Input::get('manager_id');
+            // $management12->counter_id = '0';
+            // $management12->email = Input::get('emailaddress');
+            // $management12->password = bcrypt(Input::get('password12'));
+            // $management12->type = 'manager';
+            // $management12->manager_photo = $filename;
             //$management12->remember_token = Input::get('remember_token');
             //$management12->rememberToken();
-            $management12->save();
-        }
-        else{
-            echo "error";
-        }
+            // $management12->save();
+       
         //$management->save();
-        return ['url' => 'management/list'];
+        
     }
 
     public function getDelete($id)

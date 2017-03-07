@@ -34,15 +34,15 @@
         {!! Form::label("password","Password",["class"=>"control-label col-md-12"]) !!}
         <div class="col-md-12">
             <!-- {!! Form::text("password12",null,["class"=>"form-control required","id"=>"focus"]) !!} -->
-            {!! Form::password("password12",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::password("password",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="password-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-password122-error">
-        {!! Form::label("password122","Confirm Password",["class"=>"control-label col-md-12"]) !!}
+    <div class="form-group required col-md-6" id="form-confirm_password-error">
+        {!! Form::label("confirm_password","Confirm Password",["class"=>"control-label col-md-12"]) !!}
         <div class="col-md-12">
-            {!! Form::password("password122",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="password122-error" class="help-block"></span>
+            {!! Form::password("confirm_password",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="confirm_password-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-manager_photo-error">

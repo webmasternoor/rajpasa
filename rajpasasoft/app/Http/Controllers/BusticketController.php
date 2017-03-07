@@ -71,7 +71,7 @@ class BusticketController extends Controller
         $arrival = $request->get('arrival');
 
         
-        
+         
         // echo $departure = Input::get('departure');
         // echo $arrival = Input::get('arrival');
 
