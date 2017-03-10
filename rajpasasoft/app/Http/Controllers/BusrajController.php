@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
+
+use Illuminate\Http\Request;
+use App\Http\Requests;
+
 class BusrajController extends Controller
 {
     public function getIndex()
@@ -30,20 +34,20 @@ class BusrajController extends Controller
         return view('busraj.list', ['busrajs' => $busrajs]);
     }
     public function postList(Request $request){
-        
+         
         $departure = $request->get('departure');
         $arrival = $request->get('arrival');
-        $busrajs = Busticket::where('departure_place','=', $departure)
+
+        
+        $busrajs = Busraj::where('departure_place','=', $departure)
                                 ->where('arrival_place','=', $arrival)
                                 ->orderBy(Session::get('busticket_field'), Session::get('busticket_sort'))->paginate(1);
-                    // return response($bustickets);
-            // return view('busticket.list', ['bustickets' => $bustickets]);
+                    
             if(Auth::guest()){
-                return response($bustickets);
+                return response($busrajs);
             }
-            else{
+            else
                 return view('busraj.list', ['busrajs' => $busrajs]);
-            }
     }
 
     public function getListb()

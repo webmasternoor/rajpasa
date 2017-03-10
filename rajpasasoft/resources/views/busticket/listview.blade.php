@@ -97,8 +97,8 @@
             <td>{{$busticket->seat_fare}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
-                   href="javascript:ajaxLoad('busticket/update/{{$busticket->id}}')">
-                    <i class="glyphicon glyphicon-edit"></i> View Seats</a>
+                   href="javascript:ajaxLoad('busraj/viewseats/67')">
+                    View Seats</a>
                 <!-- <a class="btn btn-danger btn-xs" title="Delete"
                    href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('busticket/delete/{{$busticket->id}}')">
                     <i class="glyphicon glyphicon-trash"></i> Delete
