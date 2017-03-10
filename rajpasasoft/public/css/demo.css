@@ -153,23 +153,78 @@ table.table.table-bordered.table-striped th,
 table.table.table-bordered.table-striped th a{
   font-size: 12px;
 }
-div.seatarra p {
+div.seatarra input {
     margin: 4px;
     font-size: 16px;
     font-weight: bolder;
     cursor: pointer;
+    /* float: left;
+    clear: both; */
+    color: transparent !important;
 }
-  div.seatarra .blue {
+  div.seatarra input.blue {
     color: blue;
     background: url(../images/seatblank.png);
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
 }
-div.seatarra .highlight {
+div.seatarra input.highlight {
     background: yellow;
     background: url(../images/seatbooked.png);
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
+}
+li.seat-white {
+    background: url(../images/seatblank.png) no-repeat;
+    width: 30px;
+    height: 24px;
+    background-position: 10px 2px;
+}
+li.seat-gray{
+    background: url(../images/seatbookedalready.png) no-repeat;
+    width: 30px;
+    height: 24px;
+    background-position: 10px 2px;
+} 
+li.seat-green{
+  background: url(../images/seatbooked.png) no-repeat;
+    width: 30px;
+    height: 24px;
+    background-position: 10px 2px;
+}
+li.legend-label{
+  position: relative;
+    top: -7px;
+}
+.modal-header {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    min-height: 16.428571429px;
+    padding: 5px 0px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.modal-title {
+    margin: 0;
+    line-height: 1.428571429;
+        font-family: 'ralewayregular';
+    color: #ff7e00;
+}
+#tbl_price_details {
+    height: 200px;
+    overflow-y: hidden;
+    margin-bottom: 20px;
+}
+#tbl_price_details table th {
+    padding: 10px 5px;
+    background: #f7f7f7;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    border-collapse: collapse;
+    font: bold 12px/18px Arial, Sans-serif;
+    color: #000;
+}
+table{
+  width: 100%;
 }
