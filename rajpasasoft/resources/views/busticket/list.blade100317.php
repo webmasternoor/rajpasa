@@ -1,12 +1,12 @@
 <h1 class="page-header">Bus Search</h1>
 <div class="col-md-12">
-    <form action="busticket/list" method="POST">
+    <form action="{{url('busticket/list')}}" method="POST">
     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
         <div class="col-md-6"><label>Departure Place</label></div>
         <div class="col-md-6"><input type="text" name="departure"></div>
         <div class="col-md-6"><label>Arrival Place</label></div>
         <div class="col-md-6"><input type="text" name="arrival"></div>
-        <div class="col-md-6"><input type="submit" value="submit" onclick="ajaxLoad('{{url('bu/list')}})"></div>
+        <div class="col-md-6"><input type="submit" value="submit" onclick="ajaxLoad({{url('busticket/list')}})"></div>
     </form>
 </div>
 

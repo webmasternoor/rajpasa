@@ -1,3 +1,4 @@
+@extends("app")
 <h1 class="page-header">Bus Search</h1>
 <div class="col-md-12">
     <form action="busticket/list" method="POST">
@@ -6,7 +7,7 @@
         <div class="col-md-6"><input type="text" name="departure"></div>
         <div class="col-md-6"><label>Arrival Place</label></div>
         <div class="col-md-6"><input type="text" name="arrival"></div>
-        <div class="col-md-6"><input type="submit" value="submit" onclick="ajaxLoad('{{url('bu/list')}})"></div>
+        <div class="col-md-6"><input type="submit" value="submit" ></div>
     </form>
 </div>
 
