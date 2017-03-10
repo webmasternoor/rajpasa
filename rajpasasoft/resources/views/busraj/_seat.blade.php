@@ -10,15 +10,10 @@
         {   
             echo "<br/>Seat Fare: ".$er->seat_fare;
             echo "<br/>Bus type: ".$er->bus_type;
+            echo "<input type='hidden' class='seat_fare' id='seat_fare' value='$er->seat_fare' />";
+            echo "<input type='hidden' class='bus_type' id='bus_type' value='$er->bus_type' />";
         }
         ?>
-        <div class="form-group">
-            <div class="col-md-6 col-md-push-3">
-                <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
-                            class="glyphicon glyphicon-backward"></i>
-                    Back</a>
-            </div>
-        </div>
         <div class="col-md-12 seatarra">                        
             <table>
                 <tr>                                
@@ -110,6 +105,18 @@
                             <td>
                                 <div id="Result"></div>
                             </td>
+                            <td>
+                                <div id="seat_fare1"></div>
+                            </td>
+                            <td>
+                                 <div id="bus_type1"></div>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: center;">
+                                Total Fare: 
+                                <div id="total_fare"></div>   
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -117,6 +124,13 @@
         </div>
     </div>
 </div> 
+<div class="form-group">
+    <div class="col-md-6 col-md-push-3">
+        <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
+                    class="glyphicon glyphicon-backward"></i>
+            Back</a>
+    </div>
+</div>
 <script>
 $( "input" ).click(function() {
   $( this ).toggleClass( "highlight" );
@@ -126,10 +140,17 @@ $( "input" ).click(function() {
     var total_selected_seat = 0;
     var x = 0;
     var array = Array();
+    var seat_fare = document.getElementById("seat_fare").value;
+    var bus_type = document.getElementById("bus_type").value;
+    var counter = 0;
     function selected_seat(){
+     counter++;
+     document.getElementById("total_fare").innerHTML = seat_fare * counter ;
      array[x] = document.getElementById(selected_seat.caller.arguments[0].target.id).value;
      //alert("Element: " + array[x] + " Added at index " + x);
      x++;
+     document.getElementById("seat_fare1").innerHTML += seat_fare + "<br/>";
+     document.getElementById("bus_type1").innerHTML += bus_type + "<br/>";
 
      //var e = "<hr/>";   
      var e = "";   
