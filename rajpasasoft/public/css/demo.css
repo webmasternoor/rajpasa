@@ -153,3 +153,23 @@ table.table.table-bordered.table-striped th,
 table.table.table-bordered.table-striped th a{
   font-size: 12px;
 }
+div.seatarra p {
+    margin: 4px;
+    font-size: 16px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+  div.seatarra .blue {
+    color: blue;
+    background: url(../images/seatblank.png);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}
+div.seatarra .highlight {
+    background: yellow;
+    background: url(../images/seatbooked.png);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}

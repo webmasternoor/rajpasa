@@ -19,7 +19,7 @@ class HotelController extends Controller
         Session::put('hotel_search', Input::has('ok') ? Input::get('search') : (Session::has('hotel_search') ? Session::get('hotel_search') : ''));
         Session::put('hotel_field', Input::has('field') ? Input::get('field') : (Session::has('hotel_field') ? Session::get('hotel_field') : 'hotel_name'));
         Session::put('hotel_sort', Input::has('sort') ? Input::get('sort') : (Session::has('hotel_sort') ? Session::get('hotel_sort') : 'asc'));
-        $hotels = Hotel::where('hotel_name', 'like', '%' . Session::get('hotel_search') . '%')
+        $hotels = Hotel::where('id', 'like', '%' . Session::get('hotel_search') . '%')
             ->orderBy(Session::get('hotel_field'), Session::get('hotel_sort'))->paginate(8);
         return view('hotel.list', ['hotels' => $hotels]);
     }

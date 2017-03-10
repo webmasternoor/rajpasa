@@ -69,3 +69,10 @@ Route::get('/rajpasa/rajpasasoft/busticket/list/{data}', function($data){
 
     return view($view);
 });
+Route::get('/rajpasa/rajpasasoft/busraj/list/{data}', function($data){
+    $dataArray = array('departure' => data['0'],
+                        'arrival' => data['1']
+     );
+
+    return view($view);
+});

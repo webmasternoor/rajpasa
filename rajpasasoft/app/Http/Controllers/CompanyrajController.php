@@ -18,20 +18,20 @@ class CompanyrajController extends Controller
     public function getList()
     {
         Session::put('companyraj_search', Input::has('ok') ? Input::get('search') : (Session::has('companyraj_search') ? Session::get('companyraj_search') : ''));
-        Session::put('companyraj_field', Input::has('field') ? Input::get('field') : (Session::has('companyraj_field') ? Session::get('companyraj_field') : 'company_name'));
+        Session::put('companyraj_field', Input::has('field') ? Input::get('field') : (Session::has('companyraj_field') ? Session::get('companyraj_field') : 'id'));
         Session::put('companyraj_sort', Input::has('sort') ? Input::get('sort') : (Session::has('companyraj_sort') ? Session::get('companyraj_sort') : 'asc'));
         //$tempval = {{Auth::user()->company_id}};
         //$value = Auth::user()->company_id;
         if(Auth::user()->company_id == 'admin'){
             //$val = 
-            $companyrajs = Companyraj::where('company_name', 'like', '%' . Session::get('companyraj_search') . '%')
+            $companyrajs = User::where('id', 'like', '%' . Session::get('companyraj_search') . '%')
             //->where('company_id', Auth::user()->company_id)
             ->orderBy(Session::get('companyraj_field'), Session::get('companyraj_sort'))->paginate(8);
         }else{
             //$val = 
-            $companyrajs = Companyraj::where('company_name', 'like', '%' . Session::get('companyraj_search') . '%')
+            $companyrajs = User::where('id', 'like', '%' . Session::get('companyraj_search') . '%')
             ->where('company_id', Auth::user()->company_id)
-            ->orderBy(Session::get('companyraj_field'), Session::get('companyraj_sort'))->paginate(8);
+            ->orderBy(Session::get('companyraj_field'), Sxession::get('companyraj_sort'))->paginate(8);
         }
         return view('companyraj.list', ['companyrajs' => $companyrajs]);
     }

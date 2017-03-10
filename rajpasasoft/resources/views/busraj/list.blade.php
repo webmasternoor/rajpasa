@@ -1,13 +1,39 @@
 @if (Auth::guest())
 
 @else
+<h1 class="page-header">Bus Search</h1>
+<div class="col-md-12">
+    <form action="busraj/list" method="POST">
+    <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
+        <div class="col-md-6"><label>Departure Place</label></div>
+        <div class="col-md-6"><input type="text" name="departure"></div>
+        <div class="col-md-6"><label>Arrival Place</label></div>
+        <div class="col-md-6"><input type="text" name="arrival"></div>
+        <div class="col-md-6"><input type="submit" value="submit"></div>
+    </form>
+</div>
 
-<h1 class="page-header">Busraj List
+<h1 class="page-header"><!-- Busraj List -->
     <div class="pull-right">
         <a href="javascript:ajaxLoad('busraj/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
     </div>
 </h1>
+<div class="col-sm-7 form-group">
+    <div class="input-group">
+        <input class="form-control" id="search" value="{{ Session::get('busraj_search') }}"
+               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/list')}}?ok=1&search='+this.value)"
+               placeholder="Search..."
+               type="text">
+
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default"
+                    onclick="ajaxLoad('{{url('busraj/list')}}?ok=1&search='+$('#search').val())"><i
+                        class="glyphicon glyphicon-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
 <!-- <div class="col-md-12">
     <form action="ajaxLoad('{{url('busraj/listb')}})">
       <input type="text" name="s1">
@@ -15,10 +41,27 @@
       <input type="submit">
     </form>
 </div> -->
-<div class="col-sm-7 form-group">
+<!-- <div class="col-sm-7 form-group">
     <div class="input-group">
-        <!-- <input class="form-control" id="search2" value="{{ Session::get('busraj_search2') }}"
-                type="text"> -->
+        <input class="form-control" id="search2" value="{{ Session::get('busraj_search2') }}"
+                type="text">
+         <input class="form-control" id="search" value="{{ Session::get('busraj_search') }}"
+                onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/listb')}}?ok=1&search='+this.value)"
+                placeholder="Search..."
+                type="text"> 
+
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default"
+                    onclick="ajaxLoad('{{url('busraj/listb')}})"><i
+                        class="glyphicon glyphicon-search"></i>
+            </button>
+        </div>
+    </div>
+</div> -->
+<!-- <div class="col-sm-7 form-group">
+    <div class="input-group">
+        <input class="form-control" id="search2" value="{{ Session::get('busraj_search2') }}"
+                type="text">
          <input class="form-control" id="search3" value="{{ Session::get('busraj_search3') }}"
                 onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/listb')}}?ok=1&search3='+this.value)"
                 placeholder="Search..."
@@ -31,7 +74,7 @@
             </button>
         </div>
     </div>
-</div>
+</div> -->
 <!-- <div class="col-sm-7 form-group">
     <div class="input-group">
         <input class="form-control" id="search" value="{{ Session::get('busraj_search') }}"
@@ -150,6 +193,9 @@
             <td>{{$busraj->seat_fare}}</td>
             <td>{{$busraj->facility}}</td>
             <td style="text-align: center">
+                <a class="btn btn-primary btn-xs" title="Edit"
+                   href="javascript:ajaxLoad('busraj/viewseats/{{$busraj->bus_id}}')">
+                    View Seats</a>
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('busraj/update/{{$busraj->id}}')">
                     <i class="glyphicon glyphicon-edit"></i> Edit</a>

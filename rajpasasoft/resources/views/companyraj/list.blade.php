@@ -34,14 +34,14 @@
                class="glyphicon  {{ Session::get('companyraj_field')=='company_id'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
-        <th>
+        <!-- <th>
             <a href="javascript:ajaxLoad('companyraj/list?field=company_name&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
                 Company Name
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('companyraj_field')=='company_name'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
-        </th>
+        </th> -->
         <th>
             <a href="javascript:ajaxLoad('companyraj/list?field=company_email&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
                 Company Email
@@ -52,13 +52,13 @@
         </th>
         <th>
             <a href="javascript:ajaxLoad('companyraj/list?field=company_address&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
-                Company Address
+                Company Photo
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('companyraj_field')=='company_address'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
-        <th>
+        <!-- <th>
             <a href="javascript:ajaxLoad('companyraj/list?field=company_license&sort={{Session::get("companyraj_sort")=="asc"?"desc":"asc"}}')">
                 Company License
             </a>
@@ -73,7 +73,7 @@
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('companyraj_field')=='company_logo'?(Session::get('companyraj_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
-        </th>
+        </th> -->
         @if (Auth::user()->type != 'counter')
         <th width="140px">Actions</th>
         @endif
@@ -84,11 +84,11 @@
     @foreach($companyrajs as $key=>$companyraj)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$companyraj->company_id}}</td>
+            <!-- <td>{{$companyraj->company_id}}</td>
             <td>{{$companyraj->company_name}}</td>
-            <td>{{$companyraj->company_email}}</td>            
-            <td>{{$companyraj->company_address}}</td>
-            <td>{{$companyraj->company_license}}</td>
+            <td>{{$companyraj->email}}</td>            
+            <td>{{$companyraj->company_photo}}</td> -->
+            <!-- <td>{{$companyraj->company_license}}</td> -->
             <td>
             <img src="{{asset('uploads/').'/'.$companyraj->company_logo}}">
             <!-- {{$companyraj->company_logo}} -->
