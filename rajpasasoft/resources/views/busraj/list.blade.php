@@ -1,6 +1,7 @@
 @if (Auth::guest())
 
 @else
+@extends('app')
 <h1 class="page-header">Bus Search</h1>
 <div class="col-md-12">
     <form action="busraj/list" method="POST">
@@ -19,7 +20,7 @@
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
     </div>
 </h1>
-<div class="col-sm-7 form-group">
+<!-- <div class="col-sm-7 form-group">
     <div class="input-group">
         <input class="form-control" id="search" value="{{ Session::get('busraj_search') }}"
                onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/list')}}?ok=1&search='+this.value)"
@@ -33,7 +34,7 @@
             </button>
         </div>
     </div>
-</div>
+</div> -->
 <!-- <div class="col-md-12">
     <form action="ajaxLoad('{{url('busraj/listb')}})">
       <input type="text" name="s1">

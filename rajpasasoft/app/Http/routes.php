@@ -32,10 +32,10 @@ Route::controllers([
     'buttons'    => 'ButtonsController',
     'services'   => 'ServiceController',
     'relation'   => 'RelationController',
-    'product'   => 'ProductController',
-    'companyraj'   => 'CompanyrajController',
-    'management'   => 'ManagementController',
-    'counter'   => 'CounterController',
+    'product'    => 'ProductController',
+    'companyraj' => 'CompanyrajController',
+    'management' => 'ManagementController',
+    'counter'    => 'CounterController',
     'busraj'   => 'BusrajController',
     'seatavailable'   => 'SeatavailableController',
     'hotel'   => 'HotelController',
@@ -62,17 +62,22 @@ Route::get('{view}', function ($view) {
 
     return app()->abort(404, 'Page not found!');
 });
-Route::get('/rajpasa/rajpasasoft/busticket/list/{data}', function($data){
-    $dataArray = array('departure' => data['0'],
-                        'arrival' => data['1']
-     );
 
-    return view($view);
-});
-Route::get('/rajpasa/rajpasasoft/busraj/list/{data}', function($data){
-    $dataArray = array('departure' => data['0'],
-                        'arrival' => data['1']
-     );
+Route::get('busticket', 'BusticketController@apiResponse');
+Route::get('busraj', 'BusrajController@postList');
 
-    return view($view);
-});
+// Route::get('/rajpasa/rajpasasoft/busticket/list/{data}', function($data){
+//     $dataArray = array('departure' => data['0'],
+//                         'arrival' => data['1']
+//      );
+
+//     return response($view);
+// });
+
+// Route::get('busraj/{data}', function($data){
+//     $dataArray = array('departure' => data['0'],
+//                         'arrival' => data['1']
+//      );
+
+//     return view($view);
+// });

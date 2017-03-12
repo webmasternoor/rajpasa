@@ -42,6 +42,37 @@ class BusticketController extends Controller
 
     }
 
+    public function apiResponse(Request $request){
+        
+        // echo $particulars1 = implode(',', $request->get('data[]'));
+        // exit();
+        $app_id = $request->get('app_id');
+        $app_key = $request->get('app_key');
+        $departure = $request->get('data[0]');
+        $arrival = $request->get('data[1]');
+        
+        $bustickets = Busticket::where('departure_place', '=', $departure)
+                                ->where('arrival_place', '=', $arrival)
+                                ->get();
+
+        if($app_id == '1234' && $app_key == "our_app_key"){
+                 $items = array('code' => '2000',
+                        'message' => 'seccessful request',
+                        'data' => $bustickets,
+                         );
+                    return json_encode($items);
+        }
+        else {
+            $items = array('code' => '4000',
+                        'message' => 'failed request',
+                        'data' => 'Invalid user request',
+                         );
+                    return json_encode($items);
+        }
+      
+       
+
+    }
 
     public function postList(Request $request){
          
