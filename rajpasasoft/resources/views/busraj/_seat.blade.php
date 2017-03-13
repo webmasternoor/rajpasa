@@ -15,10 +15,10 @@
         }
         ?>
         <div class="col-md-12 seatarra">                        
-            <table>
+            <table class="seatformat">
                 <tr>                                
                     <td>
-                        <div>
+                        <div class="seatdiv">
                         <p class="driverimg"><img src="./images/driver.png" alt=""></p>
         <?php
         /*$table_name = 'seatbuses';
@@ -114,22 +114,112 @@
                         </tr>
                         <tr>
                             <td colspan="3" style="text-align: center;">
-                                Total Fare: 
-                                <div id="total_fare"></div>   
+                                <div style="float: left;">Total Fare: </div>
+                                <div id="total_fare" class="t_total"></div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>                           
+            </div>                        
+        </div>
+        <div class="row">
+            <div class="form-group required col-md-12" id="form-departure_place-error">
+                {!! Form::label("departure_place","Choose Boarding Point",["class"=>"control-label col-md-8"]) !!}
+                <div class="col-md-12">
+                    {!! Form::select("departure_place",$district_info, null,["class"=>"departure_place form-control required","id"=>"departure_place"]) !!}
+                    <span id="departure_place-error" class="help-block"></span>
+                </div>
+            </div>
         </div>
     </div>
 </div> 
-<div class="form-group">
+<!-- <div class="form-group">
     <div class="col-md-6 col-md-push-3">
         <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
     </div>
+</div> -->
+<div>
+    {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!}
+    <div class="col-md-12">
+        <div class="form-group required col-md-4" id="form-name-error">
+            <input type="hidden" name="bus_id" value="<?php echo $temp;?>">
+            <input type="hidden" name="seat_fare" value="<?php echo $er->seat_fare;?>">
+            <input type="hidden" name="company_id" value="<?php echo $er->company_id;?>">
+            <input type="hidden" name="departure_place" value="<?php echo $er->departure_place;?>">
+            <input type="hidden" name="arrival_place" value="<?php echo $er->arrival_place;?>">
+            <input type="hidden" name="departure_time" value="<?php echo $er->departure_time;?>">
+            <input type="hidden" name="arrival_time" value="<?php echo $er->arrival_time;?>">
+
+            {!! Form::label("name","Name",["class"=>"control-label col-md-12"]) !!}
+            <div class="col-md-12">
+                {!! Form::text("name",null,["class"=>"form-control required","id"=>"name"]) !!}
+                <span id="name-error" class="help-block"></span>
+            </div>
+        </div>
+        <div class="form-group required col-md-4" id="form-mobile-error">
+            {!! Form::label("mobile","Mobile",["class"=>"control-label col-md-12"]) !!}
+            <div class="col-md-12">
+                {!! Form::text("mobile", null,["class"=>"mobile form-control required","id"=>"mobile"]) !!}
+                <span id="mobile-error" class="help-block"></span>
+            </div>
+        </div>
+        <div class="form-group required col-md-4" id="form-email-error">
+            {!! Form::label("email","Email",["class"=>"control-label col-md-12"]) !!}
+            <div class="col-md-12">
+                {!! Form::email("email", null,["class"=>"email form-control required","id"=>"email"]) !!}
+                <span id="email-error" class="help-block"></span>
+            </div>
+        </div>
+        <div class="form-group required col-md-12" id="form-departure_place-error">
+            {!! Form::label("departure_place","Choose Boarding Point",["class"=>"control-label col-md-8"]) !!}
+            <div class="col-md-12">
+                <div id="exTab2" class="">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#201" data-toggle="tab">bkash</a></li>
+                        <li><a href="#202" data-toggle="tab">Cash on Delivery</a></li>
+                        <li><a href="#203" data-toggle="tab">Credit or Debit Card</a></li>
+                        <li><a href="#204" data-toggle="tab">Internet Banking</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="201">
+                            <div class="borderportion">
+                            bKash Number: +8801679624759
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="202">
+                            <div class="borderportion">
+                            test12
+                            </div>
+                        </div>    
+                        <div class="tab-pane" id="203">
+                            <div class="borderportion">
+                            test13
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="204">
+                            <div class="borderportion">
+                            test14
+                            </div>
+                        </div>    
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-push-3">
+            <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
+                        class="glyphicon glyphicon-backward"></i>
+                Back</a>
+            {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Continue",["type" => "submit","class"=>"btn
+        btn-primary"])!!}
+        </div>
+    </div>
+    {!! Form::close() !!}
+    
 </div>
 <script>
 $( "input" ).click(function() {
@@ -181,3 +271,46 @@ $( "input" ).click(function() {
     
 </script>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $("#frm").submit(function (event) {
+        event.preventDefault();
+        $('.loading').show();
+        var form = $(this);
+        var data = new FormData($(this)[0]);
+        var url = form.attr("action");
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data.fail) {
+                    $('#frm input.required, #frm textarea.required').each(function () {
+                        index = $(this).attr('bus_id');
+                        if (index in data.errors) {
+                            $("#form-" + index + "-error").addClass("has-error");
+                            $("#" + index + "-error").html(data.errors[index]);
+                        }
+                        else {
+                            $("#form-" + index + "-error").removeClass("has-error");
+                            $("#" + index + "-error").empty();
+                        }
+                    });
+                    $('#focus').focus().select();
+                } else {
+                    $(".has-error").removeClass("has-error");
+                    $(".help-block").empty();
+                    $('.loading').hide();
+                    ajaxLoad(data.url, data.content);
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+        return false;
+    });
+</script>

@@ -1,6 +1,3 @@
-@if (Auth::guest())
-
-@else
 <h1 class="page-header">Bus Search</h1>
 <div class="col-md-12">
     <form action="busraj/list" method="POST">
@@ -220,4 +217,3 @@
         ajaxLoad($(this).attr('href'));
     });
 </script>
-@endif

@@ -2,12 +2,14 @@
 namespace App\Http\Controllers;
 
 use App\Busraj;
+use App\Order;
 use DB;
 use App\Seatbus;
 use App\Busticket;
 use App\District;
 use App\Companyraj;
 use App\Management;
+use App\Customer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -79,10 +81,71 @@ class BusrajController extends Controller
         $temp = $id;
         //$total_seat = Busraj::where('total_seat', $id);
         $seat_info = Seatbus::where('bus_id', $id);
+        $district_info = District::lists('name', 'id');
         //$tt = Seatbus::table('seatbuses')->get();        
         //$seat_info = Seatbus::where('id', $id);
         
-        return view('busraj.viewseats', ['busraj' => Busraj::find($id)])->with('seat_info', $seat_info)->with('temp', $temp)/*->with('total_seat', $total_seat)*/;
+        return view('busraj.viewseats', ['busraj' => Busraj::find($id)])->with('seat_info', $seat_info)->with('temp', $temp)->with('district_info', $district_info);
+    }
+
+    public function postViewseats($id)
+    {
+        echo $temp = $id;
+        //$total_seat = Busraj::where('total_seat', $id);        
+        
+        $district_info = District::lists('name', 'id');
+
+        $customer = new Customer();
+        $tt = $customer->bus_id = Input::get('bus_id');
+        $customer->name = Input::get('name');
+        $customer->customerid = rand(50000, 60000);
+        $customer->gender = Input::get('gender');
+        $customer->mobile = Input::get('mobile');        
+        $customer->email = Input::get('email');
+        $customer->paymentgat = Input::get('paymentgat');
+        $customer->rajpasafee = Input::get('rajpasafee');
+        $customer->processingfee = Input::get('processingfee');
+        $customer->discount = Input::get('discount');
+        $customer->quantity = Input::get('quantity');
+        $customer->totalamount = Input::get('totalamount');
+        $customer->date12 = Input::get('date12');
+        $customer->seatnumber = Input::get('seatnumber');
+        $customer->staffid = Input::get('staffid');
+
+        $customer->ticketprice = Input::get('seat_fare');
+        $customer->bus_id = Input::get('bus_id');
+        $customer->company_id = Input::get('company_id');
+        $customer->departure_place = Input::get('departure_place');
+        $customer->arrival_place = Input::get('arrival_place');
+        $customer->departure_time = Input::get('departure_time');
+        $customer->arrival_time = Input::get('arrival_time');
+        $seat_info = Busraj::where('bus_id', $tt);
+        /*
+        foreach ($seat_info as $value) {
+            $customer->ticketprice = $value->seat_fare;
+            $customer->bus_id = $value->bus_id;
+            $customer->company_id = $value->company_id;
+            $customer->departure_place = $value->departure_place;
+            $customer->arrival_place = $value->arrival_place;
+            $customer->departure_time = $value->departure_time;
+            $customer->arrival_time = $value->arrival_time;
+        }*/
+        $customer->save();
+
+        $order = new Order();
+        //$order->customerid = $customer->customerid;
+        $order->customerid = $customer->customerid;
+        $order->mobile = $customer->mobile;
+        $order->date12 = '0';
+        $order->staff_id = '0';
+        $order->save();
+
+        
+        //$tt = Seatbus::table('seatbuses')->get();        
+        //$seat_info = Seatbus::where('id', $id);
+        
+        return view('busraj.viewseats', ['busraj' => Busraj::find($id)])->with('seat_info', $seat_info)->with('temp', $temp)->with('district_info', $district_info);
+        
     }
 
     public function getUpdate($id)
