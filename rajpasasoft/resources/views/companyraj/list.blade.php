@@ -85,9 +85,9 @@
         <tr>
             <td align="center">{{$i++}}</td>
             <!-- <td>{{$companyraj->company_id}}</td>
-            <td>{{$companyraj->company_name}}</td>
+            <td>{{$companyraj->company_name}}</td>-->
             <td>{{$companyraj->email}}</td>            
-            <td>{{$companyraj->company_photo}}</td> -->
+            <td>{{$companyraj->company_photo}}</td> 
             <!-- <td>{{$companyraj->company_license}}</td> -->
             <td>
             <img src="{{asset('uploads/').'/'.$companyraj->company_logo}}">

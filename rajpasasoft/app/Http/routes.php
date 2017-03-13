@@ -62,9 +62,11 @@ Route::get('{view}', function ($view) {
 
     return app()->abort(404, 'Page not found!');
 });
-
+if (Auth::guest()){
 Route::get('busticket', 'BusticketController@apiResponse');
 Route::get('busraj', 'BusrajController@postList');
+}
+
 
 // Route::get('/rajpasa/rajpasasoft/busticket/list/{data}', function($data){
 //     $dataArray = array('departure' => data['0'],

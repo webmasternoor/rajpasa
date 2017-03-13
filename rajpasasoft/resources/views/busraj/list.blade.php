@@ -1,10 +1,10 @@
 @if (Auth::guest())
 
 @else
-@extends('app')
+<!-- @extends('app') -->
 <h1 class="page-header">Bus Search</h1>
 <div class="col-md-12">
-    <form action="busraj/list" method="POST">
+    <form href="javascript:ajaxLoad('busraj/list')" method="POST">
     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
         <div class="col-md-6"><label>Departure Place</label></div>
         <div class="col-md-6"><input type="text" name="departure"></div>

@@ -16,9 +16,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-
 class BusrajController extends Controller
 {
     public function getIndex()
