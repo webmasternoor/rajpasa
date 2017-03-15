@@ -12,6 +12,7 @@
             echo "<br/>Bus type: ".$er->bus_type;
             echo "<input type='hidden' class='seat_fare' id='seat_fare' value='$er->seat_fare' />";
             echo "<input type='hidden' class='bus_type' id='bus_type' value='$er->bus_type' />";
+            echo "<input type='hidden' class='total_seat' id='total_seat' value='$er->total_seat' />";
         }
         ?>
         <div class="col-md-12 seatarra">                        
@@ -21,16 +22,7 @@
                         <div class="seatdiv">
                         <p class="driverimg"><img src="./images/driver.png" alt=""></p>
         <?php
-        /*$table_name = 'seatbuses';
-        $columns = DB::select('show columns from ' . $table_name);
-        foreach ($columns as $value) {
-           echo $value->Field ;
-        }
-        */
-        //$users = Seatbus::table('seatbuses')->where('bus_id',$temp)->get();
-        //echo $us = Seatbus::seatbuse()->total_seat;
-
-        //Auth::user()->type == 'admin')
+        
         $total_seat = DB::table('busrajs')->where('bus_id',$temp)->get();
         foreach ($total_seat as $er)
         {   
@@ -39,12 +31,7 @@
         $users = DB::table('seatbuses')->where('bus_id',$temp)->get();
         foreach ($users as $user)
         {
-            //$table_name = 'seatbuses';
-            //$columns = DB::select('show columns from ' . $table_name);
             
-            //foreach ($columns as $value) {
-            //$tte = $value->Field ;
-            //echo $user->id;
             $counter = 0;
             for($i=1;$i<$er->total_seat;$i++){
                 //echo $user->$i;
@@ -58,7 +45,6 @@
                 
             }    
             ?>
-        <!-- <input type="button" id="button2" value="Display" onclick="display_array();"></input> -->
             <p id="show_seat"></p>
             <?php
         }
@@ -68,7 +54,9 @@
                 </tr>
             </table>                        
         </div>
+        <div class="col-md-6"><input type="button" value="ok" onclick="finalSelection()"></div>
     </div>
+    
     <div class="col-md-6">
         <div class="row">
             <div class="col-sm-4" style="padding-right:0;">
@@ -133,13 +121,7 @@
         </div>
     </div>
 </div> 
-<!-- <div class="form-group">
-    <div class="col-md-6 col-md-push-3">
-        <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
-                    class="glyphicon glyphicon-backward"></i>
-            Back</a>
-    </div>
-</div> -->
+
 <div>
     {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!}
     <div class="col-md-12">
@@ -227,45 +209,58 @@ $( "input" ).click(function() {
 });
 </script>
 <script type="text/javascript">
-    var total_selected_seat = 0;
-    var x = 0;
-    var array = Array();
+   var total_selected_seat = 0;
+    var counter = 0, seat_id = 0, i = 0, seats = 0;
+
+    var arr = Array(), finalArr = Array();
+    
+
+    var total_seat = document.getElementById("total_seat").value;
     var seat_fare = document.getElementById("seat_fare").value;
     var bus_type = document.getElementById("bus_type").value;
-    var counter = 0;
+    
+
     function selected_seat(){
-     counter++;
-     document.getElementById("total_fare").innerHTML = seat_fare * counter ;
-     array[x] = document.getElementById(selected_seat.caller.arguments[0].target.id).value;
-     //alert("Element: " + array[x] + " Added at index " + x);
-     x++;
-     document.getElementById("seat_fare1").innerHTML += seat_fare + "<br/>";
-     document.getElementById("bus_type1").innerHTML += bus_type + "<br/>";
+        
+     arr[i++] = document.getElementById(selected_seat.caller.arguments[0].target.id).value;
+     
+     }
+     
+     function find_duplicate_in_array(arra1) {  
+      var i, x=0, counter = 0, len=arra1.length,  result = [],  obj = {}, repeat;   
+      for (i=0; i<len; i++)  
+      {  
+            if(arra1[i] != 0){
+                repeat = arra1[i];      
+                for(var y = 0; y<len; y++){
+                        if(arra1[y] == repeat){
+                            counter ++;
+                            arra1[y] = 0;
+                        }
+                }
+                if(counter % 2 != 0)
+                {
+                    result[x] = repeat;
+                    x++;
+                    counter = 0;
+                }
+            } 
+     } 
+      return result;  
+   }  
+        
 
-     //var e = "<hr/>";   
-     var e = "";   
-    
-   for (var y=0; y<array.length; y++)
-   {
-     //e += "Element " + y + " = " + array[y] + "<br/>";
-     e += array[y] + "<br/>";
-     //var e = e.unique();
-   }
-   document.getElementById("Result").innerHTML = e;
-
+     function finalSelection(){
+        var x = 0;
+       finalArr = find_duplicate_in_array(arr); 
+       // document.write(finalArr);
+       
+        document.getElementById("Result").innerHTML = finalArr;
+        document.getElementById("seat_fare1").innerHTML += seat_fare ;
+        document.getElementById("bus_type1").innerHTML += bus_type ;
+        document.getElementById("total_fare").innerHTML = seat_fare * finalArr.length ;
+      
 }
-/*function display_array()
-{
-   var e = "<hr/>";   
-    
-   for (var y=0; y<array.length; y++)
-   {
-     //e += "Element " + y + " = " + array[y] + "<br/>";
-     e += array[y] + ",";
-     //var e = e.unique();
-   }
-   document.getElementById("Result").innerHTML = e;
-}*/
 </script>
 <script type="text/javascript">
     
