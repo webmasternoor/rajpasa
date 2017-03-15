@@ -1,125 +1,17 @@
 @if (Auth::guest())
 
 @else
-
+@extends('app')
 <h1 class="page-header">Bus Search</h1>
-<!-- <div class="col-md-12">
-    <form href="javascript:ajaxLoad('busraj/list')" method="POST">
-    <input type="hidden" name="_token" value="<?php //echo csrf_token() ?>"> 
-        <div class="col-md-6"><label>Departure Place</label></div>
-        <div class="col-md-6"><input type="text" name="departure"></div>
-        <div class="col-md-6"><label>Arrival Place</label></div>
-        <div class="col-md-6"><input type="text" name="arrival"></div>
-        <div class="col-md-6"><input type="submit" value="submit"></div>
-    </form>
-</div> -->
 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('busraj/bussearch')">
                     Bus Search</a>
-{!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!}
-<div class="col-md-12">    
-    <div class="form-group required col-md-6" id="form-departure-error">
-        {!! Form::label("departure","departure place",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("departure",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="departure-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-arrival-error">
-        {!! Form::label("arrival","arrival place",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("arrival",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="arrival-error" class="help-block"></span>
-        </div>
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-md-6 col-md-push-3">
-        <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
-                    class="glyphicon glyphicon-backward"></i>
-            Back</a>
-        {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit","class"=>"btn
-    btn-primary"])!!}
-    </div>
-</div>
-{!! Form::close() !!}
 <h1 class="page-header"><!-- Busraj List -->
     <div class="pull-right">
         <a href="javascript:ajaxLoad('busraj/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
     </div>
 </h1>
-<!-- <div class="col-sm-7 form-group">
-    <div class="input-group">
-        <input class="form-control" id="search" value="{{ Session::get('busraj_search') }}"
-               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/list')}}?ok=1&search='+this.value)"
-               placeholder="Search..."
-               type="text">
-
-        <div class="input-group-btn">
-            <button type="button" class="btn btn-default"
-                    onclick="ajaxLoad('{{url('busraj/list')}}?ok=1&search='+$('#search').val())"><i
-                        class="glyphicon glyphicon-search"></i>
-            </button>
-        </div>
-    </div>
-</div> -->
-<!-- <div class="col-md-12">
-    <form action="ajaxLoad('{{url('busraj/listb')}})">
-      <input type="text" name="s1">
-      <input type="text" name="s2">
-      <input type="submit">
-    </form>
-</div> -->
-<!-- <div class="col-sm-7 form-group">
-    <div class="input-group">
-        <input class="form-control" id="search2" value="{{ Session::get('busraj_search2') }}"
-                type="text">
-         <input class="form-control" id="search" value="{{ Session::get('busraj_search') }}"
-                onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/listb')}}?ok=1&search='+this.value)"
-                placeholder="Search..."
-                type="text"> 
-
-        <div class="input-group-btn">
-            <button type="button" class="btn btn-default"
-                    onclick="ajaxLoad('{{url('busraj/listb')}})"><i
-                        class="glyphicon glyphicon-search"></i>
-            </button>
-        </div>
-    </div>
-</div> -->
-<!-- <div class="col-sm-7 form-group">
-    <div class="input-group">
-        <input class="form-control" id="search2" value="{{ Session::get('busraj_search2') }}"
-                type="text">
-         <input class="form-control" id="search3" value="{{ Session::get('busraj_search3') }}"
-                onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/listb')}}?ok=1&search3='+this.value)"
-                placeholder="Search..."
-                type="text"> 
-
-        <div class="input-group-btn">
-            <button type="button" class="btn btn-default"
-                    onclick="ajaxLoad('{{url('busraj/listb')}})"><i
-                        class="glyphicon glyphicon-search"></i>
-            </button>
-        </div>
-    </div>
-</div> -->
-<!-- <div class="col-sm-7 form-group">
-    <div class="input-group">
-        <input class="form-control" id="search" value="{{ Session::get('busraj_search') }}"
-               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('busraj/list')}}?ok=1&search='+this.value)"
-               placeholder="Search..."
-               type="text">
-
-        <div class="input-group-btn">
-            <button type="button" class="btn btn-default"
-                    onclick="ajaxLoad('{{url('busraj/list')}}?ok=1&search='+$('#search').val())"><i
-                        class="glyphicon glyphicon-search"></i>
-            </button>
-        </div>
-    </div>
-</div> -->
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -226,18 +118,17 @@
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('busraj/viewseats/{{$busraj->bus_id}}')">
                     View Seats</a>
-                <a class="btn btn-primary btn-xs" title="Edit"
-                   href="javascript:ajaxLoad('busraj/update/{{$busraj->id}}')">
-                    <i class="glyphicon glyphicon-edit"></i> Edit</a>
-                <a class="btn btn-danger btn-xs" title="Delete"
-                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('busraj/delete/{{$busraj->id}}')">
-                    <i class="glyphicon glyphicon-trash"></i> Delete
-                </a>
             </td>
         </tr>
     @endforeach
     </tbody>
 </table>
+<div class="pull-right">{!! str_replace('/?','?',$busrajs->render()) !!}</div>
+<div class="row">
+    <i class="col-sm-12">
+        Total: {{$busrajs->total()}} records
+    </i>
+</div>
 <script>
     $('.pagination a').on('click', function (event) {
         event.preventDefault();
@@ -245,23 +136,21 @@
     });
 </script>
 <script>
-    $("#frm").submit(function (event) {
+    $("#frm23").submit(function (event) {
         event.preventDefault();
         $('.loading').show();
         var form = $(this);
         var data = new FormData($(this)[0]);
-        var url = form.attr("action");
         $.ajax({
             type: "POST",
             url: url,
             data: data,
             async: false,
-            cache: false,
             contentType: false,
             processData: false,
             success: function (data) {
                 if (data.fail) {
-                    $('#frm input.required, #frm textarea.required').each(function () {
+                    $('#frm23 input.required, #frm23 textarea.required').each(function () {
                         index = $(this).attr('id');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
