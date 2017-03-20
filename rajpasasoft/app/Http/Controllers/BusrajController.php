@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+
 use App\Busraj;
 use App\Order;
 use DB;
@@ -127,6 +128,9 @@ class BusrajController extends Controller
         //$total_seat = Busraj::where('total_seat', $id);        
         
         $district_info = District::lists('name', 'id');
+        
+        //echo $id = $req->input('Result');
+        echo Session::get('Result');
 
         $customer = new Customer();
         $tt = $customer->bus_id = Input::get('bus_id');
@@ -135,15 +139,28 @@ class BusrajController extends Controller
         $customer->gender = Input::get('gender');
         $customer->mobile = Input::get('mobile');        
         $customer->email = Input::get('email');
-        $customer->paymentgat = Input::get('paymentgat');
+        $customer->paymentgat = Input::get('colorRadio');
         $customer->rajpasafee = Input::get('rajpasafee');
         $customer->processingfee = Input::get('processingfee');
         $customer->discount = Input::get('discount');
         $customer->quantity = Input::get('quantity');
-        $customer->totalamount = Input::get('totalamount');
+        $customer->totalamount = Input::get('seat_fare') * Input::get('quantity');
         $customer->date12 = Input::get('date12');
-        $customer->seatnumber = Input::get('seatnumber');
+        $customer->seatnumber = Input::get('Result');
         $customer->staffid = Input::get('staffid');
+
+        $customer->city = Input::get('city');
+        $customer->area = Input::get('area');
+        $customer->firstname = Input::get('firstname');
+        $customer->lastname = Input::get('lastname');
+        $customer->address1 = Input::get('address1');
+        $customer->address2 = Input::get('address2');
+        $customer->landmark = Input::get('landmark');
+        $customer->postalcode = Input::get('postalcode');
+        $customer->altcontactno = Input::get('altcontactno');
+        $customer->crdb_card = Input::get('crdb_card');
+        $customer->intbank = Input::get('intbank');
+
 
         $customer->ticketprice = Input::get('seat_fare');
         $customer->bus_id = Input::get('bus_id');

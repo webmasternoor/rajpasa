@@ -1,3 +1,57 @@
+<div class="test">
+    <form id="payment_gw" name="payment_gw" method="POST" action="https://sandbox.sslcommerz.com/gwprocess/v3/process.php">
+        <input type="hidden" name="total_amount" value="1000.00" />
+        <input type="hidden" name="store_id" value="testbox" />
+        <input type="hidden" name="tran_id" value="58cf51141d28c" />
+        <input type="hidden" name="success_url" value="https://sandbox.sslcommerz.com/developer/success.php" />
+        <input type="hidden" name="fail_url" value="https://sandbox.sslcommerz.com/developer/fail.php" />
+        <input type="hidden" name="cancel_url" value="https://sandbox.sslcommerz.com/developer/cancel.php" />
+        <input type="hidden" name="version" value="3.00" /> 
+
+        <!-- Customer Information !-->
+        <input type="hidden" name="cus_name" value="ABC XYZ">
+        <input type="hidden" name="cus_email" value="abc.xyz@mail.com"> 
+        <input type="hidden" name="cus_add1" value="Address Line One">
+        <input type="hidden" name="cus_add2" value="Address Line Two">
+        <input type="hidden" name="cus_city" value="City Name">
+        <input type="hidden" name="cus_state" value="State Name">
+        <input type="hidden" name="cus_postcode" value="Post Code">
+        <input type="hidden" name="cus_country" value="Country">
+        <input type="hidden" name="cus_phone" value="01111111111">
+        <input type="hidden" name="cus_fax" value="01711111111">
+
+        <!-- Shipping Information !-->
+        <input type="hidden" name="ship_name" value="ABC XYZ">
+        <input type="hidden" name="ship_add1" value="Address Line One"> 
+        <input type="hidden" name="ship_add2" value="Address Line Two">
+        <input type="hidden" name="ship_city" value="City Name">
+        <input type="hidden" name="ship_state" value="State Name">
+        <input type="hidden" name="ship_postcode" value="Post Code">
+        <input type="hidden" name="ship_country" value="Country">
+
+        <!-- Optional Parameters which will be stored and returned at the end !-->
+        <input type="hidden" name="value_a" value="ref001">
+        <input type="hidden" name="value_b" value="ref002"> 
+        <input type="hidden" name="value_c" value="ref003">
+        <input type="hidden" name="value_d" value="ref004"> 
+
+        <!-- PRODUCT 1 !-->
+        <input type="hidden" name="cart[0][product]" value="FRESH HOME MADE BREAD 350GM" />
+        <input type="hidden" name="cart[0][amount]" value="500.00" />
+
+        <!-- PRODUCT 2 !-->
+        <input type="hidden" name="cart[1][product]" value="FRESH HOME MADE BREAD 350GM Quantity(1)" />
+        <input type="hidden" name="cart[1][amount]" value="600.00">
+
+        <!-- PRODUCT 3 !-->
+        <input type="hidden" name="cart[2][product]" value="SHIPMENT CHARGE" />
+        <input type="hidden" name="cart[2][amount]" value="50.00" />
+
+        <!-- SUBMIT REQUEST  !-->
+        <input type="submit" name="submit" value="Pay Now" />
+    </form> 
+</div>
+
 <div class="col-md-12">
     <div class="modal-header">
         <h4 class="modal-title" id="H1">Choose your seat(s)</h4>
@@ -57,7 +111,7 @@
         <div class="col-md-6"><input type="button" value="ok" onclick="finalSelection()"></div>
     </div>
     
-    <div class="col-md-6">
+    <div class="col-md-6 seatcusdeta">
         <div class="row">
             <div class="col-sm-4" style="padding-right:0;">
                 <ul id="Ul71" class="list-inline clearfix">
@@ -91,7 +145,15 @@
                     <tbody>
                         <tr>
                             <td>
-                                <div id="Result"></div>
+                            
+                                <?php
+                                    //Session::set('Result');
+                                    //$value = Session::get('Result');
+                                    //$value = session()->get('Result');
+                                ?>
+                                <input type="text" style="border: 0;" id="Result" name="Result">
+                                <input type="hidden" style="border: 0;" id="quantity" name="quantity">
+                                <input type="hidden" name="seat_fare" value="<?php echo $er->seat_fare;?>">
                             </td>
                             <td>
                                 <div id="seat_fare1"></div>
@@ -118,90 +180,164 @@
                     <span id="departure_place-error" class="help-block"></span>
                 </div>
             </div>
-        </div>
-    </div>
-</div> 
+            <div class="form-group required col-md-6" id="form-name-error">
+                <input type="hidden" name="bus_id" value="<?php echo $temp;?>">                
+                <input type="hidden" name="company_id" value="<?php echo $er->company_id;?>">
+                <input type="hidden" name="departure_place" value="<?php echo $er->departure_place;?>">
+                <input type="hidden" name="arrival_place" value="<?php echo $er->arrival_place;?>">
+                <input type="hidden" name="departure_time" value="<?php echo $er->departure_time;?>">
+                <input type="hidden" name="arrival_time" value="<?php echo $er->arrival_time;?>">
 
-<div>
-    {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!}
-    <div class="col-md-12">
-        <div class="form-group required col-md-4" id="form-name-error">
-            <input type="hidden" name="bus_id" value="<?php echo $temp;?>">
-            <input type="hidden" name="seat_fare" value="<?php echo $er->seat_fare;?>">
-            <input type="hidden" name="company_id" value="<?php echo $er->company_id;?>">
-            <input type="hidden" name="departure_place" value="<?php echo $er->departure_place;?>">
-            <input type="hidden" name="arrival_place" value="<?php echo $er->arrival_place;?>">
-            <input type="hidden" name="departure_time" value="<?php echo $er->departure_time;?>">
-            <input type="hidden" name="arrival_time" value="<?php echo $er->arrival_time;?>">
-
-            {!! Form::label("name","Name",["class"=>"control-label col-md-12"]) !!}
-            <div class="col-md-12">
-                {!! Form::text("name",null,["class"=>"form-control required","id"=>"name"]) !!}
-                <span id="name-error" class="help-block"></span>
+                {!! Form::label("name","Name",["class"=>"control-label col-md-12"]) !!}
+                <div class="col-md-12">
+                    {!! Form::text("name",null,["class"=>"form-control required","id"=>"name"]) !!}
+                    <span id="name-error" class="help-block"></span>
+                </div>
             </div>
-        </div>
-        <div class="form-group required col-md-4" id="form-mobile-error">
-            {!! Form::label("mobile","Mobile",["class"=>"control-label col-md-12"]) !!}
-            <div class="col-md-12">
-                {!! Form::text("mobile", null,["class"=>"mobile form-control required","id"=>"mobile"]) !!}
-                <span id="mobile-error" class="help-block"></span>
+            <div class="form-group required col-md-6" id="form-mobile-error">
+                {!! Form::label("mobile","Mobile",["class"=>"control-label col-md-12"]) !!}
+                <div class="col-md-12">
+                    {!! Form::text("mobile", null,["class"=>"mobile form-control required","id"=>"mobile"]) !!}
+                    <span id="mobile-error" class="help-block"></span>
+                </div>
             </div>
-        </div>
-        <div class="form-group required col-md-4" id="form-email-error">
-            {!! Form::label("email","Email",["class"=>"control-label col-md-12"]) !!}
-            <div class="col-md-12">
-                {!! Form::email("email", null,["class"=>"email form-control required","id"=>"email"]) !!}
-                <span id="email-error" class="help-block"></span>
+            <div class="form-group required col-md-6" id="form-email-error">
+                {!! Form::label("email","Email",["class"=>"control-label col-md-12"]) !!}
+                <div class="col-md-12">
+                    {!! Form::email("email", null,["class"=>"email form-control required","id"=>"email"]) !!}
+                    <span id="email-error" class="help-block"></span>
+                </div>
             </div>
-        </div>
-        <div class="form-group required col-md-12" id="form-departure_place-error">
-            {!! Form::label("departure_place","Choose Boarding Point",["class"=>"control-label col-md-8"]) !!}
-            <div class="col-md-12">
-                <div id="exTab2" class="">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#201" data-toggle="tab">bkash</a></li>
-                        <li><a href="#202" data-toggle="tab">Cash on Delivery</a></li>
-                        <li><a href="#203" data-toggle="tab">Credit or Debit Card</a></li>
-                        <li><a href="#204" data-toggle="tab">Internet Banking</a></li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="201">
-                            <div class="borderportion">
-                            bKash Number: +8801679624759
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="202">
-                            <div class="borderportion">
-                            test12
-                            </div>
-                        </div>    
-                        <div class="tab-pane" id="203">
-                            <div class="borderportion">
-                            test13
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="204">
-                            <div class="borderportion">
-                            test14
-                            </div>
-                        </div>    
+            <div class="form-group required col-md-6" id="form-gender-error">
+                {!! Form::label("gender","Gender",["class"=>"control-label col-md-12"]) !!}
+                <div class="col-md-12">
+                    <input type="radio" name="gender" value="male"> Male
+                    <input type="radio" name="gender" value="female"> Female
+                    <input type="radio" name="gender" value="female"> Others
+                </div>
+            </div>
+            <div class="form-group required col-md-12 paymdiv" id="form-paymdiv-error">
+                <div class="col-md-12 paymentmethodoption">
+                    <label><input type="radio" name="colorRadio" value="bkash"> bkash</label>
+                    <label><input type="radio" name="colorRadio" value="cod"> Cash on delivery</label>
+                    <label><input type="radio" name="colorRadio" value="crdr"> credit or debit card</label>
+                    <label><input type="radio" name="colorRadio" value="intban"> internet banking</label>
+                </div>
+                <div class="col-md-12 red box bkash">
+                    <div class="borderportion">
+                        <label for="">bKash Number: +8801679624759</label>
                     </div>
-                </div>    
+                </div>
+                <div class="col-md-12 green box cod">
+                    <div class="borderportion">
+                        <div class="form-group required col-md-6" id="form-city-error">
+                            {!! Form::label("city","City",["class"=>"control-label col-md-12"]) !!}
+                            <div class="col-md-12">
+                                {!! Form::text("city",null,["class"=>"form-control required","id"=>"city"]) !!}
+                                <span id="city-error" class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group required col-md-6" id="form-area-error">
+                            {!! Form::label("area","Area",["class"=>"control-label col-md-12"]) !!}
+                            <div class="col-md-12">
+                                {!! Form::text("area", null,["class"=>"area form-control required","id"=>"area"]) !!}
+                                <span id="area-error" class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group required col-md-6" id="form-firstname-error">
+                            {!! Form::label("firstname","First Name",["class"=>"control-label col-md-12"]) !!}
+                            <div class="col-md-12">
+                                {!! Form::text("firstname", null,["class"=>"firstname form-control required","id"=>"firstname"]) !!}
+                                <span id="firstname-error" class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group required col-md-6" id="form-lastname-error">
+                            {!! Form::label("lastname","Last Name",["class"=>"control-label col-md-12"]) !!}
+                            <div class="col-md-12">
+                                {!! Form::text("lastname", null,["class"=>"lastname form-control required","id"=>"lastname"]) !!}
+                                <span id="lastname-error" class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group required col-md-12" id="form-address1-error">
+                            {!! Form::label("address1","Address Line 1",["class"=>"control-label col-md-12"]) !!}
+                            <div class="col-md-12">
+                                {!! Form::textarea("address1", null,["class"=>"address1 form-control required","id"=>"address1"]) !!}
+                                <span id="address1-error" class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group required col-md-12" id="form-address2-error">
+                            {!! Form::label("address2","Address Line 2",["class"=>"control-label col-md-12"]) !!}
+                            <div class="col-md-12">
+                                {!! Form::textarea("address2", null,["class"=>"address2 form-control required","id"=>"address2"]) !!}
+                                <span id="address2-error" class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group required col-md-6" id="form-landmark-error">
+                            {!! Form::label("landmark","Landmark",["class"=>"control-label col-md-12"]) !!}
+                            <div class="col-md-12">
+                                {!! Form::text("landmark", null,["class"=>"landmark form-control required","id"=>"landmark"]) !!}
+                                <span id="landmark-error" class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group required col-md-6" id="form-postalcode-error">
+                            {!! Form::label("postalcode","Postal Code",["class"=>"control-label col-md-12"]) !!}
+                            <div class="col-md-12">
+                                {!! Form::text("postalcode", null,["class"=>"postalcode form-control required","id"=>"postalcode"]) !!}
+                                <span id="postalcode-error" class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group required col-md-12" id="form-altcontactno-error">
+                            {!! Form::label("altcontactno","Alternate Contact No",["class"=>"control-label col-md-12"]) !!}
+                            <div class="col-md-12">
+                                {!! Form::text("altcontactno", null,["class"=>"altcontactno form-control required","id"=>"altcontactno"]) !!}
+                                <span id="altcontactno-error" class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 blue box crdr"> 
+                    <div class="borderportion">
+                        <div class="form-group required col-md-12" id="form-email-error">
+                            <select id="crdb_card" name="crdb_card" class="form-control" onchange="setDiscount(this.value);">
+                                <option value="">Please select one</option>
+                                <option value="city_amex" percentage="3.5">American Express</option>
+                                <option value="DBBL Nexaus Card" percentage="2">DBBL Nexus</option>
+                                <option value="MasterCard" percentage="3">MasterCard (via BRAC gateway)</option>
+                                <option value="city_master" percentage="2.5">MasterCard (via City Bank Gateway)</option>
+                                <option value="MasterCard_Dutch" percentage="2.5">MasterCard (via Dutch-Bangla gateway)</option>
+                                <option value="Visa" percentage="3">VISA (via BRAC gateway)</option>
+                                <option value="city_visa" percentage="2.5">VISA (via City Bank Gateway)</option>
+                                <option value="Visa_Dutch" percentage="2.5">VISA (via Dutch-Bangla gateway)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 yellow box intban">
+                    <div class="borderportion">
+                        <div class="form-group required col-md-12" id="form-email-error">
+                            <select id="intbank" name="intbank" class="form-control" onchange="setDiscount(this.value);">
+                                <option value="">Please select one</option>
+                                <option value="bankasia" percentage="2">Bank Asia Internet Banking</option>
+                                <option value="city" percentage="3">City Touch Internet Banking</option>
+                                <option value="dbblmobilebanking" percentage="2">Rocket - DBBL Mobile Banking</option>
+                                <option value="ibbl" percentage="2">IBBL Internet &amp; Mobile Banking</option>
+                                <option value="mtbl" percentage="2">Mutual Trust Bank Internet Banking</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 col-md-push-3">
+                    <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
+                                class="glyphicon glyphicon-backward"></i>
+                        Back</a>
+                    {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Continue",["type" => "submit","class"=>"btn
+                btn-primary"])!!}
+                </div>
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-6 col-md-push-3">
-            <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
-                        class="glyphicon glyphicon-backward"></i>
-                Back</a>
-            {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Continue",["type" => "submit","class"=>"btn
-        btn-primary"])!!}
-        </div>
-    </div>
-    {!! Form::close() !!}
-    
 </div>
 <script>
 $( "input" ).click(function() {
@@ -255,7 +391,8 @@ $( "input" ).click(function() {
        finalArr = find_duplicate_in_array(arr); 
        // document.write(finalArr);
        
-        document.getElementById("Result").innerHTML = finalArr;
+        document.getElementById("Result").value = finalArr;
+        document.getElementById("quantity").value = finalArr.length;
         document.getElementById("seat_fare1").innerHTML += seat_fare ;
         document.getElementById("bus_type1").innerHTML += bus_type ;
         document.getElementById("total_fare").innerHTML = seat_fare * finalArr.length ;
@@ -263,7 +400,14 @@ $( "input" ).click(function() {
 }
 </script>
 <script type="text/javascript">
-    
+$(document).ready(function(){
+    $('input[type="radio"]').click(function(){
+        var inputValue = $(this).attr("value");
+        var targetBox = $("." + inputValue);
+        $(".box").not(targetBox).hide();
+        $(targetBox).show();
+    });
+});
 </script>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script>
@@ -275,7 +419,7 @@ $( "input" ).click(function() {
         var url = form.attr("action");
         $.ajax({
             type: "POST",
-            url: url,
+            url: 'https://sandbox.sslcommerz.com/gwprocess/v3/process.php',
             data: data,
             async: false,
             cache: false,
