@@ -1,22 +1,22 @@
 <h1 class="page-header">Bus Search
-   <!--  <div class="pull-right">
-        <a href="javascript:ajaxLoad('busticket/create')" class="btn btn-primary pull-right"><i
+    <div class="pull-right">
+        <a href="javascript:ajaxLoad('bussearch/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
-    </div> -->
+    </div>
 </h1>
    {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!} 
   <div class="col-md-12">    
     <div class="form-group required col-md-6" id="form-departure-error">
         {!! Form::label("departure","departure place",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("departure",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::text("departure",null,["class"=>"form-control required","id"=>"departure"]) !!}
             <span id="departure-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-arrival-error">
         {!! Form::label("arrival","arrival place",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("arrival",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::text("arrival",null,["class"=>"form-control required","id"=>"arrival"]) !!}
             <span id="arrival-error" class="help-block"></span>
         </div>
     </div>
@@ -24,7 +24,7 @@
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
-         <!-- <a href="javascript:ajaxLoad('busticket/list')" class="btn btn-danger"><i
+         <!-- <a href="javascript:ajaxLoad('bussearch/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a> -->
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit","class"=>"btn
@@ -42,75 +42,75 @@
     <tr>
         <th width="50px" style="text-align: center">No</th>
         <th>
-            <a href="javascript:ajaxLoad('busticket/list?field=bus_id&sort={{Session::get("busticket_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('bussearch/list?field=bus_id&sort={{Session::get("bussearch_sort")=="asc"?"desc":"asc"}}')">
                 Bus Id
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('busticket_field')=='bus_id'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('bussearch_field')=='bus_id'?(Session::get('bussearch_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
          <th>
-            <a href="javascript:ajaxLoad('busticket/list?field=company_id&sort={{Session::get("busticket_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('bussearch/list?field=company_id&sort={{Session::get("bussearch_sort")=="asc"?"desc":"asc"}}')">
                 Company Id
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('busticket_field')=='company_id'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('bussearch_field')=='company_id'?(Session::get('bussearch_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('busticket/list?field=departure_time&sort={{Session::get("busticket_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('bussearch/list?field=departure_time&sort={{Session::get("bussearch_sort")=="asc"?"desc":"asc"}}')">
                 Departure Time
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('busticket_field')=='departure_time'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('bussearch_field')=='departure_time'?(Session::get('bussearch_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('busticket/list?field=arrival_time&sort={{Session::get("busticket_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('bussearch/list?field=arrival_time&sort={{Session::get("bussearch_sort")=="asc"?"desc":"asc"}}')">
                Arrival Time
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('busticket_field')=='arrival_time'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('bussearch_field')=='arrival_time'?(Session::get('bussearch_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
          <th>
-            <a href="javascript:ajaxLoad('busticket/list?field=departure_place&sort={{Session::get("busticket_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('bussearch/list?field=departure_place&sort={{Session::get("bussearch_sort")=="asc"?"desc":"asc"}}')">
                 Departure Place
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('busticket_field')=='departure_place'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('bussearch_field')=='departure_place'?(Session::get('bussearch_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('busticket/list?field=arrival_place&sort={{Session::get("busticket_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('bussearch/list?field=arrival_place&sort={{Session::get("bussearch_sort")=="asc"?"desc":"asc"}}')">
                 Arrival Place
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('busticket_field')=='arrival_place'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('bussearch_field')=='arrival_place'?(Session::get('bussearch_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('busticket/list?field=available_seat&sort={{Session::get("busticket_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('bussearch/list?field=available_seat&sort={{Session::get("bussearch_sort")=="asc"?"desc":"asc"}}')">
                 Available Seat
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('busticket_field')=='available_seat'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('bussearch_field')=='available_seat'?(Session::get('bussearch_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
          <th>
-            <a href="javascript:ajaxLoad('busticket/list?field=seat_fare&sort={{Session::get("busticket_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('bussearch/list?field=seat_fare&sort={{Session::get("bussearch_sort")=="asc"?"desc":"asc"}}')">
                 Seat Fare
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('busticket_field')=='seat_fare'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('bussearch_field')=='seat_fare'?(Session::get('bussearch_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
        <!--  <th>
-            <a href="javascript:ajaxLoad('busticket/list?field=saving_amount&sort={{Session::get("busticket_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('bussearch/list?field=saving_amount&sort={{Session::get("bussearch_sort")=="asc"?"desc":"asc"}}')">
                 Entry Saving Amount
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('busticket_field')=='saving_amount'?(Session::get('busticket_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('bussearch_field')=='saving_amount'?(Session::get('bussearch_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th> -->
         <th width="140px">Actions</th>
@@ -118,34 +118,31 @@
     </thead>
     <tbody>
     <?php $i = 1;?>
-    @foreach($bustickets as $key=>$busticket)
+    @foreach($bussearches as $key=>$bussearch)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td >{{$busticket->bus_id}}</td>
-            <td>{{$busticket->company_id}}</td>
-            <td>{{$busticket->departure_time}}</td>
-            <td>{{$busticket->arrival_time}}</td>
-            <td align="right">{{$busticket->departure_place}}</td>
-            <td>{{$busticket->arrival_place}}</td>
-            <td>{{$busticket->available_seat}}</td>
-            <td>{{$busticket->seat_fare}}</td>
+            <td >{{$bussearch->bus_id}}</td>
+            <td>{{$bussearch->company_id}}</td>
+            <td>{{$bussearch->departure_time}}</td>
+            <td>{{$bussearch->arrival_time}}</td>
+            <td align="right">{{$bussearch->departure_place}}</td>
+            <td>{{$bussearch->arrival_place}}</td>
+            <td>{{$bussearch->available_seat}}</td>
+            <td>{{$bussearch->seat_fare}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
-                   href="javascript:ajaxLoad('busticket/update/{{$busticket->id}}')">
+                   href="javascript:ajaxLoad('bussearch/update/{{$bussearch->id}}')">
                     <i class="glyphicon glyphicon-edit"></i> View Seats</a>
-                <!-- <a class="btn btn-danger btn-xs" title="Delete"
-                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('busticket/delete/{{$busticket->id}}')">
-                    <i class="glyphicon glyphicon-trash"></i> Delete
-                </a> -->
+                
             </td>
         </tr>
     @endforeach
     </tbody>
 </table>
-<div class="pull-right">{!! str_replace('/?','?',$bustickets->render()) !!}</div>
+<div class="pull-right">{!! str_replace('/?','?',$bussearches->render()) !!}</div>
 <div class="row">
     <i class="col-sm-12">
-        Total: {{$bustickets->total()}} records
+        Total: {{$bussearches->total()}} records
     </i>
 </div>
 

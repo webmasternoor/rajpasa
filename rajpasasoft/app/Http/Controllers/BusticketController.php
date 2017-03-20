@@ -99,10 +99,7 @@ class BusticketController extends Controller
         $app_key = $request->input('app_key');
         $departure = $request->input('bus_source');
         $arrival = $request->input('bus_destination');
-        /*$departure = 1;
-        $arrival = 1;*/
-        // $app_id = '1234';
-        // $app_key = "our_app_key";
+        
         $bustickets = Busticket::where('departure_place', '=', $departure)
                                 ->where('arrival_place', '=', $arrival)
                                 ->get();

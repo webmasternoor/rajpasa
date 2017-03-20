@@ -20,7 +20,7 @@
 		    <div class="row"></div>
 		    <div class="row">
 		        <!-- <div class="col-md-3"></div> -->
-		        <div class="col-md-12 busticket">
+		        <div class="col-md-12 bussearch">
                      <div id="content"></div>
 		        </div>
 		        <!-- <div class="col-md-3"></div> -->
