@@ -249,6 +249,8 @@ table{
     margin-bottom: 20px;
     background: #f7f7f7;
     float: left;
+    width: 27%;
+    margin-left: 7%;
 }
 .seatcusdeta .nav-tabs>li a {
     padding-right: 3px;
@@ -260,10 +262,13 @@ table{
 }
 
 .box{
-        /* color: #fff; */
-        padding: 20px;
-        display: none;
-        margin-top: 20px;
+    /* color: #fff; */
+    /* padding: 20px; */
+    display: none;
+    /* margin-top: 20px; */
+    border: 1px solid #cccccc;
+    margin: 1%;
+    background: #f2f2f2;
     }
     /* .red{ background: #ff0000; }
     .green{ background: #228B22; }
@@ -275,7 +280,7 @@ div.paymdiv .col-md-12.paymentmethodoption > label {
   float: left;
   font-size: 12px;
   font-weight: bold;
-  margin: 5px;
+  margin: 3px;
   padding: 1% 2%;
   text-transform: capitalize;
 }
@@ -284,4 +289,23 @@ div.paymdiv .col-md-12 label.control-label{
 }
 div.paymdiv.col-md-12 .paymentmethodoption label input{
   display: none;
+}
+
+div.confirmseat input{
+    float: left;
+    margin-top: 15px;
+    width: 100%;
+    background: #f2f2f2;
+}
+div.seatbookright{
+    border: 1px solid #cccccc;
+    padding: 1%;
+    background: aliceblue;
+}
+div.seatbookright div.col-md-4{
+    background: #cccccc;
+    text-align: center;
+}
+div.col-md-6.seatcusdeta .form-group{
+  margin-bottom: 0px;
 }

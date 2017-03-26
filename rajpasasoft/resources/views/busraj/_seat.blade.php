@@ -1,56 +1,4 @@
-<div class="test">
-    <form id="payment_gw" name="payment_gw" method="POST" action="https://sandbox.sslcommerz.com/gwprocess/v3/process.php">
-        <input type="hidden" name="total_amount" value="1000.00" />
-        <input type="hidden" name="store_id" value="testbox" />
-        <input type="hidden" name="tran_id" value="58cf51141d28c" />
-        <input type="hidden" name="success_url" value="https://sandbox.sslcommerz.com/developer/success.php" />
-        <input type="hidden" name="fail_url" value="https://sandbox.sslcommerz.com/developer/fail.php" />
-        <input type="hidden" name="cancel_url" value="https://sandbox.sslcommerz.com/developer/cancel.php" />
-        <input type="hidden" name="version" value="3.00" /> 
 
-        <!-- Customer Information !-->
-        <input type="hidden" name="cus_name" value="ABC XYZ">
-        <input type="hidden" name="cus_email" value="abc.xyz@mail.com"> 
-        <input type="hidden" name="cus_add1" value="Address Line One">
-        <input type="hidden" name="cus_add2" value="Address Line Two">
-        <input type="hidden" name="cus_city" value="City Name">
-        <input type="hidden" name="cus_state" value="State Name">
-        <input type="hidden" name="cus_postcode" value="Post Code">
-        <input type="hidden" name="cus_country" value="Country">
-        <input type="hidden" name="cus_phone" value="01111111111">
-        <input type="hidden" name="cus_fax" value="01711111111">
-
-        <!-- Shipping Information !-->
-        <input type="hidden" name="ship_name" value="ABC XYZ">
-        <input type="hidden" name="ship_add1" value="Address Line One"> 
-        <input type="hidden" name="ship_add2" value="Address Line Two">
-        <input type="hidden" name="ship_city" value="City Name">
-        <input type="hidden" name="ship_state" value="State Name">
-        <input type="hidden" name="ship_postcode" value="Post Code">
-        <input type="hidden" name="ship_country" value="Country">
-
-        <!-- Optional Parameters which will be stored and returned at the end !-->
-        <input type="hidden" name="value_a" value="ref001">
-        <input type="hidden" name="value_b" value="ref002"> 
-        <input type="hidden" name="value_c" value="ref003">
-        <input type="hidden" name="value_d" value="ref004"> 
-
-        <!-- PRODUCT 1 !-->
-        <input type="hidden" name="cart[0][product]" value="FRESH HOME MADE BREAD 350GM" />
-        <input type="hidden" name="cart[0][amount]" value="500.00" />
-
-        <!-- PRODUCT 2 !-->
-        <input type="hidden" name="cart[1][product]" value="FRESH HOME MADE BREAD 350GM Quantity(1)" />
-        <input type="hidden" name="cart[1][amount]" value="600.00">
-
-        <!-- PRODUCT 3 !-->
-        <input type="hidden" name="cart[2][product]" value="SHIPMENT CHARGE" />
-        <input type="hidden" name="cart[2][amount]" value="50.00" />
-
-        <!-- SUBMIT REQUEST  !-->
-        <input type="submit" name="submit" value="Pay Now" />
-    </form> 
-</div>
 
 <div class="col-md-12">
     <div class="modal-header">
@@ -87,7 +35,7 @@
         {
             
             $counter = 0;
-            for($i=1;$i<$er->total_seat;$i++){
+            for($i=1;$i<=$er->total_seat;$i++){
                 //echo $user->$i;
                 echo "<input type='button' id='$i' value='$i' class='blue' onclick='selected_seat();' />";
                 //echo $counter."<br/>";
@@ -108,9 +56,9 @@
                 </tr>
             </table>                        
         </div>
-        <div class="col-md-6"><input type="button" value="ok" onclick="finalSelection()"></div>
+        <div class="col-md-6 confirmseat"><input type="button" value="Confirm your Seat(s)" onclick="finalSelection()"></div>
     </div>
-    
+    <form id="payment_gw" name="payment_gw" method="POST" action="https://sandbox.sslcommerz.com/gwprocess/v3/process.php">
     <div class="col-md-6 seatcusdeta">
         <div class="row">
             <div class="col-sm-4" style="padding-right:0;">
@@ -137,33 +85,39 @@
                 <table class="table-responsive">
                     <thead>
                         <tr>
-                            <th>Seats</th>
-                            <th>Fare</th>
-                            <th>Class</th>
+                            <div class="col-md-12 seatbookright">
+                                <div class="col-md-4">
+                                    Seat Number
+                                </div>
+                                <div class="col-md-4">
+                                    Seat Fare
+                                </div>
+                                <div class="col-md-4">
+                                    Bus Type
+                                </div>
+                            </div>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
-                            
-                                <?php
-                                    //Session::set('Result');
-                                    //$value = Session::get('Result');
-                                    //$value = session()->get('Result');
-                                ?>
-                                <input type="text" style="border: 0;" id="Result" name="Result">
-                                <input type="hidden" style="border: 0;" id="quantity" name="quantity">
-                                <input type="hidden" name="seat_fare" value="<?php echo $er->seat_fare;?>">
-                            </td>
-                            <td>
-                                <div id="seat_fare1"></div>
-                            </td>
-                            <td>
-                                 <div id="bus_type1"></div>   
+                                <div class="col-md-12">
+                                    <div class="col-md-4">
+                                        <input type="text" style="border: 0; background: transparent; box-shadow: 0 0 0;" id="Result" name="Result">
+                                        <input type="hidden" style="border: 0;" id="quantity" name="quantity">
+                                        <input type="hidden" name="seat_fare" value="<?php echo $er->seat_fare;?>">    
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="seat_fare1"></div>        
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="bus_type1"></div>          
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3" style="text-align: center;">
+                            <td style="text-align: center; padding-top: 10%;">
                                 <div style="float: left;">Total Fare: </div>
                                 <div id="total_fare" class="t_total"></div>
                             </td>
@@ -172,6 +126,58 @@
                 </table>
             </div>                        
         </div>
+        <div class="test">            
+                <input type="hidden" name="total_amount" id="total_amount"/>
+                <input type="hidden" name="store_id" value="testbox" />
+                <input type="hidden" name="tran_id" value="58cf51141d28c" />
+                <input type="hidden" name="success_url" value="https://sandbox.sslcommerz.com/developer/success.php" />
+                <input type="hidden" name="fail_url" value="https://sandbox.sslcommerz.com/developer/fail.php" />
+                <input type="hidden" name="cancel_url" value="https://sandbox.sslcommerz.com/developer/cancel.php" />
+                <input type="hidden" name="version" value="3.00" /> 
+
+                <!-- Customer Information !-->
+                
+                <input type="hidden" name="cus_email" value="abc.xyz@mail.com"> 
+                <input type="hidden" name="cus_add1" value="Address Line One">
+                <input type="hidden" name="cus_add2" value="Address Line Two">
+                <input type="hidden" name="cus_city" value="City Name">
+                <input type="hidden" name="cus_state" value="State Name">
+                <input type="hidden" name="cus_postcode" value="Post Code">
+                <input type="hidden" name="cus_country" value="Country">
+                <input type="hidden" name="cus_phone" value="01111111111">
+                <input type="hidden" name="cus_fax" value="01711111111">
+
+                <!-- Shipping Information !-->
+                <input type="hidden" name="ship_name" value="ABC XYZ">
+                <input type="hidden" name="ship_add1" value="Address Line One"> 
+                <input type="hidden" name="ship_add2" value="Address Line Two">
+                <input type="hidden" name="ship_city" value="City Name">
+                <input type="hidden" name="ship_state" value="State Name">
+                <input type="hidden" name="ship_postcode" value="Post Code">
+                <input type="hidden" name="ship_country" value="Country">
+
+                <!-- Optional Parameters which will be stored and returned at the end !-->
+                <input type="hidden" name="value_a" value="ref001">
+                <input type="hidden" name="value_b" value="ref002"> 
+                <input type="hidden" name="value_c" value="ref003">
+                <input type="hidden" name="value_d" value="ref004"> 
+
+                <!-- PRODUCT 1 !-->
+                <input type="hidden" name="cart[0][product]" value="FRESH HOME MADE BREAD 350GM" />
+                <input type="hidden" name="cart[0][amount]" value="500.00" />
+
+                <!-- PRODUCT 2 !-->
+                <input type="hidden" name="cart[1][product]" value="FRESH HOME MADE BREAD 350GM Quantity(1)" />
+                <input type="hidden" name="cart[1][amount]" value="600.00">
+
+                <!-- PRODUCT 3 !-->
+                <input type="hidden" name="cart[2][product]" value="SHIPMENT CHARGE" />
+                <input type="hidden" name="cart[2][amount]" value="50.00" />
+
+                <!-- SUBMIT REQUEST  !-->
+                
+        </div>
+        
         <div class="row">
             <div class="form-group required col-md-12" id="form-departure_place-error">
                 {!! Form::label("departure_place","Choose Boarding Point",["class"=>"control-label col-md-8"]) !!}
@@ -190,7 +196,7 @@
 
                 {!! Form::label("name","Name",["class"=>"control-label col-md-12"]) !!}
                 <div class="col-md-12">
-                    {!! Form::text("name",null,["class"=>"form-control required","id"=>"name"]) !!}
+                    {!! Form::text("cus_name",null,["class"=>"form-control required","id"=>"name"]) !!}
                     <span id="name-error" class="help-block"></span>
                 </div>
             </div>
@@ -327,18 +333,13 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-6 col-md-push-3">
-                    <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
-                                class="glyphicon glyphicon-backward"></i>
-                        Back</a>
-                    {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Continue",["type" => "submit","class"=>"btn
-                btn-primary"])!!}
-                </div>
-            </div>
         </div>
+        <!-- SUBMIT REQUEST  !-->
+        <input type="submit" name="submit" value="Pay Now" />
+        </form>
     </div>
 </div>
+
 <script>
 $( "input" ).click(function() {
   $( this ).toggleClass( "highlight" );
@@ -392,6 +393,9 @@ $( "input" ).click(function() {
        // document.write(finalArr);
        
         document.getElementById("Result").value = finalArr;
+        
+        document.getElementById("total_amount").value = seat_fare * finalArr.length ;
+
         document.getElementById("quantity").value = finalArr.length;
         document.getElementById("seat_fare1").innerHTML += seat_fare ;
         document.getElementById("bus_type1").innerHTML += bus_type ;
@@ -419,7 +423,7 @@ $(document).ready(function(){
         var url = form.attr("action");
         $.ajax({
             type: "POST",
-            url: 'https://sandbox.sslcommerz.com/gwprocess/v3/process.php',
+            url: url,
             data: data,
             async: false,
             cache: false,
@@ -452,4 +456,6 @@ $(document).ready(function(){
         });
         return false;
     });
+
+
 </script>
