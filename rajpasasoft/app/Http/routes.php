@@ -66,6 +66,7 @@ Route::get('{view}', function ($view) {
 if (Auth::guest()){
 Route::get('busticket', 'BusticketController@apiResponse');
 // Route::get('busraj', 'BusrajController@postList');
+Route::get('busraj/success', 'BusrajController@getSuccess');
 }
 
 

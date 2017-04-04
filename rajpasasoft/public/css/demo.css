@@ -139,7 +139,7 @@ div.dataTables_wrapper {
   width: 100%;
 }
 .form-horizontal .control-label{
-      width: 100% !important;
+    /* width: 100% !important; */
     text-align: left !important;
 }
 .form-group input[type="password"]{
@@ -308,4 +308,7 @@ div.seatbookright div.col-md-4{
 }
 div.col-md-6.seatcusdeta .form-group{
   margin-bottom: 0px;
+}
+.form-group textarea.form-control{
+  height: 50px;
 }

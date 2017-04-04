@@ -1,54 +1,54 @@
 <div class="col-md-12">    
-    <div class="form-group required col-md-6" id="form-company_id-error">
-        {!! Form::label("company_id","Company Id",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group col-md-12" id="form-company_id-error">
+        {!! Form::label("company_id","Company ID",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("company_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="company_id-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-company_name-error">
+    <div class="form-group col-md-12" id="form-company_name-error">
         {!! Form::label("company_name","Company Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("company_name",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="company_name-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-company_email-error">
+    <div class="form-group col-md-12" id="form-company_email-error">
         {!! Form::label("company_email","Company Email",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("company_email",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="company_email-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group col-md-4" id="form-password12-error">
-        {!! Form::label("password","Password",["class"=>"control-label col-md-12"]) !!}
-        <div class="col-md-12">
+    <div class="form-group col-md-6" id="form-password12-error">
+        {!! Form::label("password","Password",["class"=>"control-label col-md-6"]) !!}
+        <div class="col-md-6">
             {!! Form::password("password12",null,["class"=>"form-control","id"=>"focus"]) !!}
             <span id="password12-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group col-md-4" id="form-password123-error">
-        {!! Form::label("password","Confirm Password",["class"=>"control-label col-md-12"]) !!}
-        <div class="col-md-12">
+    <div class="form-group col-md-6" id="form-password123-error">
+        {!! Form::label("password","Confirm Password",["class"=>"control-label col-md-6"]) !!}
+        <div class="col-md-6">
             {!! Form::password("password122",null,["class"=>"form-control","id"=>"focus"]) !!}
             <span id="password123-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-company_address-error">
+    <div class="form-group col-md-12" id="form-company_address-error">
         {!! Form::label("company_address","Company Address",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("company_address",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::textarea("company_address",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="company_address-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-company_license-error">
+    <div class="form-group col-md-12" id="form-company_license-error">
         {!! Form::label("company_license","Company License",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("company_license",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="company_license-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-company_logo-error">
+    <div class="form-group col-md-12" id="form-company_logo-error">
         {!! Form::label("company_logo","Company Logo",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::file("company_logo",null,["class"=>"form-control required","id"=>"focus"]) !!}

@@ -127,12 +127,13 @@
             </div>                        
         </div>
         <div class="test">            
+        {{ csrf_field() }}
                 <input type="hidden" name="total_amount" id="total_amount"/>
                 <input type="hidden" name="store_id" value="testbox" />
                 <input type="hidden" name="tran_id" value="58cf51141d28c" />
-                <input type="hidden" name="success_url" value="https://sandbox.sslcommerz.com/developer/success.php" />
-                <input type="hidden" name="fail_url" value="https://sandbox.sslcommerz.com/developer/fail.php" />
-                <input type="hidden" name="cancel_url" value="https://sandbox.sslcommerz.com/developer/cancel.php" />
+                <input type="hidden" name="success_url" value="http://localhost/rajpasa/rajpasasoft/public/busraj/success" />
+                <input type="hidden" name="fail_url" value="http://localhost/rajpasa/rajpasasoft/public/busraj/fail" />
+                <input type="hidden" name="cancel_url" value="http://localhost/rajpasa/rajpasasoft/public/busraj/cancel" />
                 <input type="hidden" name="version" value="3.00" /> 
 
                 <!-- Customer Information !-->
@@ -335,7 +336,25 @@
             </div>
         </div>
         <!-- SUBMIT REQUEST  !-->
-        <input type="submit" name="submit" value="Pay Now" />
+        <!-- <input type="submit" name="submit" value="Confirm" /> -->
+        <a href="javascript:ajaxLoad('busraj/success')" class="btn btn-danger"><i
+                                class="glyphicon glyphicon-backward"></i>
+                        success</a>
+        <a href="javascript:ajaxLoad('busraj/fail')" class="btn btn-danger"><i
+                                class="glyphicon glyphicon-backward"></i>
+                        fail</a>
+        <a href="javascript:ajaxLoad('busraj/cancel')" class="btn btn-danger"><i
+                                class="glyphicon glyphicon-backward"></i>
+                        cancel</a>                                
+        <div class="form-group">
+                <div class="col-md-6 col-md-push-3">
+                    <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
+                                class="glyphicon glyphicon-backward"></i>
+                        Back</a>
+                    {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Continue",["type" => "submit","class"=>"btn
+                btn-primary"])!!}
+                </div>
+            </div>
         </form>
     </div>
 </div>

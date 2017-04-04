@@ -40,6 +40,24 @@ class BusrajController extends Controller
         
     }
 
+    public function getSuccess(){
+        
+            return view('busraj.success');
+        
+    }
+
+    public function getSuccess1(){
+        
+            return view('busraj.success1');
+        
+    }
+    public function getFail(){
+        return view('busraj.fail');
+    }
+    public function getCancel(){
+        return view('busraj.cancel');
+    }
+
     /*public function postList()
     {
         $busrajs32 = new Busraj();
