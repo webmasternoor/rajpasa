@@ -108,10 +108,12 @@
                                         <input type="hidden" name="seat_fare" value="<?php echo $er->seat_fare;?>">    
                                     </div>
                                     <div class="col-md-4">
-                                        <?php echo $er->seat_fare;?>
+                                        <div style="display: none;" id="seat_fare1"></div>
+                                        <?php echo $er->seat_fare; ?>        
                                     </div>
                                     <div class="col-md-4">
-                                        <?php echo $er->bus_type;?>
+                                        <div style="display: none;" id="bus_type1"></div>   
+                                        <?php echo $er->bus_type; ?>       
                                     </div>
                                 </div>
                             </td>

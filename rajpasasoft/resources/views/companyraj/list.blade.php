@@ -1,10 +1,17 @@
 @if (Auth::guest())
 
 @else
-<h1 class="page-header">@if(Auth::user()->type == 'manager') Company Information @else Company List @endif
+<h1 class="page-header">
+    @if(Auth::user()->type == 'manager') Company Information 
+    @elseif (Auth::user()->type == 'company') Company Information
+    @elseif (Auth::user()->type == 'counter') Company Information
+    @elseif(Auth::user()->type == 'admin') Company Lists
+    @endif
+    <br/>Company ID: {{Auth::user()->company_id}}
     <div class="pull-right">
-        <a href="javascript:ajaxLoad('companyraj/create')" class="btn btn-primary pull-right"><i
-                    class="glyphicon glyphicon-plus-sign"></i> New</a>
+        @if(Auth::user()->type == 'admin') <a href="javascript:ajaxLoad('companyraj/create')" class="btn btn-primary pull-right"><i
+                    class="glyphicon glyphicon-plus-sign"></i> New </a>
+    @endif 
     </div>
 </h1>
 <div class="col-sm-7 form-group">
