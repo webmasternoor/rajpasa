@@ -38,7 +38,16 @@ class CompanyrajController extends Controller
 
     public function getUpdate($id)
     {
-        return view('companyraj.update', ['companyraj' => User::find($id)]);
+        $temp = Auth::user()->company_id;
+        $companytbl = Companyraj::where('company_id', '=', $temp)->get();
+        return view('companyraj.update', ['companyraj' => User::find($id)])->with('companytbl', $companytbl);
+    }
+
+    public function getView($id)
+    {
+        $temp = Auth::user()->company_id;
+        $companytbl = Companyraj::where('company_id', '=', $temp)->get();
+        return view('companyraj.view', ['companyraj' => User::find($id)])->with('companytbl', $companytbl);
     }
 
     public function postUpdate($id)

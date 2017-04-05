@@ -88,6 +88,9 @@
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('companyraj/update/{{$companyraj->id}}')">
                     <i class="glyphicon glyphicon-edit"></i> Edit</a>
+                <a class="btn btn-primary btn-xs" title="Edit"
+                   href="javascript:ajaxLoad('companyraj/view/{{$companyraj->id}}')">
+                    <i class="glyphicon glyphicon-edit"></i> View</a>    
                 <a class="btn btn-danger btn-xs" title="Delete"
                    href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('companyraj/delete/{{$companyraj->id}}')">
                     <i class="glyphicon glyphicon-trash"></i> Delete
