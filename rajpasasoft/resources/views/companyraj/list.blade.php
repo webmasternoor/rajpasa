@@ -75,10 +75,10 @@
     @foreach($companyrajs as $key=>$companyraj)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$companyraj->company_name}}</td>
+            <td>{{$companyraj->name}}</td>
             <td>{{$companyraj->email}}</td>            
             <td>{{$companyraj->company_address}}</td> 
-            <td>{{$companyraj->company_license}}</td>
+            <!-- <td>{{$companyraj->company_license}}</td> -->
             <td>
             <img src="{{asset('uploads/').'/'.$companyraj->company_photo}}">
             <!-- {{$companyraj->company_logo}} -->
@@ -88,9 +88,9 @@
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('companyraj/update/{{$companyraj->id}}')">
                     <i class="glyphicon glyphicon-edit"></i> Edit</a>
-                <a class="btn btn-primary btn-xs" title="Edit"
+                <!-- <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('companyraj/view/{{$companyraj->id}}')">
-                    <i class="glyphicon glyphicon-edit"></i> View</a>    
+                    <i class="glyphicon glyphicon-edit"></i> View</a> -->    
                 <a class="btn btn-danger btn-xs" title="Delete"
                    href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('companyraj/delete/{{$companyraj->id}}')">
                     <i class="glyphicon glyphicon-trash"></i> Delete
