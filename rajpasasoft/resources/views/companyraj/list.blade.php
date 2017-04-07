@@ -75,7 +75,7 @@
     @foreach($companyrajs as $key=>$companyraj)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$companyraj->name}}</td>
+            <td>{{$companyraj->company_name}}</td>
             <td>{{$companyraj->email}}</td>            
             <td>{{$companyraj->company_address}}</td> 
             <!-- <td>{{$companyraj->company_license}}</td> -->

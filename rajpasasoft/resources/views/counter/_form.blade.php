@@ -39,24 +39,24 @@
                 </select>                           
             </div>
         </div> -->    
-    <div class="form-group col-md-4" id="form-emailaddress-error">
+    <div class="form-group col-md-6" id="form-emailaddress-error">
         {!! Form::label("emailaddress","Email Address",["class"=>"control-label col-md-12"]) !!}
-        <div class="col-md-12">
+        <div class="col-md-6">
             <!-- {!! Form::text("password12",null,["class"=>"form-control","id"=>"focus"]) !!} -->
             {!! Form::email("emailaddress",null,["class"=>"form-control","id"=>"focus"]) !!}
             <span id="emailaddress-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group col-md-4" id="form-password12-error">
+    <div class="form-group col-md-6" id="form-password12-error">
         {!! Form::label("password","Password",["class"=>"control-label col-md-12"]) !!}
-        <div class="col-md-12">
+        <div class="col-md-6">
             {!! Form::password("password12",null,["class"=>"form-control","id"=>"focus"]) !!}
             <span id="password12-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group col-md-4" id="form-password123-error">
+    <div class="form-group col-md-6" id="form-password123-error">
         {!! Form::label("password","Confirm Password",["class"=>"control-label col-md-12"]) !!}
-        <div class="col-md-12">
+        <div class="col-md-6">
             {!! Form::password("password122",null,["class"=>"form-control","id"=>"focus"]) !!}
             <span id="password123-error" class="help-block"></span>
         </div>
