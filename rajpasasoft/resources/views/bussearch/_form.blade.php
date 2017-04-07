@@ -1,6 +1,22 @@
-<div class="col-md-12">
+<div class="col-md-12">    
+    <div class="form-group required col-md-6" id="form-departure-error">
+        {!! Form::label("departure","departure place",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("departure",null,["class"=>"form-control required","id"=>"departure"]) !!}
+            <span id="departure-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-arrival-error">
+        {!! Form::label("arrival","arrival place",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("arrival",null,["class"=>"form-control required","id"=>"arrival"]) !!}
+            <span id="arrival-error" class="help-block"></span>
+        </div>
+    </div>
     
-    <div class="form-group required col-md-4" id="form-bus_id-error">
+</div>
+    
+    <!-- <div class="form-group required col-md-4" id="form-bus_id-error">
         {!! Form::label("bus_id","Bus ID",["class"=>"control-label col-md-12"]) !!}
         <div class="col-md-12">
             {!! Form::text("bus_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
@@ -52,7 +68,7 @@
     <div class="form-group required col-md-6" id="form-departure_place-error">        
         {!! Form::label("departure_place","Departure Place",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            <!-- {!! Form::select("departure_place",$district_info,null,["class"=>"form-control required","id"=>"focus"]) !!} -->
+             {!! Form::select("departure_place",$district_info,null,["class"=>"form-control required","id"=>"focus"]) !!} 
             {!! Form::select("departure_place", $district_info, null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="departure_place-error" class="help-block"></span>
         </div>
@@ -61,8 +77,8 @@
         {!! Form::label("arrival_place","Arrival Place",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::select("arrival_place", $district_info, null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <!-- {!! 
-            Form::text("arrival_place",null,["class"=>"form-control required","id"=>"focus"]) !!} -->
+             {!! 
+            Form::text("arrival_place",null,["class"=>"form-control required","id"=>"focus"]) !!} 
             <span id="arrival_place-error" class="help-block"></span>
         </div>
     </div>
@@ -97,7 +113,7 @@
             <span id="facility-error" class="help-block"></span>
         </div>
     </div>
-</div>
+</div> -->
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
         <a href="javascript:ajaxLoad('bussearch/list')" class="btn btn-danger"><i
@@ -107,7 +123,7 @@
     btn-primary"])!!}
     </div>
 </div>
-<script>
+ <!--<script>
     $("#frm").submit(function (event) {
         event.preventDefault();
         $('.loading').show();
@@ -149,8 +165,8 @@
         });
         return false;
     });
-</script>
-<script type="text/javascript">
+</script> 
+<!-- <script type="text/javascript">
     $(document).ready(function () {
         $(document).on('change', '.company_id', function () {
             //console.log("yes it is change");
@@ -176,4 +192,4 @@
             $.ajax(clear);
         });
     });    
-</script>
+</script> -->

@@ -28,29 +28,67 @@ class BussearchController extends Controller
     public function getList()
     {
 
-        $departure = Input::get('departure_place');
-        $arrival = Input::get('arrival_place');
-        // Session::put('bussearch_search', Input::has('ok') ? Input::get('search') : (Session::has('bussearch_search') ? Session::get('bussearch_search') : ''));
-        // Session::put('bussearch_field', Input::has('field') ? Input::get('field') : (Session::has('bussearch_field') ? Session::get('bussearch_field') : 'bus_id'));
-        // Session::put('bussearch_sort', Input::has('sort') ? Input::get('sort') : (Session::has('bussearch_sort') ? Session::get('bussearch_sort') : 'asc'));
-        if($departure == ''){
-             $bussearches = Bussearch::where('id', 'like', '%' . Session::get('bussearch_search') . '%') 
-            // ->orderBy(Session::get('bussearch_field'), Session::get('bussearch_sort'))
-             ->paginate(10);
+        // $departure = Input::get('departure');
+        // $arrival = Input::get('arrival');
+        // $departure = Session::get('departure');
+        // $arrival = Session::get('arrival');
+        Session::put('bussearch_search', Input::has('ok') ? Input::get('search') : (Session::has('bussearch_search') ? Session::get('bussearch_search') : ''));
+         Session::put('bussearch_field', Input::has('field') ? Input::get('field') : (Session::has('bussearch_field') ? Session::get('bussearch_field') : 'bus_id'));
+         Session::put('bussearch_sort', Input::has('sort') ? Input::get('sort') : (Session::has('bussearch_sort') ? Session::get('bussearch_sort') : 'asc'));
+        // if($departure == '' && $arrival == ''){
+
+             $bussearches = Bussearch::where('id', 'like', '%')
+                         ->orderBy(Session::get('bussearch_field'), Session::get('bussearch_sort'))->paginate(10);
+             
             
         return view('bussearch.list', ['bussearches' => $bussearches]);
         
-        }
-        else{
-            $bussearches = Bussearch::where('departure_place', '=', $departure)
-                        ->where('arrival_place', '=', $arrival)
-            // ->orderBy(Session::get('bussearch_field'), Session::get('bussearch_sort'))
-            ->paginate(8);
+        // }
+        // else{
+        //      echo $departure. " and ". $arrival;
+        //     exit();
+        //     $bussearches = Bussearch::where('departure_place', '=', $departure)
+        //                 ->where('arrival_place', '=', $arrival)->paginate(8);
+        //     // ->orderBy(Session::get('bussearch_field'), Session::get('bussearch_sort'))
+            
         
-        return view('bussearch.list', ['bussearches' => $bussearches]);
-        }
+        // return view('bussearch.list', ['bussearches' => $bussearches]);
+        // }
         
     }
+
+    //  public function postList()
+    // {
+    //     var_dump("shishir");
+    //     exit();
+    //     $departure = Input::get('departure');
+    //     $arrival = Input::get('arrival');
+    //     // $departure = Session::get('departure');
+    //     // $arrival = Session::get('arrival');
+    //     // Session::put('bussearch_search', Input::has('ok') ? Input::get('search') : (Session::has('bussearch_search') ? Session::get('bussearch_search') : ''));
+    //      Session::put('bussearch_field', Input::has('field') ? Input::get('field') : (Session::has('bussearch_field') ? Session::get('bussearch_field') : 'bus_id'));
+    //      Session::put('bussearch_sort', Input::has('sort') ? Input::get('sort') : (Session::has('bussearch_sort') ? Session::get('bussearch_sort') : 'asc'));
+    //     if($departure == 5 && $arrival == 65){
+
+    //          $bussearches = Bussearch::where('id', 'like', '%')->paginate(10);
+    //         // ->orderBy(Session::get('bussearch_field'), Session::get('bussearch_sort'))
+             
+            
+    //     return view('bussearch.list', ['bussearches' => $bussearches]);
+        
+    //     }
+        // else{
+        //      echo $departure. " and ". $arrival;
+        //     exit();
+        //     $bussearches = Bussearch::where('departure_place', '=', $departure)
+        //                 ->where('arrival_place', '=', $arrival)->paginate(8);
+        //     // ->orderBy(Session::get('bussearch_field'), Session::get('bussearch_sort'))
+            
+        
+        // return view('bussearch.list', ['bussearches' => $bussearches]);
+        // }
+        
+    // }
 
     // public function getBussearch()
     // {
@@ -189,8 +227,22 @@ class BussearchController extends Controller
 
     public function postCreate()
     {
-       
         $bussearch = new Bussearch();
+        $bussearch->departure_place = Input::get('departure_place');
+        $bussearch->arrival_place = Input::get('arrival_place');
+        $departure = Input::get('departure_place');
+        $arrival = Input::get('arrival_place');
+        echo $departure;
+        echo $arrival;
+        echo "shishir";
+            exit();
+       $bussearches = Bussearch::where('departure_place', $departure)
+                                ->where('arrival_place', $arrival)
+                         ->orderBy(Session::get('bussearch_field'), Session::get('bussearch_sort'))->paginate(10);
+             
+            
+        return view('bussearch.list', ['bussearches' => $bussearches]);
+        /*$bussearch = new Bussearch();
         $bussearch->bus_id = Input::get('bus_id');
         $bussearch->company_id = Input::get('company_id');
         $bussearch->manager_id = Input::get('manager_id');
@@ -217,7 +269,7 @@ class BussearchController extends Controller
             $bussearch12->save();    
         }
         
-        return ['url' => 'bussearch/list'];
+        return ['url' => 'bussearch/list'];*/
     }
 
     public function getDelete($id)

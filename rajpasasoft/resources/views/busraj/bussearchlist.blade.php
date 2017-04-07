@@ -1,7 +1,7 @@
 @if (Auth::guest())
 
 @else
-@extends('app')
+<!-- @extends('app') -->
 <h1 class="page-header">Bus Search</h1>
 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('busraj/bussearch')">

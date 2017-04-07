@@ -95,7 +95,7 @@ class BusticketController extends Controller
 
     public function apiResponse(Request $request){
         
-        $app_id = $request->get('app_id');
+        $app_id = $request->input('app_id');
         $app_key = $request->input('app_key');
         $departure = $request->input('bus_source');
         $arrival = $request->input('bus_destination');

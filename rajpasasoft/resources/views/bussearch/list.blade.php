@@ -4,7 +4,7 @@
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
     </div>
 </h1>
-   {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!} 
+<!-- {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!} 
   <div class="col-md-12">    
     <div class="form-group required col-md-6" id="form-departure-error">
         {!! Form::label("departure","departure place",["class"=>"control-label col-md-3"]) !!}
@@ -27,11 +27,11 @@
          <!-- <a href="javascript:ajaxLoad('bussearch/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a> -->
-        {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit","class"=>"btn
+      <!--  {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit","class"=>"btn
     btn-primary"])!!}
     </div>
 </div>
-{!! Form::close() !!} 
+{!! Form::close() !!} --> 
 <!-- <script>
   
 </script> -->
@@ -164,7 +164,7 @@
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('company_name');
+                        index = $(this).attr('departure');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);
