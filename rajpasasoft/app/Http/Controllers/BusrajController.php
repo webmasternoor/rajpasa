@@ -100,7 +100,9 @@ class BusrajController extends Controller
         
         $busrajs34 = Busraj::where('departure_place', $tempdeparture)->where('arrival_place', $temparrival)->where('departure_date', $tempdeparture_date)->paginate(8);
         $this->getList($busrajs34);
-         return view('busraj.bussearchlist', ['busrajs' => $busrajs34])->with('tempdeparture', $tempdeparture);
+        echo "string";
+        
+         return view('busraj.listbus', ['busrajs' => $busrajs34])->with('tempdeparture', $tempdeparture);
 
     }
 //return view('busraj.bussearchlist', ['busrajs34' => $busrajs34]);
