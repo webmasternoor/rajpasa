@@ -1,20 +1,11 @@
 @if (Auth::guest())
-
 @else
-    @foreach($busrajs as $key=>$busraj)
-        {{$busraj->bus_id}}
-    @endforeach
-    <?php
-    /*if($departure_place){
-    echo $departure_place;
-    }*/
-    ?>
-
     <div class="col-md-12">
         <div class="form-group  col-md-4" id="form-departure_place-error">
             <div class="col-md-9">
             {!! Form::select("departure_place",$district_info,null,["class"=>"form-control departure_place required","id"=>"departure_place"]) !!}
             {!! Form::select("arrival_place", $district_info, null,["class"=>"form-control ","id"=>"arrival_place"]) !!}
+            {!! Form::date("departure_date", null,["class"=>"form-control ","id"=>"departure_date"]) !!}
             {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit", "id" => "bbt"])!!}
             <!-- {!! Form::open(["id"=>"frmas","class"=>"form-horizontal"]) !!}
             {!! Form::select("departure_place", $district_info, null,["class"=>"form-control ","id"=>"focus"]) !!}
@@ -234,12 +225,13 @@
             $(document).on('click', '#bbt', function () {
                 var departure_place = document.getElementById('departure_place').value;
                 var arrival_place = document.getElementById('arrival_place').value;
+                var departure_date = document.getElementById('departure_date').value;
                 var i = 1;
                 $('#p_scents').empty();
                 $.ajax({
                     type: 'get',
                     url: 'getSchedule',
-                    data: {'id': departure_place, 'id1': arrival_place},
+                    data: {'id': departure_place, 'id1': arrival_place, 'id2': departure_date},
                     success: function (data) {
 //                    console.log(data);
                         $.each(data, function (index, subcatObj3p) {
