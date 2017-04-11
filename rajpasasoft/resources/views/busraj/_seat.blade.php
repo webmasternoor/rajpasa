@@ -21,10 +21,97 @@
             <table class="seatformat">
                 <tr>                                
                     <td>
-                        <div class="seatdiv">
+                        <div class="seat40">
+                        <p class="driverimg"><img src="./images/driver.png" alt=""></p>
+                            <div class="col-md-5">
+                                <input type='button' title="[A1]" id='1' value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B1]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A2]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B2]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A3]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B3]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A4]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B4]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A5]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B5]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A6]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B6]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A7]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B7]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A8]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B8]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A9]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B9]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A10]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B10]" value='1' class='blue' onclick='selected_seat();' />
+                            </div>
+                            <div class="col-md-1">
+                                &nbsp;
+                            </div>
+                            <div class="col-md-5">
+                                <input type='button' id='1' title="[C1]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D1]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C2]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D2]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C3]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D3]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C4]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D4]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C5]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D5]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C6]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D6]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C7]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D7]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C8]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D8]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C9]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D9]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C10]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D10]" value='1' class='blue' onclick='selected_seat();' />
+                            </div>
+                        </div>
+                        <div class="seat28">
+                        <p class="driverimg"><img src="./images/driver.png" alt=""></p>
+                            <div class="col-md-2 singleseat">
+                                <input type='button' title="[A1]" id='1' value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A2]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A3]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A4]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A5]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A6]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A7]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A8]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[A9]" value='1' class='blue' onclick='selected_seat();' />
+                            </div>
+                            <div class="col-md-1">
+                                &nbsp;
+                                <input class="seat28sigle" type='button' id='1' title="[B9]" value='1' class='blue' onclick='selected_seat();' />
+                            </div>
+                            <div class="col-md-5">
+                                <input type='button' id='1' title="[B1]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C1]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B2]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C2]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B3]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C3]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B4]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C4]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B5]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C5]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B6]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C6]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B7]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C7]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[B8]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C8]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[C9]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='1' title="[D9]" value='1' class='blue' onclick='selected_seat();' />
+                            </div>
+                        </div>
+                        <div class="seatdiv" style="display: none;">
                         <p class="driverimg"><img src="./images/driver.png" alt=""></p>
         <?php
-        
         $total_seat = DB::table('busrajs')->where('bus_id',$temp)->get();
         foreach ($total_seat as $er)
         {   
@@ -35,6 +122,12 @@
         {
             
             $counter = 0;
+            
+
+
+
+
+
             for($i=1;$i<=$er->total_seat;$i++){
                 //echo $user->$i;
                 echo "<input type='button' id='$i' value='$i' class='blue' onclick='selected_seat();' />";
@@ -105,15 +198,15 @@
                                     <div class="col-md-4">
                                         <input type="text" style="border: 0; background: transparent; box-shadow: 0 0 0;" id="Result" name="Result">
                                         <input type="hidden" style="border: 0;" id="quantity" name="quantity">
-                                        <input type="hidden" name="seat_fare" value="<?php echo $er->seat_fare;?>">    
+                                        <input type="hidden" name="seat_fare" value="<?php //echo $er->seat_fare;?>">    
                                     </div>
                                     <div class="col-md-4">
                                         <div style="display: none;" id="seat_fare1"></div>
-                                        <?php echo $er->seat_fare; ?>        
+                                        <?php //echo $er->seat_fare; ?>        
                                     </div>
                                     <div class="col-md-4">
                                         <div style="display: none;" id="bus_type1"></div>   
-                                        <?php echo $er->bus_type; ?>       
+                                        <?php //echo $er->bus_type; ?>       
                                     </div>
                                 </div>
                             </td>
@@ -191,11 +284,11 @@
             </div>
             <div class="form-group required col-md-6" id="form-name-error">
                 <input type="hidden" name="bus_id" value="<?php echo $temp;?>">                
-                <input type="hidden" name="company_id" value="<?php echo $er->company_id;?>">
-                <input type="hidden" name="departure_place" value="<?php echo $er->departure_place;?>">
-                <input type="hidden" name="arrival_place" value="<?php echo $er->arrival_place;?>">
-                <input type="hidden" name="departure_time" value="<?php echo $er->departure_time;?>">
-                <input type="hidden" name="arrival_time" value="<?php echo $er->arrival_time;?>">
+                <input type="hidden" name="company_id" value="<?php //echo $er->company_id;?>">
+                <input type="hidden" name="departure_place" value="<?php //echo $er->departure_place;?>">
+                <input type="hidden" name="arrival_place" value="<?php //echo $er->arrival_place;?>">
+                <input type="hidden" name="departure_time" value="<?php //echo $er->departure_time;?>">
+                <input type="hidden" name="arrival_time" value="<?php //echo $er->arrival_time;?>">
 
                 {!! Form::label("name","Name",["class"=>"control-label col-md-12"]) !!}
                 <div class="col-md-12">

@@ -1,7 +1,79 @@
 @if (Auth::guest())
 
 @else
-<?php echo Input::get('arrival_place');?>
+@foreach($busrajs as $key=>$busraj)
+{{$busraj->bus_id}}
+@endforeach
+<input type="text" name="arrival_place" id="arrival_place" value="<?php echo Input::get('arrival_place');?>">
+<input type="text" name="departure_place" id="departure_place" value="<?php echo Input::get('departure_place');?>">
+<?php
+    if(Input::get('departure_place')){
+    echo "test". Input::get('departure_place');
+    }
+?>
+
+<div class="col-md-12">    
+    <div class="form-group  col-md-4" id="form-departure_place-error">        
+        <div class="col-md-9">
+        {!! Form::open(["id"=>"frmas","class"=>"form-horizontal"]) !!}
+            {!! Form::select("departure_place", $district_info, null,["class"=>"form-control ","id"=>"focus"]) !!}
+            {!! Form::select("arrival_place", $district_info, null,["class"=>"form-control ","id"=>"focus"]) !!}
+            {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit","class"=>"btn
+                btn-primary"])!!}
+        {!! Form::close() !!}        
+        </div>
+    </div>
+</div>
+<script>
+setTimeout(function() {
+    var arrival_place = document.getElementById('arrival_place').value;
+    alert(arrival_place);
+  window.location.href = "http://localhost/rajpasa/rajpasasoft/public/busraj?arrival_place="+arrival_place;
+}, 2000);
+    $("#frmas").submit(function (event) {
+        event.preventDefault();
+        $('.loading').show();
+        var form = $(this);
+        var data = new FormData($(this)[0]);
+        var url = form.attr("action");
+        $.ajax({
+            type: "POST",
+            url: 'url',
+            data: data,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data.fail) {
+                    $('#frmas input., #frmas textarea.').each(function () {
+                        index = $(this).attr('id');
+                        if (index in data.errors) {
+                            $("#form-" + index + "-error").addClass("has-error");
+                            $("#" + index + "-error").html(data.errors[index]);
+                        }
+                        else {
+                            $("#form-" + index + "-error").removeClass("has-error");
+                            $("#" + index + "-error").empty();
+                        }
+                    });
+                    $('#focus').focus().select();
+                } else {
+                    $(".has-error").removeClass("has-error");
+                    $(".help-block").empty();
+                    $('.loading').hide();
+                    ajaxLoad(data.url, data.content);
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+        return false;
+    }
+    );
+</script>
+
 <h1 class="page-header">Bus Search</h1>
 
 <a class="btn btn-primary btn-xs" title="Edit"

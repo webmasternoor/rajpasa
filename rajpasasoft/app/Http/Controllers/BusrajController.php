@@ -33,10 +33,29 @@ class BusrajController extends Controller
         Session::put('busraj_search', Input::has('ok') ? Input::get('search') : (Session::has('busraj_search') ? Session::get('busraj_search') : ''));
         Session::put('busraj_field', Input::has('field') ? Input::get('field') : (Session::has('busraj_field') ? Session::get('busraj_field') : 'bus_id'));
         Session::put('busraj_sort', Input::has('sort') ? Input::get('sort') : (Session::has('busraj_sort') ? Session::get('busraj_sort') : 'asc'));
+        $district_info = District::lists('name', 'id');
+        //echo $temparrival = Input::get('arrival_place');
+        //echo $temparrival = $_GET['arrival_place'];
+        //echo $temparrival = "<script>document.writeln(temparrival);</script>";
+        /*$temparrival = "<script>document.writeln(arrival_place);</script>"; echo $temparrival;*/
+        //echo $temparrival = $_GET['arrival_place'];
+        /*if($_GET['arrival_place']){
+            $busrajs = Busraj::where('id', 'like', '%' . Session::get('busraj_search') . '%')
+            ->orderBy(Session::get('busraj_field'), Session::get('busraj_sort'))->paginate(8);    
+        }
+        else{                
+            $busrajs = Busraj::where('arrival_place', $temparrival)->paginate(8);
+        }*/
+        echo $tempdeparture = Input::get('departure_place');
+        /*echo $tempdeparture = Input::get('departure_place');
+        if($temparrival){
+            
+        }else{
+            
+        }*/
         $busrajs = Busraj::where('id', 'like', '%' . Session::get('busraj_search') . '%')
-            ->orderBy(Session::get('busraj_field'), Session::get('busraj_sort'))->paginate(8);
-        
-        return view('busraj.list', ['busrajs' => $busrajs]);
+            ->orderBy(Session::get('busraj_field'), Session::get('busraj_sort'))->paginate(8);    
+        return view('busraj.list', ['busrajs' => $busrajs])->with('district_info', $district_info)->with('tempdeparture', $tempdeparture);
         
     }
 
@@ -82,8 +101,6 @@ class BusrajController extends Controller
 
     public function getBussearch()
     {
-        
-
         $district_info = District::lists('name', 'id');
         return view('busraj.bussearch')->with('district_info', $district_info);
 
@@ -102,8 +119,17 @@ class BusrajController extends Controller
         $this->getList($busrajs34);
         echo "string";
         
-         return view('busraj.listbus', ['busrajs' => $busrajs34])->with('tempdeparture', $tempdeparture);
-
+         return view('busraj.listbus', ['busrajs' => $busrajs34])->with('tempdeparture', $tempdeparture)->with('district_info', $district_info);
+    }
+    public function postList(){
+        //echo "tt";
+        $district_info = District::lists('name', 'id');
+        echo $tempdeparture = Input::get('departure_place');
+        echo $temparrival = Input::get('arrival_place');
+        $busrajs = Busraj::where('departure_place', $tempdeparture)->where('arrival_place', $temparrival)->get();
+        return view('busraj.listbus', ['busrajs' => $busrajs])->with('district_info', $district_info);
+        //echo $this->getList($busrajs34);
+        //exit();
     }
 //return view('busraj.bussearchlist', ['busrajs34' => $busrajs34]);
     public function getListb()

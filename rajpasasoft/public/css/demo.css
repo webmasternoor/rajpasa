@@ -170,6 +170,7 @@ div.seatarra input {
     width: 20px;
     height: 20px;
     border: 0;
+    float: left;
 }
 div.seatarra input.highlight {
     background: yellow;
@@ -230,9 +231,23 @@ li.legend-label{
 table{
   width: 100%;
 }
-.col-md-12.seatarra table.seatformat {
+.seat28, .seat40{
     border: 1px solid #ccc;
-    width: 200px;
+    float: left;
+    margin: 3% 0;
+}
+div.seat28 div.singleseat input{
+  clear: both;
+}
+div.seat28 div.col-md-1 input.seat28sigle{
+      position: relative;
+    bottom: 0;
+    top: 206px;
+    left: -5px;
+}
+.col-md-12.seatarra table.seatformat {
+    /* border: 1px solid #ccc; */
+    width: 250px;
     text-align: center;
 }
 .col-md-12.seatarra table.seatformat p.driverimg{

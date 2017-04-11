@@ -25,4 +25,18 @@ class SelectBoxController extends Controller
             ->get();
         return response()->json($data);
     }
+
+    public function getSchedule(Request $request)
+    {
+        $datetest = '2017-05-03';
+        $temp = $request->get('id');
+        $temp1 = $request->get('id1');
+        $data = DB::table('busrajs')
+            ->select('*')
+            ->where('departure_place', $temp)
+            ->where('arrival_place', $temp1)
+            //->where('Date', $datetest)
+            ->get();
+        return response()->json($data);
+    }
 }

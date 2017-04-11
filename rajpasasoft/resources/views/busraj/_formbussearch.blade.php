@@ -63,8 +63,8 @@
                     $(".has-error").removeClass("has-error");
                     $(".help-block").empty();
                     $('.loading').hide();
-                    // ajaxLoad(data.url, data.content);
-                    ajaxLoad('busraj/listbus');
+                    ajaxLoad(data.url, data.content);
+                    //ajaxLoad('busraj/listbus');
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -73,8 +73,8 @@
         });
         return false;
     }
-    $(document).ready(function () {
+    /*$(document).ready(function () {
         ajaxLoad('busraj/listbus');
-    }
+    }*/
     );
 </script>

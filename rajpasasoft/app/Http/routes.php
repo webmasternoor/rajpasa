@@ -54,7 +54,7 @@ Route::controllers([
 
 Route::resource('users', 'UsersController');
 Route::get('getManager','SelectBoxController@getManager');
-
+Route::get('getSchedule','SelectBoxController@getSchedule');
 
 Route::get('{view}', function ($view) {
     if (view()->exists($view)) {
@@ -69,6 +69,8 @@ Route::get('busticket', 'BusticketController@apiResponse');
 Route::get('busraj/success', 'BusrajController@getSuccess');
 }
 
+
+Route::get('getSchedule','SelectBoxController@getSchedule');
 
 // Route::get('/rajpasa/rajpasasoft/busticket/list/{data}', function($data){
 //     $dataArray = array('departure' => data['0'],
