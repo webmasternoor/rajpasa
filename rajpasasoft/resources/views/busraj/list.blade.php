@@ -231,7 +231,7 @@
                 $.ajax({
                     type: 'get',
                     url: 'getSchedule',
-                    data: {'id': departure_place, 'id1': arrival_place, 'id2': departure_date},
+                    data: {'departure_place': departure_place, 'arrival_place': arrival_place, 'departure_date': departure_date},
                     success: function (data) {
 //                    console.log(data);
                         $.each(data, function (index, subcatObj3p) {
