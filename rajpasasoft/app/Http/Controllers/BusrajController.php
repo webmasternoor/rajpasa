@@ -159,18 +159,36 @@ class BusrajController extends Controller
     public function getViewseats($id)
     {
         $temp = $id;
+        
         //$total_seat = Busraj::where('total_seat', $id);
-        $seat_info = Seatbus::where('bus_id', $id);
+        //$seat_info = Seatbus::where('bus_id', $id);
         $district_info = District::lists('name', 'id');
         //$tt = Seatbus::table('seatbuses')->get();        
-        //$seat_info = Seatbus::where('id', $id);
+        $seat_info = Seatbus::where('bus_id', $temp)->get();
+        //exit();
+
+        //return view('busraj.viewseats', ['busraj' => Busraj::find($id)])->with('seat_info', $seat_info)->with('temp', $temp)->with('district_info', $district_info);
+
+        return view('busraj.viewseats')->with('seat_info', $seat_info);
         
-        return view('busraj.viewseats', ['busraj' => Busraj::find($id)])->with('seat_info', $seat_info)->with('temp', $temp)->with('district_info', $district_info);
     }
 
     public function postViewseats($id)
     {
-        echo $temp = $id;
+        $temp = $id;
+        $seatbuses = new Seatbus();
+        echo $seatbuses = Input::get('Result');
+        $ttemp = explode(',', $seatbuses);
+         foreach($ttemp as $ewew) {
+             echo $ewew;
+             ?>
+             <?php
+             }
+        exit();
+        $seatbuses->save();
+
+        //echo $aa = Input::get('total_fare');
+        
         //$total_seat = Busraj::where('total_seat', $id);        
         
         $district_info = District::lists('name', 'id');
@@ -367,6 +385,9 @@ class BusrajController extends Controller
         $busraj12->bus_id = Input::get('bus_id');
         $busraj12->company_id = Input::get('company_id');
         $busraj12->manager_id = Input::get('manager_id');
+        $busraj12->total_seat = Input::get('total_seat');
+        $busraj12->seat_fare = Input::get('seat_fare');
+        $busraj12->bus_type = Input::get('bus_type');
 
         for($i=1; $i<=$SeatCount; $i++){
             $busraj12->$i = '0';

@@ -1,26 +1,72 @@
-<?php
-foreach ($seat_info as $key){
-    echo $key->bus_id;
-}
-?>
+
+
 <div class="col-md-12">
     <div class="modal-header">
         <h4 class="modal-title" id="H1">Choose your seat(s)</h4>
     </div>
     <div class="col-md-6">
+        Bus ID: {{$temp}}
         <?php
-        foreach ($seat_info as $key){
-            echo $key->bus_id;
-            echo "<br/>Seat Fare: ".$key->seat_fare;
-            echo "<br/>Bus type: ".$key->bus_type;
-            echo "<input type='hidden' class='seat_fare' id='seat_fare' value='$key->seat_fare' />";
-            echo "<input type='hidden' class='bus_type' id='bus_type' value='$key->bus_type' />";
-            echo "<input type='text' class='total_seat' id='total_seat' value='$key->total_seat' />";
-        //}
-        ?>       
-        <!-- {!! Form::text("1",null,["class"=>"form-control required","id"=>"1"]) !!}  -->
+            echo $temp;
+        ?>
         <?php
-        if($key->total_seat == '28'){
+        $total_seat = DB::table('busrajs')->where('id',$temp)->get();
+        //$total_seat = "SELECT * FROM `busrajs` WHERE `bus_id` = '45' ";
+        //echo "<pre>";
+        //print_r($total_seat);
+        //echo "</pre>";
+        foreach ($total_seat as $erqw)
+        {   
+            echo "<br/>Seat Fare: ".$erqw->seat_fare;
+            echo "<br/>Bus type: ".$erqw->bus_type;
+            echo "<input type='hidden' class='seat_fare' id='seat_fare' value='$erqw->seat_fare' />";
+            echo "<input type='hidden' class='bus_type' id='bus_type' value='$erqw->bus_type' />";
+            echo "<input type='text' class='total_seat' id='total_seat' value='$erqw->total_seat' />";
+        }
+        ?>
+        <?php
+        $temp21 = $erqw->bus_id;
+        $users = DB::table('seatbuses')->where('bus_id',$temp21)->get();
+        /*echo "<pre>";
+        print_r($users);
+        echo "</pre>";*/
+        foreach ($users as $user)
+        {
+            echo "<p class='driverimg'><img src='./images/driver.png' alt=''></p>";
+            $counter = 0;
+            for($i=1;$i<=$erqw->total_seat;$i++){
+                //echo $user->$i;
+                ?>
+                <div class="col-md-12 seatarra">                        
+                    <table class="seatformat">
+                        <tr>                                
+                            <td>
+                                <div class="seat28">                                    
+                                    <div class="col-md-2 singleseat">
+                                        <?php
+                                            echo "<input type='button' id='$i' value='$i' class='blue' onclick='selected_seat();' />";
+                                            //echo $counter."<br/>";
+                                            $counter++;
+                                            if($i%4 == 0)
+                                            {
+                                                echo "<br/>";
+                                            }
+                                        ?>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>                
+                </div>
+                <?php
+            }    
+            ?>
+            <p id="show_seat"></p>
+            <?php
+        }
+        ?>
+        <?php
+        if($erqw->total_seat == '28'){
         ?>
         <div class="col-md-12 seatarra">                        
             <table class="seatformat">
@@ -30,14 +76,14 @@ foreach ($seat_info as $key){
                             <p class="driverimg"><img src="./images/driver.png" alt=""></p>
                             <div class="col-md-2 singleseat">
                                 <input type='button' id='1' title="[A1]" value='1' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='4' title="[A2]" value='4' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='7' title="[A3]" value='7' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='10' title="[A4]" value='10' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='13' title="[A5]" value='13' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='16' title="[A6]" value='16' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='19' title="[A7]" value='19' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='22' title="[A8]" value='22' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='25' title="[A9]" value='25' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='4' title="[A2]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='7' title="[A3]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='10' title="[A4]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='13' title="[A5]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='16' title="[A6]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='19' title="[A7]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='22' title="[A8]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='25' title="[A9]" value='1' class='blue' onclick='selected_seat();' />
                             </div>
                             <div class="col-md-1">
                                 &nbsp;
@@ -45,23 +91,23 @@ foreach ($seat_info as $key){
                             </div>
                             <div class="col-md-5">
                                 <input type='button' id='2' title="[B1]" value='1' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='3' title="[C1]" value='3' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='5' title="[B2]" value='5' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='6' title="[C2]" value='6' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='8' title="[B3]" value='8' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='9' title="[C3]" value='9' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='11' title="[B4]" value='11' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='12' title="[C4]" value='12' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='14' title="[B5]" value='14' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='15' title="[C5]" value='15' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='17' title="[B6]" value='17' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='18' title="[C6]" value='18' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='20' title="[B7]" value='20' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='21' title="[C7]" value='21' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='23' title="[B8]" value='23' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='24' title="[C8]" value='24' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='26' title="[C9]" value='26' class='blue' onclick='selected_seat();' />
-                                <input type='button' id='27' title="[D9]" value='27' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='3' title="[C1]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='5' title="[B2]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='6' title="[C2]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='8' title="[B3]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='9' title="[C3]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='11' title="[B4]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='12' title="[C4]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='14' title="[B5]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='15' title="[C5]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='17' title="[B6]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='18' title="[C6]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='20' title="[B7]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='21' title="[C7]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='23' title="[B8]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='24' title="[C8]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='26' title="[C9]" value='1' class='blue' onclick='selected_seat();' />
+                                <input type='button' id='27' title="[D9]" value='1' class='blue' onclick='selected_seat();' />
                             </div>
                         </div>
                     </td>
@@ -129,7 +175,6 @@ foreach ($seat_info as $key){
         </div>
         <?php } ?>
         <div class="col-md-6 confirmseat"><input type="button" value="Confirm your Seat(s)" onclick="finalSelection()"></div>
-    <?php }?>
     </div>
     {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!}
     <div class="col-md-6 seatcusdeta">
@@ -251,11 +296,19 @@ foreach ($seat_info as $key){
                 <input type="hidden" name="cart[2][amount]" value="50.00" />
 
                 <!-- SUBMIT REQUEST  !-->
+                
         </div>
         
         <div class="row">
+            <div class="form-group required col-md-12" id="form-departure_place-error">
+                {!! Form::label("departure_place","Choose Boarding Point",["class"=>"control-label col-md-8"]) !!}
+                <div class="col-md-12">
+                    {!! Form::select("departure_place",$district_info, null,["class"=>"departure_place form-control required","id"=>"departure_place"]) !!}
+                    <span id="departure_place-error" class="help-block"></span>
+                </div>
+            </div>
             <div class="form-group required col-md-6" id="form-name-error">
-                <input type="hidden" name="bus_id" value="<?php //echo $temp;?>">                
+                <input type="hidden" name="bus_id" value="<?php echo $temp;?>">                
                 <input type="hidden" name="company_id" value="<?php //echo $er->company_id;?>">
                 <input type="hidden" name="departure_place" value="<?php //echo $er->departure_place;?>">
                 <input type="hidden" name="arrival_place" value="<?php //echo $er->arrival_place;?>">
@@ -412,19 +465,20 @@ foreach ($seat_info as $key){
                         fail</a>
         <a href="javascript:ajaxLoad('busraj/cancel')" class="btn btn-danger"><i
                                 class="glyphicon glyphicon-backward"></i>
-                        cancel</a>
+                        cancel</a>                                
+        <div class="form-group">
+                <div class="col-md-6 col-md-push-3">
+                    <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
+                                class="glyphicon glyphicon-backward"></i>
+                        Back</a>
+                    {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Continue",["type" => "submit","class"=>"btn
+                btn-primary"])!!}
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <div class="col-md-6 col-md-push-3">
-            <a href="javascript:ajaxLoad('busraj/list')" class="btn btn-danger"><i
-                        class="glyphicon glyphicon-backward"></i>
-                Back</a>
-            {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Continue",["type" => "submit","class"=>"btn
-        btn-primary"])!!}
-        </div>
-    </div>
-    {!! Form::close() !!}
 </div>
+
 <script>
 $( "input" ).click(function() {
   $( this ).toggleClass( "highlight" );
@@ -433,16 +487,21 @@ $( "input" ).click(function() {
 <script type="text/javascript">
    var total_selected_seat = 0;
     var counter = 0, seat_id = 0, i = 0, seats = 0;
+
     var arr = Array(), finalArr = Array();
+    
+
     var total_seat = document.getElementById("total_seat").value;
     var seat_fare = document.getElementById("seat_fare").value;
-    var bus_type = document.getElementById("bus_type").value;   
+    var bus_type = document.getElementById("bus_type").value;
+    
 
     function selected_seat(){
         
      arr[i++] = document.getElementById(selected_seat.caller.arguments[0].target.id).value;
      
-     }     
+     }
+     
      function find_duplicate_in_array(arra1) {  
       var i, x=0, counter = 0, len=arra1.length,  result = [],  obj = {}, repeat;   
       for (i=0; i<len; i++)  
@@ -450,10 +509,10 @@ $( "input" ).click(function() {
             if(arra1[i] != 0){
                 repeat = arra1[i];      
                 for(var y = 0; y<len; y++){
-                    if(arra1[y] == repeat){
-                        counter ++;
-                        arra1[y] = 0;
-                    }
+                        if(arra1[y] == repeat){
+                            counter ++;
+                            arra1[y] = 0;
+                        }
                 }
                 if(counter % 2 != 0)
                 {
@@ -464,17 +523,24 @@ $( "input" ).click(function() {
             } 
      } 
       return result;  
-   }         
+   }  
+        
+
      function finalSelection(){
         var x = 0;
-       finalArr = find_duplicate_in_array(arr);
+       finalArr = find_duplicate_in_array(arr); 
+       // document.write(finalArr);
+       
         document.getElementById("Result").value = finalArr;
+        
         document.getElementById("total_amount").value = seat_fare * finalArr.length ;
+
         document.getElementById("quantity").value = finalArr.length;
         document.getElementById("seat_fare1").innerHTML += seat_fare ;
         document.getElementById("bus_type1").innerHTML += bus_type ;
         document.getElementById("total_fare").innerHTML = seat_fare * finalArr.length ;
-      }
+      
+}
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -486,4 +552,49 @@ $(document).ready(function(){
     });
 });
 </script>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <!-- <script>
+    $("#frm").submit(function (event) {
+        event.preventDefault();
+        $('.loading').show();
+        var form = $(this);
+        var data = new FormData($(this)[0]);
+        var url = form.attr("action");
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data.fail) {
+                    $('#frm input.required, #frm textarea.required').each(function () {
+                        index = $(this).attr('bus_id');
+                        if (index in data.errors) {
+                            $("#form-" + index + "-error").addClass("has-error");
+                            $("#" + index + "-error").html(data.errors[index]);
+                        }
+                        else {
+                            $("#form-" + index + "-error").removeClass("has-error");
+                            $("#" + index + "-error").empty();
+                        }
+                    });
+                    $('#focus').focus().select();
+                } else {
+                    $(".has-error").removeClass("has-error");
+                    $(".help-block").empty();
+                    $('.loading').hide();
+                    ajaxLoad(data.url, data.content);
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+        return false;
+    });
+  
+  
+  </script> -->
