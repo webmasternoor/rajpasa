@@ -180,12 +180,10 @@ class BusrajController extends Controller
         echo $seatbuses = Input::get('Result');
         $ttemp = explode(',', $seatbuses);
          foreach($ttemp as $ewew) {
-             echo $ewew;
-             ?>
-             <?php
-             }
-        exit();
-        $seatbuses->save();
+         echo $ewew;
+         }
+        //exit();
+        //$seatbuses->save();
 
         //echo $aa = Input::get('total_fare');
         
@@ -194,7 +192,7 @@ class BusrajController extends Controller
         $district_info = District::lists('name', 'id');
         
         //echo $id = $req->input('Result');
-        echo Session::get('Result');
+        //echo Session::get('Result');
 
         $customer = new Customer();
         $tt = $customer->bus_id = Input::get('bus_id');

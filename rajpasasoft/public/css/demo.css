@@ -327,3 +327,56 @@ div.col-md-6.seatcusdeta .form-group{
 .form-group textarea.form-control{
   height: 50px;
 }
+
+
+/*     Seat Design  */
+
+.seatdesign #holder{    
+height:200px;    
+/* width:550px; */
+background-color:#F5F5F5;
+border:1px solid #A4A4A4;
+margin-left:10px;   
+}
+.seatdesign #place {
+position:relative;
+margin:7px;
+}
+.seatdesign #place a{
+font-size:0.6em;
+}
+.seatdesign #place li
+{
+ list-style: none outside none;
+ position: absolute;   
+}    
+.seatdesign #place li:hover
+{
+background-color:yellow;      
+} 
+.seatdesign #place .seat{
+background:url("../images/available_seat_img.gif") no-repeat scroll 0 0 transparent;
+height:33px;
+width:33px;
+display:block;   
+}
+.seatdesign #place .selectedSeat
+{ 
+background-image:url("../images/booked_seat_img.gif");          
+}
+.seatdesign #place .selectingSeat
+{ 
+background-image:url("../images/selected_seat_img.gif");        
+}
+.seatdesign #place .row-3, .seatdesign #place .row-4{
+margin-top:10px;
+}
+.seatdesign #seatDescription li{   
+vertical-align: middle;
+list-style: none outside none;
+padding-left:35px;
+height:35px;
+float:left;
+}
+
+/*     Seat Design  */
