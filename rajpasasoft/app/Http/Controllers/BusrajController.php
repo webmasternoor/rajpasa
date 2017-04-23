@@ -181,9 +181,11 @@ class BusrajController extends Controller
         $ttemp = explode(',', $seatbuses);
          foreach($ttemp as $ewew) {
          echo $ewew;
+         $seatbuses->bus_type = '1';
          }
-        //exit();
-        //$seatbuses->save();
+        $seatbuses->save();
+        exit();
+        
 
         //echo $aa = Input::get('total_fare');
         
