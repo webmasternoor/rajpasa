@@ -467,7 +467,7 @@ $( "input" ).click(function() {
    }         
      function finalSelection(){
         var x = 0;
-       finalArr = find_duplicate_in_array(arr);
+        finalArr = find_duplicate_in_array(arr);
         document.getElementById("Result").value = finalArr;
         document.getElementById("total_amount").value = seat_fare * finalArr.length ;
         document.getElementById("quantity").value = finalArr.length;
