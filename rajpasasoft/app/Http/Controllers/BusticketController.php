@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Busticket;
+use App\Seatbus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -92,6 +93,34 @@ class BusticketController extends Controller
        
 
     // }
+    public function seatDetails(Request $request){
+        
+        $app_id = $request->input('app_id');
+        $app_key = $request->input('app_key');
+        $bus_id = $request->input('bus_id');
+        
+        
+        $seatbuses = Seatbus::where('bus_id', '=', $bus_id)
+                                ->get();
+
+        if($app_id == '1234' && $app_key == "our_app_key"){
+                 $items = array('code' => '2000',
+                        'message' => 'seccessful request',
+                        'data' => $seatbuses,
+                         );
+                    return json_encode($items);
+        }
+        else {
+            $items = array('code' => '4000',
+                        'message' => 'failed request',
+                        'error' => ['Invalid user request'],
+                         );
+                    return json_encode($items);
+        }
+      
+       
+
+    }
 
     public function apiResponse(Request $request){
         
