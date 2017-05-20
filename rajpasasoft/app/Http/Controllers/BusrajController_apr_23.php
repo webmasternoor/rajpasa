@@ -164,40 +164,8 @@ class BusrajController extends Controller
         //$seat_info = Seatbus::where('bus_id', $id);
         $district_info = District::lists('name', 'id');
         //$tt = Seatbus::table('seatbuses')->get();        
-        //$seat_info = Seatbus::where('bus_id', $temp)->get();
-
-        echo $seat_info23 = Seatbus::where('bus_id', $temp)->get();
-        echo $seat_info = "select * from 
-(
-select '1', `1` as occupiedStatus from seatbuses where id=67
-union
-select '2', `2` as occupiedStatus from seatbuses where id=67
-union
-select '3', `3` as occupiedStatus from seatbuses where id=67
-union
-select '4', `4` as occupiedStatus from seatbuses where id=67
-union
-select '5', `5` as occupiedStatus from seatbuses where id=67
-union
-select '7', `7` as occupiedStatus from seatbuses where id=67
-) seatsPivot
-where occupiedStatus= 1";
-
-        /*$i = 1;
-        echo count($seat_info23, COUNT_RECURSIVE);
-        $array12 = array();
-        foreach ($seat_info23 as $key => $value32) {
-            for ($i=1; $i<= sizeof($seat_info23); $i++) {
-                $value32."<br/>";
-
-                if($value32[$i] == '1')
-                    $array12[$i] = $value32[$i];
-            }
-        }*/
-        
-
-
-        exit();
+        $seat_info = Seatbus::where('bus_id', $temp)->get();
+        //exit();
 
         //return view('busraj.viewseats', ['busraj' => Busraj::find($id)])->with('seat_info', $seat_info)->with('temp', $temp)->with('district_info', $district_info);
 
@@ -207,14 +175,27 @@ where occupiedStatus= 1";
 
     public function postViewseats($id)
     {
-        $temp = $id;
+        //$temp = $id;
         $seatbuses = Seatbus::find($id);
+        //$seatbuses = new Seatbus();
         $seatbuses12 = Input::get('Result');
         $ttemp = explode(',', $seatbuses12);
          foreach($ttemp as $ewew) {
             $seatbuses->{$ewew} = '1';   
             $seatbuses->save();
            }
+        //exit();
+        
+
+        //echo $aa = Input::get('total_fare');
+        
+        //$total_seat = Busraj::where('total_seat', $id);        
+        
+        $district_info = District::lists('name', 'id');
+        
+        //echo $id = $req->input('Result');
+        //echo Session::get('Result');
+
         $customer = new Customer();
         $tt = $customer->bus_id = Input::get('bus_id');
         $customer->name = Input::get('name');
@@ -252,20 +233,32 @@ where occupiedStatus= 1";
         $customer->arrival_place = Input::get('arrival_place');
         $customer->departure_time = Input::get('departure_time');
         $customer->arrival_time = Input::get('arrival_time');
+        //$seat_info = Busraj::where('bus_id', $tt);
+        /*
+        foreach ($seat_info as $value) {
+            $customer->ticketprice = $value->seat_fare;
+            $customer->bus_id = $value->bus_id;
+            $customer->company_id = $value->company_id;
+            $customer->departure_place = $value->departure_place;
+            $customer->arrival_place = $value->arrival_place;
+            $customer->departure_time = $value->departure_time;
+            $customer->arrival_time = $value->arrival_time;
+        }*/
         $customer->save();
 
         $order = new Order();
+        //$order->customerid = $customer->customerid;
         $order->customerid = $customer->customerid;
         $order->mobile = $customer->mobile;
         $order->date12 = '0';
         $order->staff_id = '0';
         $order->save();
 
-        $district_info = District::lists('name', 'id');
-        echo $tempdeparture = Input::get('departure_place');
-        $busrajs = Busraj::where('id', 'like', '%' . Session::get('busraj_search') . '%')
-            ->orderBy(Session::get('busraj_field'), Session::get('busraj_sort'))->paginate(8);    
-        return view('busraj.list', ['busrajs' => $busrajs])->with('district_info', $district_info);
+        
+        //$tt = Seatbus::table('seatbuses')->get();        
+        //$seat_info = Seatbus::where('id', $id);
+        
+        return view('busraj.viewseats', ['busraj' => Busraj::find($id)])->with('seat_info', $seat_info)->with('temp', $temp)->with('district_info', $district_info);
         
     }
 
