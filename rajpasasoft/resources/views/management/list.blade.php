@@ -73,8 +73,8 @@
             <td align="center">{{$i++}}</td>
             <td>{{$management->company_id}}</td>
             <td>{{$management->manager_id}}</td>
-            <td>{{$management->manager_name}}</td>            
-            <td>{{$management->emailaddress}}</td>            
+            <td>{{$management->name}}</td>            
+            <td>{{$management->email}}</td>            
             <td>
             <img src="{{asset('uploads/').'/'.$management->manager_photo}}">            
             </td>

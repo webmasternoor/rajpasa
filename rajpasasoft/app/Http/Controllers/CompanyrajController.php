@@ -23,12 +23,14 @@ class CompanyrajController extends Controller
         //$tempval = {{Auth::user()->company_id}};
         //$value = Auth::user()->company_id;
         if(Auth::user()->company_id == 'admin'){
-            //$val = 
-            $companyrajs = User::where('id', 'like', '%' . Session::get('companyraj_search') . '%')
-            //->where('company_id', Auth::user()->company_id)
-            ->orderBy(Session::get('companyraj_field'), Session::get('companyraj_sort'))->paginate(50);
+            /*$companyrajs = User::where('id', 'like', '%' . Session::get('companyraj_search') . '%')
+            ->orderBy(Session::get('companyraj_field'), Session::get('companyraj_sort'))->paginate(50);*/
+
+            $companyrajs = User::select('*')
+            ->join('companyrajs', 'users.company_id','=','companyrajs.company_id')
+            /*->where('company_id', 'like', '%' . Session::get('companyraj_search') . '%')*/
+            /*->orderBy(Session::get('companyraj_field'), Session::get('companyraj_sort'))*/->paginate(50);
         }else{
-            //$val = 
             $companyrajs = User::where('id', 'like', '%' . Session::get('companyraj_search') . '%')
             ->where('company_id', Auth::user()->company_id)
             ->orderBy(Session::get('companyraj_field'), Session::get('companyraj_sort'))->paginate(50);

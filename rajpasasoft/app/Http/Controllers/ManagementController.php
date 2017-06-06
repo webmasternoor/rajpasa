@@ -28,7 +28,10 @@ class ManagementController extends Controller
 
         if(Auth::user()->company_id == 'admin'){
             //$managements = User::paginate(8);
-            $managements = Management::where('company_id','!=', '0')->paginate(8);
+            /*$managements = Management::where('company_id','!=', '0')->paginate(8);*/
+            $managements = Management::select('*')
+            ->join('users','users.manager_id','=','managements.manager_id')
+            ->paginate(8);
         }else{
             //$val = 
             /*$managements = Companyraj::select('*')

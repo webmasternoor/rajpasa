@@ -25,9 +25,16 @@ class CounterController extends Controller
         Session::put('counter_sort', Input::has('sort') ? Input::get('sort') : (Session::has('counter_sort') ? Session::get('counter_sort') : 'asc'));
         /*$counters = Counter::where('counter_id', 'like', '%' . Session::get('counter_search') . '%')
             ->orderBy(Session::get('counter_field'), Session::get('counter_sort'))->paginate(8);*/
-        $counters = User::where('company_id', Auth::user()->company_id)
+        /*$counters = User::where('company_id', Auth::user()->company_id)
+        ->where('type', 'counter')
+        ->paginate(8);        */
+
+        $counters = Counter::select('*')
+        ->join('users','counters.counter_id','=','users.counter_id')
+        //->where('company_id', Auth::user()->company_id)
         ->where('type', 'counter')
         ->paginate(8);        
+
         return view('counter.list', ['counters' => $counters]);
     }
 

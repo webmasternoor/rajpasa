@@ -7,7 +7,7 @@
     @elseif (Auth::user()->type == 'counter') Company Information
     @elseif(Auth::user()->type == 'admin') Company Lists
     @endif
-    <br/>Company ID: {{Auth::user()->company_id}}
+    <!-- <br/>Company ID: {{Auth::user()->company_id}} -->
     <div class="pull-right">
         @if(Auth::user()->type == 'admin') <a href="javascript:ajaxLoad('companyraj/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New </a>
