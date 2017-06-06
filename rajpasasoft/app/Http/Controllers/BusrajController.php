@@ -166,43 +166,12 @@ class BusrajController extends Controller
         //$tt = Seatbus::table('seatbuses')->get();        
         //$seat_info = Seatbus::where('bus_id', $temp)->get();
 
-        echo $seat_info23 = Seatbus::where('bus_id', $temp)->get();
-        echo $seat_info = "select * from 
-(
-select '1', `1` as occupiedStatus from seatbuses where id=67
-union
-select '2', `2` as occupiedStatus from seatbuses where id=67
-union
-select '3', `3` as occupiedStatus from seatbuses where id=67
-union
-select '4', `4` as occupiedStatus from seatbuses where id=67
-union
-select '5', `5` as occupiedStatus from seatbuses where id=67
-union
-select '7', `7` as occupiedStatus from seatbuses where id=67
-) seatsPivot
-where occupiedStatus= 1";
-
-        /*$i = 1;
-        echo count($seat_info23, COUNT_RECURSIVE);
-        $array12 = array();
-        foreach ($seat_info23 as $key => $value32) {
-            for ($i=1; $i<= sizeof($seat_info23); $i++) {
-                $value32."<br/>";
-
-                if($value32[$i] == '1')
-                    $array12[$i] = $value32[$i];
-            }
-        }*/
-        
-
-
-        exit();
-
-        //return view('busraj.viewseats', ['busraj' => Busraj::find($id)])->with('seat_info', $seat_info)->with('temp', $temp)->with('district_info', $district_info);
-
-        return view('busraj.viewseats')->with('seat_info', $seat_info);
-        
+        /*echo $seat_info12 = Seatbus::where('bus_id', $temp)
+                        ->where('1', '=', 1)
+                        ->get();*/
+        //exit();
+        $seat_info = Seatbus::where('bus_id', $temp)->get();
+        return view('busraj.viewseats', ['busraj' => Busraj::find($id)])->with('seat_info', $seat_info)->with('temp', $temp)->with('district_info', $district_info)/*->with('seat_info12', $$seat_info12)*/;        
     }
 
     public function postViewseats($id)

@@ -1,6 +1,6 @@
 <?php
 foreach ($seat_info as $key){
-    echo $key->bus_id;
+    //echo $key->bus_id;
 }
 ?>
 <div class="col-md-12">
@@ -11,12 +11,12 @@ foreach ($seat_info as $key){
     <div class="">
         <?php
         foreach ($seat_info as $key){
-            echo $key->bus_id;
+            //echo $key->bus_id;
             echo "<br/>Seat Fare: ".$key->seat_fare;
             echo "<br/>Bus type: ".$key->bus_type;
             echo "<input type='hidden' class='seat_fare' id='seat_fare' value='$key->seat_fare' />";
             echo "<input type='hidden' class='bus_type' id='bus_type' value='$key->bus_type' />";
-            echo "<input type='text' class='total_seat' id='total_seat' value='$key->total_seat' />";
+            echo "<input type='hidden' class='total_seat' id='total_seat' value='$key->total_seat' />";
         }
         ?>
     </div>
@@ -84,8 +84,8 @@ foreach ($seat_info as $key){
                                 <div class="col-md-12">
                                     <div class="col-md-4">
                                         <input type="text" style="border: 0; background: transparent; box-shadow: 0 0 0;" id="Result" name="Result">
-                                        <input type="hidden" style="border: 0;" id="quantity" name="quantity">
-                                        <input type="hidden" name="seat_fare" value="<?php //echo $er->seat_fare;?>">    
+                                        <input type="text" style="border: 0;" id="quantity" name="quantity">
+                                        <input type="text" name="seat_fare" value="<?php echo $key->seat_fare;?>">    
                                     </div>
                                     <div class="col-md-4">
                                         <div style="display: none;" id="seat_fare1"></div>

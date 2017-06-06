@@ -3,8 +3,11 @@
     <div class="col-md-12">
         <div class="form-group  col-md-4" id="form-departure_place-error">
             <div class="col-md-9">
+            Departure:
             {!! Form::select("departure_place",$district_info,null,["class"=>"form-control departure_place required","id"=>"departure_place"]) !!}
+            Arrival:
             {!! Form::select("arrival_place", $district_info, null,["class"=>"form-control ","id"=>"arrival_place"]) !!}
+            Date:
             {!! Form::date("departure_date", null,["class"=>"form-control ","id"=>"departure_date"]) !!}
             {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Search",["type" => "submit", "id" => "bbt"])!!}
             <!-- {!! Form::open(["id"=>"frmas","class"=>"form-horizontal"]) !!}
