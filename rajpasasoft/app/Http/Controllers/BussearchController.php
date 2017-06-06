@@ -68,8 +68,8 @@ class BussearchController extends Controller
                                 ->get();
 
         if($app_id == '1234' && $app_key == "our_app_key"){
-                 $items = array('code' => '2000',
-                        'message' => 'seccessful request',
+                 $items = array('resp'=>['code' => '2000',
+                        'message' => 'seccessful request'],
                         'data' => $seatbuses,
                          );
                     return json_encode($items);
