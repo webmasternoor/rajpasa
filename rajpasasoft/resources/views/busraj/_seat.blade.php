@@ -86,6 +86,7 @@ foreach ($seat_info as $key){
                                         <input type="text" style="border: 0; background: transparent; box-shadow: 0 0 0;" id="Result" name="Result">
                                         <input type="text" style="border: 0;" id="quantity" name="quantity">
                                         <input type="text" name="seat_fare" value="<?php echo $key->seat_fare;?>">    
+                                        <input type="text" name="bus_id" value="<?php echo $key->bus_id;?>">    
                                     </div>
                                     <div class="col-md-4">
                                         <div style="display: none;" id="seat_fare1"></div>
@@ -274,7 +275,8 @@ foreach ($seat_info as $key){
 <script type="text/javascript">
     
    var total_seat = document.getElementById('total_seat').value; 
-
+   var bus_id = document.getElementById('bus_id').value; 
+   var bookingSeats = new Array();
    if(total_seat == '28'){
     var col = 7;
    }
@@ -313,6 +315,20 @@ var init = function (reservedSeat) {
 
 var bookedSeats = [5, 10, 25];
 
+var bookedSeats =  $.ajax({
+
+                            type: 'get',
+                            url: 'getBookedSeats',
+                            data: {'id': DomainName},
+                            success: function (data) {
+                                $.each(data, function (index, subcatObj) {
+                                    $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionName +'</option>')
+                                });
+                            },
+                            error: function () {
+                                alert("Enternal Connection errors.");
+                            }
+                        });
 
 
 init(bookedSeats);

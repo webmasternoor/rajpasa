@@ -53,8 +53,14 @@ Route::controllers([
 ]);
 
 Route::resource('users', 'UsersController');
+
 Route::get('getManager','SelectBoxController@getManager');
+
 Route::get('getSchedule','SelectBoxController@getSchedule');
+
+Route::get('getBookedSeats', 'SelectBoxController@getBookedSeats');
+
+Route::get('getBookingSeats', 'SelectBoxController@getBookingSeats');
 
 Route::get('{view}', function ($view) {
     if (view()->exists($view)) {
